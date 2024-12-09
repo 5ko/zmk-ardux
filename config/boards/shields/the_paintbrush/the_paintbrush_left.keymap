@@ -6,6 +6,7 @@
  */
 
 
+
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
@@ -121,7 +122,11 @@ ZMK_COMBO(combo_layer_bt_select, &sl L_BT_S, KEY_A KEY_E KEY_R KEY_N)
 ZMK_TAP_DANCE(n1, bindings = <&kp N1>, <&kp N2>, <&kp N3>; tapping-term-ms = <TAPDANCE_TERM>; )
 ZMK_TAP_DANCE(n4, bindings = <&kp N4>, <&kp N5>, <&kp N6>; tapping-term-ms = <TAPDANCE_TERM>; )
 ZMK_TAP_DANCE(n7, bindings = <&kp N7>, <&kp N8>, <&kp N9>; tapping-term-ms = <TAPDANCE_TERM>; )
+
+ZMK_COMBO(combo_space, &kp SPACE, KEY_N KEY_O KEY_S KEY_E)
+
 ZMK_COMBO(combo_zero, &kp N0, KEY_I KEY_T KEY_A, L_NUMB)
+
 ZMK_COMBO(combo_num_bs, &kp BACKSPACE, KEY_T KEY_A, L_NUMB)
 
 
