@@ -190,10 +190,8 @@ ZMK_COMBO(num_dot,   &kp DOT,   KEY_O KEY_E, L_NUMB)
   custom {     
     display-name = "Custom";          
     bindings = <                      
-//       &none           &kp C_VOL_UP  &kp INS   &kp C_MUTE 
-//       &mo L_CUST      &kp C_VOL_DN  &kp PSCRN &sk RSHFT  
-      &none        &mt PG_UP UP     &mt HOME LEFT   &mt END RIGHT  
-      &mo L_CUST   &mt DOWN_ARROW PG_DN   &mt LC(DEL) DEL  &mt LC(BSPC) BSPC
+      &none        &mt PG_UP UP     &mt HOME LEFT    &mt END RIGHT  
+      &mo L_CUST   &mt PG_DN DOWN   &mt LC(DEL) DEL  &mt LC(BSPC) BSPC
     >;         
   };
 
