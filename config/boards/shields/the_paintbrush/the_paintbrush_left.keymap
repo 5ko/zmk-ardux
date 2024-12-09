@@ -134,7 +134,7 @@
     display-name = "Number";
     bindings = <
 //       LEADING_NONES
-      &mo L_NUMB    &kp KP_N3    &kp u_2    &kp N1
+      &mo L_NUMB    &kp KP_N3    &u_2    &kp N1
 //       MIDDLE_NONES
       &none         &kp N6    &kp N5    &u_c_acute
 //       TRAILING_NONES
