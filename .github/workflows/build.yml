@@ -109,8 +109,8 @@ jobs:
           echo artifact-name=${ARTIFACT_NAME} >>$GITHUB_OUTPUT
       - name: Build (west build)
         run: west build -s zmk/app -b ${{ matrix.board }} -- ${{ steps.variables.outputs.shield-arg }} -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
-      - name: SENORITA implementation dtsi file
-        if: always()
+      #- name: SENORITA implementation dtsi file
+        #if: always()
         #run: cat -n config/senorita.dtsi
       #- name: Prep artifact (senorita.dtsi)
         #run: cp config/senorita.dtsi ./senorita.dtsi
