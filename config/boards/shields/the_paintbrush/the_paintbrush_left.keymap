@@ -141,8 +141,8 @@ ZMK_COMBO(cust_pgup, &kp PG_UP, KEY_I KEY_T, L_CUST)
 ZMK_COMBO(cust_pgdn, &kp PG_DN, KEY_O KEY_S, L_CUST)
 ZMK_COMBO(cust_home, &kp HOME,  KEY_T KEY_A, L_CUST)
 ZMK_COMBO(cust_end,  &kp END,   KEY_S KEY_E, L_CUST)
-ZMK_COMBO(cust_undo,  &kp K_UNDO,  KEY_I KEY_T KEY_A, L_CUST)
-ZMK_COMBO(cust_redo,  &kp K_REDO,  KEY_O KEY_S KEY_E, L_CUST)
+ZMK_COMBO(cust_undo,  &kp C_AC_UNDO,  KEY_I KEY_T KEY_A, L_CUST)
+ZMK_COMBO(cust_redo,  &kp C_AC_REDO,  KEY_O KEY_S KEY_E, L_CUST)
 
 
 
