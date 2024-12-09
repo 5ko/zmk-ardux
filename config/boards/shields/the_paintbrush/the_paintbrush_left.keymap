@@ -111,12 +111,12 @@
   // Unicode key presses for punctuation
   // Work on different keyboard layouts
   
-  uni: unicode {
-    compatible = "zmk,behavior-unicode";
-    label = "Unicode symbol"; 
-    #binding-cells = <1>;
-    unicode = <0>; // Combining acute accent
-  };
+//   uni: unicode {
+//     compatible = "zmk,behavior-unicode";
+//     label = "Unicode symbol"; 
+//     #binding-cells = <1>;
+//     unicode = <0>; // Combining acute accent
+//   };
   
   
   
@@ -146,7 +146,7 @@
       LEADING_NONES
       &mo L_NUMB    &kp N3    &kp N2    &kp N1
       MIDDLE_NONES
-      &none         &kp N6    &kp N5    &uni 0x0301  // Combining Acute
+      &none         &kp N6    &kp N5    &kp UC(0x0301)   // Combining Acute
       TRAILING_NONES
     >;
   };
