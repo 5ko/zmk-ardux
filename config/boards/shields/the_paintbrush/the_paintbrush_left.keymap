@@ -146,7 +146,7 @@ ZMK_COMBO(cust_end,  &kp END,  KEY_S KEY_E, L_CUST)
 
 /*****************************************
  * Standard ARDUX layer definitions
- * !!!!!!!!!! FOR LEFT HANDED USE !!!!!!!!!!n
+ * !!!!!!!!!! FOR LEFT HANDED USE !!!!!!!!!!
  *****************************************/
 
 / { keymap { compatible = "zmk,keymap";
@@ -194,7 +194,7 @@ ZMK_COMBO(cust_end,  &kp END,  KEY_S KEY_E, L_CUST)
   };
   
   custom {     
-    display-name = "Custom"; tttttt
+    display-name = "Custom";
     bindings = <                      
       &none        &mt UP     &mt LC(LEFT) LEFT    &mt LC(RIGHT) RIGHT
       &mo L_CUST   &mt DOWN   &mt LC(DEL)  DEL     &mt LC(BSPC)  BSPC
