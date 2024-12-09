@@ -112,13 +112,17 @@
 #undef COMBO_TERM
 #define COMBO_TERM 175
 // ZMK_COMBO(name, bindings, keypos, layers, timeout, prior_idle, extra)
-ZMK_COMBO(combo_reset, &reset, 0 1 2 3 4 5 6 7)
+ZMK_COMBO(combo_reset, &sys_reset, 0 1 2 3 4 5 6 7)
 ZMK_COMBO(combo_enter, &kp ENTER, KEY_A KEY_E)
+
+// ZMK_COMBO(combo_layer_bt_select, &tog L_BT_S, KEY_A KEY_E KEY_R KEY_N)
+ZMK_COMBO(combo_layer_bt_select, &mo L_BT_S, KEY_A KEY_E KEY_R KEY_N)
+
 
 ZMK_TAP_DANCE(n1, bindings = <&kp N1>, <&kp N2>, <&kp N3>; )
 ZMK_TAP_DANCE(n4, bindings = <&kp N4>, <&kp N5>, <&kp N6>; )
 ZMK_TAP_DANCE(n7, bindings = <&kp N7>, <&kp N8>, <&kp N9>; )
-ZMK_COMBO(combo_zero, &kp N0, KEY_A KEY_I KEY_T, L_NUMB)
+ZMK_COMBO(combo_zero, &kp N0, KEY_I KEY_T KEY_A, L_NUMB)
 
 
 /*****************************************
@@ -166,7 +170,7 @@ ZMK_COMBO(combo_zero, &kp N0, KEY_A KEY_I KEY_T, L_NUMB)
     display-name = "BT";
     bindings = <
       &out OUT_BLE   &bt BT_SEL 2 &bt BT_SEL 1 &bt BT_SEL 0
-      &out OUT_USB &bt BT_SEL 5 &bt BT_SEL 4 &bt BT_SEL 3
+      &out OUT_USB   &bt BT_SEL 5 &bt BT_SEL 4 &bt BT_SEL 3
     >;
   };
   
