@@ -131,16 +131,22 @@ ZMK_COMBO(num_0, &kp N0, KEY_O KEY_S, L_NUMB)
 ZMK_COMBO(num_9, &kp N9, KEY_S KEY_E, L_NUMB)
 ZMK_COMBO(num_7, &kp N8, KEY_A KEY_T, L_NUMB)
 ZMK_COMBO(num_8, &kp N7, KEY_I KEY_T, L_NUMB)
-ZMK_COMBO(num_comma, &kp COMMA, KEY_I KEY_A, L_NUMB)
-ZMK_COMBO(num_dot,   &kp DOT,   KEY_O KEY_E, L_NUMB)
+// ZMK_COMBO(num_comma, &kp COMMA, KEY_I KEY_A, L_NUMB)
+// ZMK_COMBO(num_dot,   &kp DOT,   KEY_O KEY_E, L_NUMB)
 
 // ZMK_COMBO(combo_num_bs, &kp BACKSPACE, KEY_T KEY_A, L_NUMB)
+
+// Combos CUSTOM layer
+ZMK_COMBO(cust_pgup, &kp PG_UP, KEY_I KEY_T, L_CUST)
+ZMK_COMBO(cust_pgdn, &kp PG_DN, KEY_O KEY_S, L_CUST)
+ZMK_COMBO(cust_home, &kp HOME, KEY_T KEY_A, L_CUST)
+ZMK_COMBO(cust_end,  &kp END,  KEY_S KEY_E, L_CUST)
 
 
 
 /*****************************************
  * Standard ARDUX layer definitions
- * !!!!!!!!!! FOR LEFT HANDED USE !!!!!!!!!!
+ * !!!!!!!!!! FOR LEFT HANDED USE !!!!!!!!!!n
  *****************************************/
 
 / { keymap { compatible = "zmk,keymap";
@@ -154,8 +160,8 @@ ZMK_COMBO(num_dot,   &kp DOT,   KEY_O KEY_E, L_NUMB)
   numbers {
     display-name = "Number";
     bindings = <
-      &mo L_NUMB    &kp N3  &kp N2  &kp N1
-      &none         &kp N6  &kp N5  &kp N4
+      &mo L_NUMB    &mt STAR N3   &mt PLUS N2   &mt DOT N1
+      &none         &mt SLASH N6  &mt MINUS N5  &mt COMMA N4
     >;
   };
   symbols {
@@ -188,10 +194,10 @@ ZMK_COMBO(num_dot,   &kp DOT,   KEY_O KEY_E, L_NUMB)
   };
   
   custom {     
-    display-name = "Custom";          
+    display-name = "Custom"; tttttt
     bindings = <                      
-      &none        &mt PG_UP UP     &mt HOME LEFT    &mt END RIGHT  
-      &mo L_CUST   &mt PG_DN DOWN   &mt LC(DEL) DEL  &mt LC(BSPC) BSPC
+      &none        &mt UP     &mt LC(LEFT) LEFT    &mt LC(RIGHT) RIGHT
+      &mo L_CUST   &mt DOWN   &mt LC(DEL)  DEL     &mt LC(BSPC)  BSPC
     >;         
   };
 
