@@ -130,10 +130,10 @@ ZMK_COMBO(combo_space, &kp SPACE, KEY_N KEY_O KEY_S KEY_E)
 // Combos NUM layer
 ZMK_COMBO(num_0, &kp N0, KEY_O KEY_S, L_NUMB)
 ZMK_COMBO(num_9, &kp N9, KEY_S KEY_E, L_NUMB)
-ZMK_COMBO(num_7, &kp N9, KEY_A KEY_T, L_NUMB)
-ZMK_COMBO(num_8, &kp N9, KEY_I KEY_T, L_NUMB)
-ZMK_COMBO(num_dot, &kp KP_COMMA, KEY_I KEY_A, L_NUMB)
-ZMK_COMBO(num_dot, &kp KP_DOT, KEY_O KEY_E, L_NUMB)
+ZMK_COMBO(num_7, &kp N&, KEY_A KEY_T, L_NUMB)
+ZMK_COMBO(num_8, &kp N*, KEY_I KEY_T, L_NUMB)
+ZMK_COMBO(num_comma, &kp KP_COMMA, KEY_I KEY_A, L_NUMB)
+ZMK_COMBO(num_dot,   &kp KP_DOT,   KEY_O KEY_E, L_NUMB)
 
 // ZMK_COMBO(combo_num_bs, &kp BACKSPACE, KEY_T KEY_A, L_NUMB)
 
