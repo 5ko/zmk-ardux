@@ -139,7 +139,6 @@ ZMK_COMBO(num_dot,   &kp DOT,   KEY_O KEY_E, L_NUMB)
 
 
 
-
 /*****************************************
  * Standard ARDUX layer definitions
  * !!!!!!!!!! FOR LEFT HANDED USE !!!!!!!!!!
@@ -194,8 +193,8 @@ ZMK_COMBO(num_dot,   &kp DOT,   KEY_O KEY_E, L_NUMB)
     bindings = <                      
 //       &none           &kp C_VOL_UP  &kp INS   &kp C_MUTE 
 //       &mo L_CUST      &kp C_VOL_DN  &kp PSCRN &sk RSHFT  
-      &none       &hm HOME LEFT   &hm END RIGHT    &hm LC(BSPC) BSPC
-      &mo L_CUST  &hm PG_UP UP    &hm DOWN PG_DN   &hm LC(DEL) DEL
+      &none       &mt HOME LEFT   &mt END RIGHT    &mt LC(BSPC) BSPC
+      &mo L_CUST  &mt PG_UP UP    &mt DOWN PG_DN   &mt LC(DEL) DEL
     >;         
   };
 
