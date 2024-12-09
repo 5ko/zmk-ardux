@@ -136,13 +136,17 @@ ZMK_COMBO(num_8, &kp N7, KEY_I KEY_T, L_NUMB)
 
 // ZMK_COMBO(combo_num_bs, &kp BACKSPACE, KEY_T KEY_A, L_NUMB)
 
+
+
 // Combos CUSTOM layer
 ZMK_COMBO(cust_pgup, &kp PG_UP, KEY_I KEY_T, L_CUST)
 ZMK_COMBO(cust_pgdn, &kp PG_DN, KEY_O KEY_S, L_CUST)
 ZMK_COMBO(cust_home, &kp HOME,  KEY_T KEY_A, L_CUST)
 ZMK_COMBO(cust_end,  &kp END,   KEY_S KEY_E, L_CUST)
-ZMK_COMBO(cust_undo,  &kp C_AC_UNDO,  KEY_I KEY_T KEY_A, L_CUST)
-ZMK_COMBO(cust_redo,  &kp C_AC_REDO,  KEY_O KEY_S KEY_E, L_CUST)
+
+// C_AC_UNDO/K_UNDO and K_REDO work in LibreOffice but not in Kate/Gedit/Firefox
+ZMK_COMBO(cust_undo,  &kp LC(Z),  KEY_I KEY_T KEY_A, L_CUST)
+ZMK_COMBO(cust_redo,  &kp LC(LS(Z)),  KEY_O KEY_S KEY_E, L_CUST)
 
 
 
