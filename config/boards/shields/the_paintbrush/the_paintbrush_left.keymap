@@ -16,11 +16,12 @@
 #define HOST_OS 1
 // Linux: 1, MacOS:2
 #include "zmk-helpers/helper.h"
-#include "zmk-helpers/unicode-chars/currency.dtsi"
-#include "zmk-helpers/unicode-chars/french.dtsi"
-#include "zmk-helpers/unicode-chars/greek.dtsi"
-#include "zmk-helpers/unicode-chars/russian.dtsi"
+// #include "zmk-helpers/unicode-chars/currency.dtsi"
+// #include "zmk-helpers/unicode-chars/french.dtsi"
+// #include "zmk-helpers/unicode-chars/greek.dtsi"
+// #include "zmk-helpers/unicode-chars/russian.dtsi"
 
+#include "the_paintbrush_left.overlay"
 
 // ARTS RITA Row
 #define KEY_R 0
