@@ -114,10 +114,10 @@
 #undef COMBO_TERM
 #define COMBO_TERM 175
 // ZMK_COMBO(name, bindings, keypos, layers, timeout, prior_idle, extra)
-ZMK_COMBO(combo_reset, &sys_reset, 0 1 2 3 4 5 6 7)
-ZMK_COMBO(combo_enter, &kp ENTER, KEY_A KEY_E)
+ZMK_COMBO(reset, &sys_reset, 0 1 2 3 4 5 6 7)
+ZMK_COMBO(enter, &kp ENTER, KEY_A KEY_E)
 
-ZMK_COMBO(combo_layer_bt_select, &sl L_BT_S, KEY_A KEY_E KEY_R KEY_N)
+ZMK_COMBO(layer_bt_select, &sl L_BT_S, KEY_A KEY_E KEY_R KEY_N)
 
 #define TAPDANCE_TERM 400
 ZMK_TAP_DANCE(n1, bindings = <&kp N1>, <&kp N2>, <&kp N3>; tapping-term-ms = <TAPDANCE_TERM>; )
@@ -132,10 +132,11 @@ ZMK_COMBO(num_0, &kp N0, KEY_O KEY_S, L_NUMB)
 ZMK_COMBO(num_9, &kp N9, KEY_S KEY_E, L_NUMB)
 ZMK_COMBO(num_7, &kp N8, KEY_A KEY_T, L_NUMB)
 ZMK_COMBO(num_8, &kp N7, KEY_I KEY_T, L_NUMB)
-ZMK_COMBO(num_comma, &kp KP_COMMA, KEY_I KEY_A, L_NUMB)
-ZMK_COMBO(num_dot,   &kp KP_DOT,   KEY_O KEY_E, L_NUMB)
+ZMK_COMBO(num_comma, &kp COMMA, KEY_I KEY_A, L_NUMB)
+ZMK_COMBO(num_dot,   &kp DOT,   KEY_O KEY_E, L_NUMB)
 
 // ZMK_COMBO(combo_num_bs, &kp BACKSPACE, KEY_T KEY_A, L_NUMB)
+
 
 
 
@@ -191,8 +192,10 @@ ZMK_COMBO(num_dot,   &kp KP_DOT,   KEY_O KEY_E, L_NUMB)
   custom {     
     display-name = "Custom";          
     bindings = <                      
-      &none           &kp C_VOL_UP  &kp INS   &kp C_MUTE 
-      &mo L_CUST      &kp C_VOL_DN  &kp PSCRN &sk RSHFT  
+//       &none           &kp C_VOL_UP  &kp INS   &kp C_MUTE 
+//       &mo L_CUST      &kp C_VOL_DN  &kp PSCRN &sk RSHFT  
+      &none       &hm HOME LEFT   &hm END RIGHT    &hm LC(BSPC) BSPC
+      &mo L_CUST  &hm PG_UP UP    &hm DOWN PG_DN   &hm LC(DEL) DEL
     >;         
   };
 
