@@ -115,14 +115,25 @@
 ZMK_COMBO(combo_reset, &sys_reset, 0 1 2 3 4 5 6 7)
 ZMK_COMBO(combo_enter, &kp ENTER, KEY_A KEY_E)
 
-// ZMK_COMBO(combo_layer_bt_select, &tog L_BT_S, KEY_A KEY_E KEY_R KEY_N)
-ZMK_COMBO(combo_layer_bt_select, &mo L_BT_S, KEY_A KEY_E KEY_R KEY_N)
+ZMK_COMBO(combo_layer_bt_select, &sl L_BT_S, KEY_A KEY_E KEY_R KEY_N)
 
 
 ZMK_TAP_DANCE(n1, bindings = <&kp N1>, <&kp N2>, <&kp N3>; )
 ZMK_TAP_DANCE(n4, bindings = <&kp N4>, <&kp N5>, <&kp N6>; )
 ZMK_TAP_DANCE(n7, bindings = <&kp N7>, <&kp N8>, <&kp N9>; )
 ZMK_COMBO(combo_zero, &kp N0, KEY_I KEY_T KEY_A, L_NUMB)
+
+/ {
+    behaviors {
+        td0: tap_dance_0 {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp N1>, <&kp N2>, <&kp N3>;
+        };
+    };
+
+};
 
 
 /*****************************************
@@ -141,7 +152,7 @@ ZMK_COMBO(combo_zero, &kp N0, KEY_I KEY_T KEY_A, L_NUMB)
   numbers {
     display-name = "Number";
     bindings = <
-      &mo L_NUMB    &n7         &n4      &n1
+      &mo L_NUMB    &n7         &n4      &td0
       &none         &none       &none    &none
     >;
   };
