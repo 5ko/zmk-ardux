@@ -139,8 +139,8 @@ ZMK_COMBO(num_8, &kp N7, KEY_I KEY_T, L_NUMB)
 // Combos CUSTOM layer
 ZMK_COMBO(cust_pgup, &kp PG_UP, KEY_I KEY_T, L_CUST)
 ZMK_COMBO(cust_pgdn, &kp PG_DN, KEY_O KEY_S, L_CUST)
-ZMK_COMBO(cust_home, &kp HOME, KEY_T KEY_A, L_CUST)
-ZMK_COMBO(cust_end,  &kp END,  KEY_S KEY_E, L_CUST)
+ZMK_COMBO(cust_home, &kp HOME,  KEY_T KEY_A, L_CUST)
+ZMK_COMBO(cust_end,  &kp END,   KEY_S KEY_E, L_CUST)
 
 
 
@@ -196,8 +196,8 @@ ZMK_COMBO(cust_end,  &kp END,  KEY_S KEY_E, L_CUST)
   custom {     
     display-name = "Custom";
     bindings = <                      
-      &none        &mt UP     &mt LC(LEFT) LEFT    &mt LC(RIGHT) RIGHT
-      &mo L_CUST   &mt DOWN   &mt LC(DEL)  DEL     &mt LC(BSPC)  BSPC
+      &none        &kp UP     &mt LC(LEFT) LEFT    &mt LC(RIGHT) RIGHT
+      &mo L_CUST   &kp DOWN   &mt LC(DEL)  DEL     &mt LC(BSPC)  BSPC
     >;         
   };
 
