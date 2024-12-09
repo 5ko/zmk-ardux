@@ -53,8 +53,7 @@
 // #define NONE0(X)
 // #define NONE1(X) X
 // #define NONE2(X) NONE1(X) X
-// #define NONE3(X) NONE2(X) X
-// #define NONE4(X) NONE3(X) X
+// #def
 // #define NONE5(X) NONE4(X) X
 // #define NONE6(X) NONE5(X) X
 // #define NONE7(X) NONE6(X) X
@@ -193,8 +192,8 @@ ZMK_COMBO(num_dot,   &kp DOT,   KEY_O KEY_E, L_NUMB)
     bindings = <                      
 //       &none           &kp C_VOL_UP  &kp INS   &kp C_MUTE 
 //       &mo L_CUST      &kp C_VOL_DN  &kp PSCRN &sk RSHFT  
-      &none       &mt HOME LEFT   &mt END RIGHT    &mt LC(BSPC) BSPC
-      &mo L_CUST  &mt PG_UP UP    &mt DOWN PG_DN   &mt LC(DEL) DEL
+      &none        &mt PG_UP UP     &mt HOME LEFT   &mt END RIGHT  
+      &mo L_CUST   &mt DOWN_ARROW PG_DN   &mt LC(DEL) DEL  &mt LC(BSPC) BSPC
     >;         
   };
 
