@@ -38,6 +38,11 @@
 // rita
 // soar
 // inet
+// 
+// webdev stuff:
+// rate
+// soni
+// 
 
 // Define Offsets
 // #define LEADING_NONES NONE(0,0,0)
@@ -79,6 +84,9 @@
 &sl { 
   release-after-ms = <TIMEOUT_STICKY_LEADER_KEY>;
 };
+&mt {
+  tapping-term-ms = <300>;
+};
 
 #define BASE_S S
 #define BASE_E E
@@ -119,9 +127,9 @@ ZMK_COMBO(enter, &kp ENTER, KEY_A KEY_E)
 ZMK_COMBO(layer_bt_select, &sl L_BT_S, KEY_A KEY_E KEY_R KEY_N)
 
 #define TAPDANCE_TERM 400
-ZMK_TAP_DANCE(n1, bindings = <&kp N1>, <&kp N2>, <&kp N3>; tapping-term-ms = <TAPDANCE_TERM>; )
-ZMK_TAP_DANCE(n4, bindings = <&kp N4>, <&kp N5>, <&kp N6>; tapping-term-ms = <TAPDANCE_TERM>; )
-ZMK_TAP_DANCE(n7, bindings = <&kp N7>, <&kp N8>, <&kp N9>; tapping-term-ms = <TAPDANCE_TERM>; )
+// ZMK_TAP_DANCE(n1, bindings = <&kp N1>, <&kp N2>, <&kp N3>; tapping-term-ms = <TAPDANCE_TERM>; )
+// ZMK_TAP_DANCE(n4, bindings = <&kp N4>, <&kp N5>, <&kp N6>; tapping-term-ms = <TAPDANCE_TERM>; )
+// ZMK_TAP_DANCE(n7, bindings = <&kp N7>, <&kp N8>, <&kp N9>; tapping-term-ms = <TAPDANCE_TERM>; )
 
 ZMK_COMBO(combo_space, &kp SPACE, KEY_N KEY_O KEY_S KEY_E)
 
@@ -149,6 +157,13 @@ ZMK_COMBO(cust_undo,  &kp LC(Z),  KEY_I KEY_T KEY_A, L_CUST)
 ZMK_COMBO(cust_redo,  &kp LC(LS(Z)),  KEY_O KEY_S KEY_E, L_CUST)
 
 
+// TODO: Functions F1-F12, Accented characters or combining accents
+// Combos letters
+// Punctuation
+// Most used keyboard shortcuts Alt+Tab, Alt+Shift+Tab, Ctrl+(C|X|V|Z),  Alt+Caps
+// Media keys Vol UP/DOWN/MUTE, PlayPause/PREV/NEXT, PrintScr,Ins
+// Mouse
+// Display
 
 /*****************************************
  * Standard ARDUX layer definitions
