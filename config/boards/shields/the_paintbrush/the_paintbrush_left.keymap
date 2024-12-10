@@ -189,15 +189,13 @@ ZMK_COMBO(bt_clear_current_profile, &bt BT_CLR, KEY_I KEY_T KEY_O KEY_S, L_BT_S)
       &out OUT_USB   &bt BT_SEL 5  &bt BT_SEL 4  &bt BT_SEL 3
     >;
   };
-  
-  functions {
+  func {
     display-name = "FUNC";
     bindings = <
-      &kp F4 &kp F3 &kp F2 $kp F1
-      &kp F8 &kp F7 &kp F6 $kp F5
+      &kp F4   &kp F3   &kp F2   $kp F1
+      &kp F8   &kp F7   &kp F6   $kp F5
     >;
   };
-  
   parentheticals {
     display-name = "Paren";
     bindings = <
@@ -205,7 +203,6 @@ ZMK_COMBO(bt_clear_current_profile, &bt BT_CLR, KEY_I KEY_T KEY_O KEY_S, L_BT_S)
       &kp RBRC             &kp LBKT  &kp RBKT  &none
     >;
   };
-  
   
   symbols {
     display-name = "Symbol";
