@@ -114,6 +114,8 @@ jobs:
         #run: cat -n config/senorita.dtsi
       #- name: Prep artifact (senorita.dtsi)
         #run: cp config/senorita.dtsi ./senorita.dtsi
+      - name: Prep artifact (the_paintbrush_left.keymap.)
+        run: cp config/boards/shields/the_paintbrush/the_paintbrush_left.keymap ./
       #- name: Prep artifact (${{ matrix.shield }}-${{ matrix.board }}-zmk-senorita.hex)
         #run: cp build/zephyr/zmk.hex ${{ matrix.shield }}-${{ matrix.board }}-zmk-senorita.hex
       - name: Prep artifact (${{ matrix.shield }}-${{ matrix.board }}-zmk-senorita.uf2)
@@ -124,6 +126,7 @@ jobs:
           name: '${{ steps.variables.outputs.artifact-name }}'
           path: |
             ${{ matrix.shield }}-${{ matrix.board }}-zmk-senorita.uf2
+            the_paintbrush_left.keymap
         continue-on-error: true
             #senorita.dtsi
             #${{ matrix.shield }}-${{ matrix.board }}.dts.pre.tmp
