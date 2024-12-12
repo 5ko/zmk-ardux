@@ -131,10 +131,10 @@ ZMK_COMBO(func_12, &kp F12, B4 B3, L_FUNC)
 ZMK_COMBO(bt_clear_current_profile, &bt BT_CLR, T3 T2 B3 B2, L_BT_S)
 
 
-ZMK_BEHAVIOR(shift2, hold_tap,
-  tapping-term-ms = <TAPDANCE_TERM>;
-  bindings = <&sk LSHFT>, <&tog LSHFT>;
-)
+// ZMK_BEHAVIOR(shift2, hold_tap,
+//   tapping-term-ms = <TAPDANCE_TERM>;
+//   bindings = <&sk LSHFT>, <&tog LSHFT>;
+// )
 
 // TODO: Functions F1-F12, Accented characters or combining accents
 // Combos letters
