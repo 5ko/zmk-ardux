@@ -72,11 +72,6 @@
 
 
 
-// #define L_GLOB -1
-// #define  4
-// #define L_XX1 6
-// #define L_XX2 7
-
 
 // Delay for combo
 #undef COMBO_TERM
@@ -85,7 +80,7 @@
 
 // ZMK_COMBO(name, bindings, keypos, layers, timeout, prior_idle, extra)
 ZMK_COMBO(reset, &sys_reset, 0 1 2 3 4 5 6 7)
-// ZMK_COMBO(enter, &kp ENTER, T1 B1)
+ZMK_COMBO(release_mods, &kp LS(0), T1 B1)
 
 ZMK_COMBO(layer_bt_select, &sl L_BT_S, T1 B1 T4 B4)
 ZMK_COMBO(layer_func, &tog L_FUNC, B4 T3 T2)
