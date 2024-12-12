@@ -181,6 +181,11 @@ ZMK_TAP_DANCE(space_dot, bindings = <&lt L_MOD SPACE>, <&kp DOT>, <&kp COMMA>; t
 ZMK_TAP_DANCE(enter_excl, bindings = <&lt L_SYMB ENTER>, <&kp EXCL>, <&kp QMARK>; tapping-term-ms = <TAPDANCE_TERM>; )
 
 
+
+
+
+
+
 /*****************************************
  * Standard ARDUX layer definitions
  * !!!!!!!!!! FOR LEFT HANDED USE !!!!!!!!!!
@@ -190,7 +195,7 @@ ZMK_TAP_DANCE(enter_excl, bindings = <&lt L_SYMB ENTER>, <&kp EXCL>, <&kp QMARK>
   base {
     display-name = "Base";
     bindings = <
-      &lt L_NUMB I  &kp T   &kp A   &lt L_SYMB ENTER
+      &lt L_NUMB I  &kp T   &kp A   &enter_excl
       &lt L_QNAV O  &kp S   &kp E   &space_dot
     >;
   };
