@@ -201,7 +201,7 @@ ZMK_TAP_DANCE(space_dot, bindings = <&lt L_SYMB SPACE>, <&kp DOT>, <&kp COMMA>; 
   modif {
     display-name = "Mod";
     bindings = <
-      &kp LBRC             &shift2    &kp RPAR    &mo L_MOD
+      &kp LBRC             &kp SHIFT    &kp RPAR    &mo L_MOD
       &kp RBRC             &kp LBKT    &kp RBKT    &none
     >;
   };
