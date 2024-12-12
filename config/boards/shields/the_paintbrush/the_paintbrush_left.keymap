@@ -151,7 +151,7 @@ ZMK_COMBO(bt_clear_current_profile, &bt BT_CLR, T3 T2 B3 B2, L_BT_S)
 
 
 
-// ZMK_TAP_DANCE(space_dot, bindings = <&lt L_SYMB SPACE>, <&kp DOT>, <&kp COMMA>; tapping-term-ms = <TAPDANCE_TERM>; )
+ZMK_TAP_DANCE(space_dot, bindings = <&lt L_SYMB SPACE>, <&kp DOT>, <&kp COMMA>; tapping-term-ms = <TAPDANCE_TERM>; )
 
 // / { behaviors {
 //   space_dot:  {
@@ -172,7 +172,7 @@ ZMK_COMBO(bt_clear_current_profile, &bt BT_CLR, T3 T2 B3 B2, L_BT_S)
     display-name = "Base";
     bindings = <
       &lt L_NUMB I  &kp T   &kp A   &lt L_MOD  ENTER
-      &lt L_QNAV O  &kp S   &kp E   &lt L_SYMB SPACE
+      &lt L_QNAV O  &kp S   &kp E   &space_dot
     >;
   };
   numbers {
@@ -206,7 +206,7 @@ ZMK_COMBO(bt_clear_current_profile, &bt BT_CLR, T3 T2 B3 B2, L_BT_S)
   modif {
     display-name = "Mod";
     bindings = <
-      &kp LBRC             &kp LPAR    &mt RPAR    &mo L_MOD
+      &kp LBRC             &kp LPAR    &kp RPAR    &mo L_MOD
       &kp RBRC             &kp LBKT    &kp RBKT    &none
     >;
   };
