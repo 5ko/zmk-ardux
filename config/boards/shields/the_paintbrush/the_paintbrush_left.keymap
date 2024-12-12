@@ -26,15 +26,15 @@
 #include "the_paintbrush_left.overlay"
 
 // ARTS RITA Row
-#define KEY_R 0
-#define KEY_I 1
-#define KEY_T 2
-#define KEY_A 3
+#define T4 0
+#define T3 1
+#define T2 2
+#define T1 3
 // EYIO NOSE Row
-#define KEY_N 4
-#define KEY_O 5
-#define KEY_S 6
-#define KEY_E 7
+#define B4 4
+#define B3 5
+#define B2 6
+#define B1 7
 
 // seno
 // rita
@@ -62,15 +62,6 @@
   tapping-term-ms = <300>;
 };
 
-#define BASE_S S
-#define BASE_E E
-#define BASE_N N
-#define BASE_O O
-#define BASE_R R
-#define BASE_I I
-#define BASE_T T
-#define BASE_A A
-
   
 /*****************************************
  * Layer IDs used by the ARDUX keymap
@@ -81,7 +72,7 @@
 #define L_QNAV 2
 #define L_BT_S 3
 #define L_FUNC 4
-#define L_PAR  5
+#define L_MOD  5
 #define L_SYMB 6
 
 
@@ -97,49 +88,52 @@
 #define COMBO_TERM 175
 // ZMK_COMBO(name, bindings, keypos, layers, timeout, prior_idle, extra)
 ZMK_COMBO(reset, &sys_reset, 0 1 2 3 4 5 6 7)
-ZMK_COMBO(enter, &kp ENTER, KEY_A KEY_E)
+// ZMK_COMBO(enter, &kp ENTER, T1 B1)
 
-ZMK_COMBO(layer_bt_select, &sl L_BT_S, KEY_A KEY_E KEY_R KEY_N)
-ZMK_COMBO(layer_func, &tog L_FUNC, KEY_N KEY_I KEY_T)
+ZMK_COMBO(layer_bt_select, &sl L_BT_S, T1 B1 T4 B4)
+ZMK_COMBO(layer_func, &tog L_FUNC, B4 T3 T2)
 
 // Tap dance is difficult with fingers 3 & 4, better use mod-taps
-#define TAPDANCE_TERM 400
+#define TAPDANCE_TERM 250
 // ZMK_TAP_DANCE(n1, bindings = <&kp N1>, <&kp N2>, <&kp N3>; tapping-term-ms = <TAPDANCE_TERM>; )
 // ZMK_TAP_DANCE(n4, bindings = <&kp N4>, <&kp N5>, <&kp N6>; tapping-term-ms = <TAPDANCE_TERM>; )
 // ZMK_TAP_DANCE(n7, bindings = <&kp N7>, <&kp N8>, <&kp N9>; tapping-term-ms = <TAPDANCE_TERM>; )
+ZMK_TAP_DANCE(space_dot, bindings = <&mt L_SYMB SPACE>, <&kp DOT>, <&kp COMMA>; tapping-term-ms = <TAPDANCE_TERM>; )
 
-ZMK_COMBO(combo_space, &kp SPACE, KEY_N KEY_O KEY_S KEY_E, L_BASE)
+// ZMK_COMBO(combo_space, &kp SPACE, B4 B3 B2 B1, L_BASE)
 
 
 // Combos NUM layer
-ZMK_COMBO(num_0, &kp N0, KEY_O KEY_S, L_NUMB)
-ZMK_COMBO(num_9, &kp N9, KEY_S KEY_E, L_NUMB)
-ZMK_COMBO(num_7, &kp N8, KEY_A KEY_T, L_NUMB)
-ZMK_COMBO(num_8, &kp N7, KEY_I KEY_T, L_NUMB)
-// ZMK_COMBO(num_???, &kp ?, KEY_I KEY_T KEY_A, L_NUMB)
-// ZMK_COMBO(num_???, &kp ?, KEY_O KEY_S KEY_E, L_NUMB)
+ZMK_COMBO(num_7, &kp N8, T1 T2, L_NUMB)
+ZMK_COMBO(num_8, &kp N7, T3 T2, L_NUMB)
+ZMK_COMBO(num_0, &kp N0, B3 B2, L_NUMB)
+ZMK_COMBO(num_9, &kp N9, B2 B1, L_NUMB)
+// ZMK_COMBO(num_???, &kp ?, T3 T1, L_NUMB)
+// ZMK_COMBO(num_???, &kp ?, B3 B1, L_NUMB)
+// ZMK_COMBO(num_???, &kp ?, T3 T2 T1, L_NUMB)
+// ZMK_COMBO(num_???, &kp ?, B3 B2 B1, L_NUMB)
 
 
 
 
 // Combos QUICK NAV layer
-ZMK_COMBO(qnav_pgup, &kp PG_UP, KEY_I KEY_T, L_QNAV)
-ZMK_COMBO(qnav_pgdn, &kp PG_DN, KEY_O KEY_S, L_QNAV)
-ZMK_COMBO(qnav_home, &kp HOME,  KEY_T KEY_A, L_QNAV)
-ZMK_COMBO(qnav_end,  &kp END,   KEY_S KEY_E, L_QNAV)
+ZMK_COMBO(qnav_pgup, &kp PG_UP, T3 T2, L_QNAV)
+ZMK_COMBO(qnav_pgdn, &kp PG_DN, B3 B2, L_QNAV)
+ZMK_COMBO(qnav_home, &kp HOME,  T2 T1, L_QNAV)
+ZMK_COMBO(qnav_end,  &kp END,   B2 B1, L_QNAV)
 
 // C_AC_UNDO/K_UNDO and K_REDO work in LibreOffice but not in Kate/Gedit/Firefox
-ZMK_COMBO(qnav_undo,  &kp LC(Z),      KEY_I KEY_T KEY_A, L_QNAV)
-ZMK_COMBO(qnav_redo,  &kp LC(LS(Z)),  KEY_O KEY_S KEY_E, L_QNAV)
+ZMK_COMBO(qnav_undo,  &kp LC(Z),      T3 T2 T1, L_QNAV)
+ZMK_COMBO(qnav_redo,  &kp LC(LS(Z)),  B3 B2 B1, L_QNAV)
 
-ZMK_COMBO(func_9,  &kp F9,  KEY_T KEY_A, L_FUNC)
-ZMK_COMBO(func_10, &kp F10, KEY_R KEY_I, L_FUNC)
-ZMK_COMBO(func_11, &kp F11, KEY_S KEY_E, L_FUNC)
-ZMK_COMBO(func_12, &kp F12, KEY_N KEY_O, L_FUNC)
+ZMK_COMBO(func_9,  &kp F9,  T2 T1, L_FUNC)
+ZMK_COMBO(func_10, &kp F10, T4 T3, L_FUNC)
+ZMK_COMBO(func_11, &kp F11, B2 B1, L_FUNC)
+ZMK_COMBO(func_12, &kp F12, B4 B3, L_FUNC)
 
 
 // Combos BLUETOOTH layer
-ZMK_COMBO(bt_clear_current_profile, &bt BT_CLR, KEY_I KEY_T KEY_O KEY_S, L_BT_S)
+ZMK_COMBO(bt_clear_current_profile, &bt BT_CLR, T3 T2 B3 B2, L_BT_S)
 
 
 // TODO: Functions F1-F12, Accented characters or combining accents
@@ -154,6 +148,10 @@ ZMK_COMBO(bt_clear_current_profile, &bt BT_CLR, KEY_I KEY_T KEY_O KEY_S, L_BT_S)
 // etinoars
 // TODO: lc.pduhfm,()g=b:"-;vyw{}0x/k'1[]2&_jz\$q+53*4!|9>#68@%?7<^`~
 // TODO: list other stats from keylogger
+// modifiers: 
+
+
+
 
 /*****************************************
  * Standard ARDUX layer definitions
@@ -164,8 +162,8 @@ ZMK_COMBO(bt_clear_current_profile, &bt BT_CLR, KEY_I KEY_T KEY_O KEY_S, L_BT_S)
   base {
     display-name = "Base";
     bindings = <
-      &lt L_NUMB BASE_R    &kp BASE_I  &kp BASE_T   &lt L_PAR  BASE_A
-      &lt L_QNAV BASE_N    &kp BASE_O  &kp BASE_S   &lt L_SYMB BASE_E
+      &lt L_NUMB I  &kp T   &kp A   &lt L_MOD  ENTER
+      &lt L_QNAV O  &kp S   &kp E   &space_dot
     >;
   };
   numbers {
@@ -196,11 +194,11 @@ ZMK_COMBO(bt_clear_current_profile, &bt BT_CLR, KEY_I KEY_T KEY_O KEY_S, L_BT_S)
       &kp F8   &kp F7   &kp F6   &kp F5
     >;
   };
-  parentheticals {
-    display-name = "Paren";
+  modif {
+    display-name = "Mod";
     bindings = <
-      &kp LBRC             &kp LPAR  &kp RPAR  &mo L_PAR
-      &kp RBRC             &kp LBKT  &kp RBKT  &none
+      &kp LBRC             &kp LPAR    &mt RPAR    &mo L_MOD
+      &kp RBRC             &kp LBKT    &kp RBKT    &none
     >;
   };
   
