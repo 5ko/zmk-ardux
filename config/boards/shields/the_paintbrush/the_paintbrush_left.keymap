@@ -45,8 +45,8 @@
 // rate
 // soni
 
-  
-  
+#define  TIMEOUT_STICKY_LEADER_KEY  5000
+
 &sk {
   release-after-ms = <TIMEOUT_STICKY_LEADER_KEY>;
 };
