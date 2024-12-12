@@ -45,6 +45,27 @@
 // rate
 // soni
 
+
+  
+/*****************************************
+ * Layer IDs used by the ARDUX keymap
+ * Do NOT change these and do NOT change the order of the layers as shown below
+ *****************************************/
+#define L_BASE 0
+#define L_MOD  1
+#define L_NUMB 2
+#define L_QNAV 3
+#define L_BT_S 4
+#define L_FUNC 5
+#define L_SYMB 6
+
+
+
+
+// Delay for combo
+#undef COMBO_TERM
+#define COMBO_TERM 175
+#define TAPDANCE_TERM 400
 #define  TIMEOUT_STICKY_LEADER_KEY  5000
 
 &sk {
@@ -84,26 +105,8 @@
   };
   
 }; };
-  
-/*****************************************
- * Layer IDs used by the ARDUX keymap
- * Do NOT change these and do NOT change the order of the layers as shown below
- *****************************************/
-#define L_BASE 0
-#define L_MOD  1
-#define L_NUMB 2
-#define L_QNAV 3
-#define L_BT_S 4
-#define L_FUNC 5
-#define L_SYMB 6
 
 
-
-
-// Delay for combo
-#undef COMBO_TERM
-#define COMBO_TERM 175
-#define TAPDANCE_TERM 400
 
 // ZMK_COMBO(name, bindings, keypos, layers, timeout, prior_idle, extra)
 ZMK_COMBO(reset, &sys_reset, 0 1 2 3 4 5 6 7)
