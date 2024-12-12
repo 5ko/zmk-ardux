@@ -122,7 +122,6 @@ ZMK_COMBO(layer_func, &tog L_FUNC, B4 T3 T2)
 
 // ZMK_COMBO(combo_space, &kp SPACE, B4 B3 B2 B1, L_BASE)
 
-
 // Combos NUM layer
 ZMK_COMBO(num_7, &kp N8, T1 T2, L_NUMB)
 ZMK_COMBO(num_8, &kp N7, T3 T2, L_NUMB)
@@ -132,7 +131,6 @@ ZMK_COMBO(num_9, &kp N9, B2 B1, L_NUMB)
 // ZMK_COMBO(num_???, &kp ?, B3 B1, L_NUMB)
 // ZMK_COMBO(num_???, &kp ?, T3 T2 T1, L_NUMB)
 // ZMK_COMBO(num_???, &kp ?, B3 B2 B1, L_NUMB)
-
 
 
 
@@ -178,7 +176,9 @@ ZMK_COMBO(bt_clear_current_profile, &bt BT_CLR, T3 T2 B3 B2, L_BT_S)
 #define SK_TK(key) &sk_tog key key   // Macro to apply momentary-layer-on-hold/toggle-layer-on-tap to a specific layer
 
 
-ZMK_TAP_DANCE(space_dot, bindings = <&lt L_SYMB SPACE>, <&kp DOT>, <&kp COMMA>; tapping-term-ms = <TAPDANCE_TERM>; )
+ZMK_TAP_DANCE(space_dot, bindings = <&lt L_MOD SPACE>, <&kp DOT>, <&kp COMMA>; tapping-term-ms = <TAPDANCE_TERM>; )
+
+ZMK_TAP_DANCE(enter_excl, bindings = <&lt L_SYMB ENTER>, <&kp EXCL>, <&kp QMARK>; tapping-term-ms = <TAPDANCE_TERM>; )
 
 
 /*****************************************
@@ -190,15 +190,15 @@ ZMK_TAP_DANCE(space_dot, bindings = <&lt L_SYMB SPACE>, <&kp DOT>, <&kp COMMA>; 
   base {
     display-name = "Base";
     bindings = <
-      &lt L_NUMB I  &kp T   &kp A   &lt L_MOD ENTER
+      &lt L_NUMB I  &kp T   &kp A   &lt L_SYMB ENTER
       &lt L_QNAV O  &kp S   &kp E   &space_dot
     >;
   };
   modif {
     display-name = "Mod";
     bindings = <
-      SK_TK(LGUI)    SK_TK(LSHFT)       SK_TK(LCTRL)     &mo L_MOD
-      &kp LA(CAPS)   &caps_tog CAPS 0   SK_TK(LALT)      &none
+      SK_TK(LGUI)     &caps_tog CAPS 0   SK_TK(LALT)      &mt LS(TAB) TAB
+      &kp LA(CAPS)    SK_TK(LSHFT)       SK_TK(LCTRL)     &mo L_MOD
     >;
   };
   numbers {
