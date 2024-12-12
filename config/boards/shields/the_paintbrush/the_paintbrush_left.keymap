@@ -57,6 +57,33 @@
   tapping-term-ms = <300>;
 };
 
+/ { behaviors {
+  sk_tog: behavior_sk_tog {
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    flavor = "hold-preferred";
+    tapping-term-ms = <TAPDANCE_TERM>;
+    bindings = <&kt>, <&sk>;
+  };
+  
+  caps_tog: behavior_caps_tog {
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    flavor = "hold-preferred";
+    tapping-term-ms = <TAPDANCE_TERM>;
+    bindings = <&kp>, <&caps_word>;
+  };
+  
+  release_all: release_all {
+    compatible = "zmk,behavior-macro";
+    #binding-cells = <0>;
+    bindings
+      = <&macro_release &kp LSHFT &kp LCTRL  &kp LALT &kp LGUI>
+      , <&to L_BASE>
+      ;
+  };
+  
+}; };
   
 /*****************************************
  * Layer IDs used by the ARDUX keymap
@@ -80,7 +107,7 @@
 
 // ZMK_COMBO(name, bindings, keypos, layers, timeout, prior_idle, extra)
 ZMK_COMBO(reset, &sys_reset, 0 1 2 3 4 5 6 7)
-ZMK_COMBO(release_mods, &kp LS(0), T1 B1)
+ZMK_COMBO(release_mods, &release_all, T1 B1)
 
 ZMK_COMBO(layer_bt_select, &sl L_BT_S, T1 B1 T4 B4)
 ZMK_COMBO(layer_func, &tog L_FUNC, B4 T3 T2)
@@ -147,26 +174,6 @@ ZMK_COMBO(bt_clear_current_profile, &bt BT_CLR, T3 T2 B3 B2, L_BT_S)
 
 #define SK_TK(key) &sk_tog key key   // Macro to apply momentary-layer-on-hold/toggle-layer-on-tap to a specific layer
 
-/ { behaviors {
-  sk_tog: behavior_sk_tog {
-    compatible = "zmk,behavior-hold-tap";
-    #binding-cells = <2>;
-    flavor = "hold-preferred";
-    tapping-term-ms = <TAPDANCE_TERM>;
-    bindings = <&kt>, <&sk>;
-  };
-  
-  caps_tog: behavior_caps_tog {
-    compatible = "zmk,behavior-hold-tap";
-    #binding-cells = <2>;
-    flavor = "hold-preferred";
-    tapping-term-ms = <TAPDANCE_TERM>;
-    bindings = <&kp>, <&caps_word>;
-  };
-  
-  
-  
-}; };
 
 ZMK_TAP_DANCE(space_dot, bindings = <&lt L_SYMB SPACE>, <&kp DOT>, <&kp COMMA>; tapping-term-ms = <TAPDANCE_TERM>; )
 
