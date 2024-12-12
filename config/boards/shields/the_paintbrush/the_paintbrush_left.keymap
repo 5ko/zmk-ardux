@@ -163,10 +163,10 @@ ZMK_COMBO(bt_clear_current_profile, &bt BT_CLR, T3 T2 B3 B2, L_BT_S)
   
   caps_tog: behavior_caps_tog {
     compatible = "zmk,behavior-hold-tap";
-    #binding-cells = <0>;
+    #binding-cells = <1>;
     flavor = "hold-preferred";
     tapping-term-ms = <TAPDANCE_TERM>;
-    bindings = <&kp CAPS>, <&caps_word>;
+    bindings = <&kp>, <&caps_word>;
   };
   
   
@@ -192,8 +192,8 @@ ZMK_TAP_DANCE(space_dot, bindings = <&lt L_SYMB SPACE>, <&kp DOT>, <&kp COMMA>; 
   modif {
     display-name = "Mod";
     bindings = <
-      SK_TK(LGUI)    SK_TK(LSHFT)   SK_TK(LCTRL)     &mo L_MOD
-      &kp LA(CAPS)   &caps_tog      SK_TK(LALT)      &none
+      SK_TK(LGUI)    SK_TK(LSHFT)      SK_TK(LCTRL)     &mo L_MOD
+      &kp LA(CAPS)   &caps_tog CAPS    SK_TK(LALT)      &none
     >;
   };
   numbers {
