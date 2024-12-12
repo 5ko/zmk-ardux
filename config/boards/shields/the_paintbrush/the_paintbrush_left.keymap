@@ -160,7 +160,7 @@ ZMK_COMBO(bt_clear_current_profile, &bt BT_CLR, T3 T2 B3 B2, L_BT_S)
     tapping-term-ms = <TAPDANCE_TERM>;
     bindings = <&tk>, <&sk>;
   };
-}; }
+}; };
 
 ZMK_TAP_DANCE(space_dot, bindings = <&lt L_SYMB SPACE>, <&kp DOT>, <&kp COMMA>; tapping-term-ms = <TAPDANCE_TERM>; )
 
