@@ -46,11 +46,6 @@
 // soni
 
   
-#define TIMEOUT_COMBO_2 175
-#define TIMEOUT_COMBO_3 175
-#define TIMEOUT_COMBO_4 175
-#define TIMEOUT_LAYER_HOLD 200
-#define TIMEOUT_STICKY_LEADER_KEY 5000
   
 &sk {
   release-after-ms = <TIMEOUT_STICKY_LEADER_KEY>;
@@ -86,6 +81,8 @@
 // Delay for combo
 #undef COMBO_TERM
 #define COMBO_TERM 175
+#define TAPDANCE_TERM 400
+
 // ZMK_COMBO(name, bindings, keypos, layers, timeout, prior_idle, extra)
 ZMK_COMBO(reset, &sys_reset, 0 1 2 3 4 5 6 7)
 // ZMK_COMBO(enter, &kp ENTER, T1 B1)
@@ -94,7 +91,6 @@ ZMK_COMBO(layer_bt_select, &sl L_BT_S, T1 B1 T4 B4)
 ZMK_COMBO(layer_func, &tog L_FUNC, B4 T3 T2)
 
 // Tap dance is difficult with fingers 3 & 4, better use mod-taps
-#define TAPDANCE_TERM 250
 // ZMK_TAP_DANCE(n1, bindings = <&kp N1>, <&kp N2>, <&kp N3>; tapping-term-ms = <TAPDANCE_TERM>; )
 // ZMK_TAP_DANCE(n4, bindings = <&kp N4>, <&kp N5>, <&kp N6>; tapping-term-ms = <TAPDANCE_TERM>; )
 // ZMK_TAP_DANCE(n7, bindings = <&kp N7>, <&kp N8>, <&kp N9>; tapping-term-ms = <TAPDANCE_TERM>; )
@@ -134,6 +130,10 @@ ZMK_COMBO(func_12, &kp F12, B4 B3, L_FUNC)
 // Combos BLUETOOTH layer
 ZMK_COMBO(bt_clear_current_profile, &bt BT_CLR, T3 T2 B3 B2, L_BT_S)
 
+ZMK_MOD_TAP(shift2,
+  tapping-term-ms = <TAPDANCE_TERM>;
+  bindings = <&sk LSHFT>, <&tog LSHFT>;
+)
 
 // TODO: Functions F1-F12, Accented characters or combining accents
 // Combos letters
@@ -153,14 +153,8 @@ ZMK_COMBO(bt_clear_current_profile, &bt BT_CLR, T3 T2 B3 B2, L_BT_S)
 
 ZMK_TAP_DANCE(space_dot, bindings = <&lt L_SYMB SPACE>, <&kp DOT>, <&kp COMMA>; tapping-term-ms = <TAPDANCE_TERM>; )
 
-// / { behaviors {
-//   space_dot:  {
-//     compatible = "zmk,behavior-tap-dance";
-//     #binding-cells = <0>;
-//     tapping-term-ms = <200>;
-//     bindings = <&lt LSHIFT CAPSLOCK>, <&kp LCTRL>;
-//   };
-// }; }
+
+
 
 /*****************************************
  * Standard ARDUX layer definitions
@@ -171,7 +165,7 @@ ZMK_TAP_DANCE(space_dot, bindings = <&lt L_SYMB SPACE>, <&kp DOT>, <&kp COMMA>; 
   base {
     display-name = "Base";
     bindings = <
-      &lt L_NUMB I  &kp T   &kp A   &lt L_MOD  ENTER
+      &lt L_NUMB I  &kp T   &kp A   &lt L_MOD ENTER
       &lt L_QNAV O  &kp S   &kp E   &space_dot
     >;
   };
@@ -206,7 +200,7 @@ ZMK_TAP_DANCE(space_dot, bindings = <&lt L_SYMB SPACE>, <&kp DOT>, <&kp COMMA>; 
   modif {
     display-name = "Mod";
     bindings = <
-      &kp LBRC             &kp LPAR    &kp RPAR    &mo L_MOD
+      &kp LBRC             &shift2    &kp RPAR    &mo L_MOD
       &kp RBRC             &kp LBKT    &kp RBKT    &none
     >;
   };
