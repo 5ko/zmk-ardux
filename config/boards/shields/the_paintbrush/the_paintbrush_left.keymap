@@ -99,10 +99,12 @@
     compatible = "zmk,behavior-macro";
     #binding-cells = <0>;
     bindings
-      = <&macro_release &kp LSHFT &kp LCTRL  &kp LALT &kp LGUI>
+      = <&macro_release &kp LSHFT &kp LCTRL &kp LALT &kp LGUI>
       , <&to L_BASE>
       ;
   };
+  
+  
   
 }; };
 
@@ -123,8 +125,8 @@ ZMK_COMBO(layer_func, &tog L_FUNC, B4 T3 T2)
 // ZMK_COMBO(combo_space, &kp SPACE, B4 B3 B2 B1, L_BASE)
 
 // Combos NUM layer
-ZMK_COMBO(num_7, &kp N8, T1 T2, L_NUMB)
-ZMK_COMBO(num_8, &kp N7, T3 T2, L_NUMB)
+ZMK_COMBO(num_7, &kp N7, T1 T2, L_NUMB)
+ZMK_COMBO(num_8, &kp N8, T3 T2, L_NUMB)
 ZMK_COMBO(num_0, &kp N0, B3 B2, L_NUMB)
 ZMK_COMBO(num_9, &kp N9, B2 B1, L_NUMB)
 // ZMK_COMBO(num_???, &kp ?, T3 T1, L_NUMB)
@@ -154,10 +156,6 @@ ZMK_COMBO(func_12, &kp F12, B4 B3, L_FUNC)
 ZMK_COMBO(bt_clear_current_profile, &bt BT_CLR, T3 T2 B3 B2, L_BT_S)
 
 
-// ZMK_BEHAVIOR(shift2, hold_tap,
-//   tapping-term-ms = <TAPDANCE_TERM>;
-//   bindings = <&sk LSHFT>, <&tog LSHFT>;
-// )
 
 // TODO: Functions F1-F12, Accented characters or combining accents
 // Combos letters
@@ -176,10 +174,10 @@ ZMK_COMBO(bt_clear_current_profile, &bt BT_CLR, T3 T2 B3 B2, L_BT_S)
 #define SK_TK(key) &sk_tog key key   // Macro to apply momentary-layer-on-hold/toggle-layer-on-tap to a specific layer
 
 
+ZMK_TAP_DANCE(enter_excl, bindings = <&lt L_SYMB ENTER>, <&kp EXCL>, <&kp QMARK>; tapping-term-ms = <TAPDANCE_TERM>; )
 ZMK_TAP_DANCE(space_dot, bindings = <&lt L_MOD SPACE>, <&kp DOT>, <&kp COMMA>; tapping-term-ms = <TAPDANCE_TERM>; )
 
-ZMK_TAP_DANCE(enter_excl, bindings = <&lt L_SYMB ENTER>, <&kp EXCL>, <&kp QMARK>; tapping-term-ms = <TAPDANCE_TERM>; )
-
+ZMK_COMBO(test_enter, &mt EXCL ENTER, T1 B1, L_FUNC)
 
 
 
