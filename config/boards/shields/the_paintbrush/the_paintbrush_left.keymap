@@ -104,18 +104,6 @@
       ;
   };
   
-  // combo mod-tap
-  cmt: macro {
-    compatible = "zmk,behavior-macro-two-param";
-    #binding-cells = <2>; // Must be 2
-    hold {
-      bindings = <&macro_param_1to1>, <&kp MACRO_PLACEHOLDER>;
-    };
-    tap {
-      bindings = <&macro_param_2to1>, <&kp MACRO_PLACEHOLDER>;
-    };
-  };
-  
   
 }; };
 
@@ -188,7 +176,7 @@ ZMK_COMBO(bt_clear_current_profile, &bt BT_CLR, T3 T2 B3 B2, L_BT_S)
 ZMK_TAP_DANCE(enter_excl, bindings = <&lt L_SYMB ENTER>, <&kp EXCL>, <&kp QMARK>; tapping-term-ms = <TAPDANCE_TERM>; )
 ZMK_TAP_DANCE(space_dot, bindings = <&lt L_MOD SPACE>, <&kp DOT>, <&kp COMMA>; tapping-term-ms = <TAPDANCE_TERM>; )
 
-ZMK_COMBO(test_enter, &cmt ENTER EXCL, T1 B1, L_FUNC)
+ZMK_COMBO(test_enter, &mt EXCL ENTER, T1 B1)
 
 
 
