@@ -104,7 +104,17 @@
       ;
   };
   
-  
+  combo_tap_hold: macro {
+    compatible = "zmk,behavior-macro";
+    label = "Parametrizable Tap or Hold Macro";
+    #params = <2>; // Specify that the macro takes 2 parameters
+    tap {
+      bindings = <&kp @0>; // Use the first parameter for tap
+    };
+    hold {
+      bindings = <&kp @1>; // Use the second parameter for hold
+    };
+  };
   
 }; };
 
@@ -177,7 +187,7 @@ ZMK_COMBO(bt_clear_current_profile, &bt BT_CLR, T3 T2 B3 B2, L_BT_S)
 ZMK_TAP_DANCE(enter_excl, bindings = <&lt L_SYMB ENTER>, <&kp EXCL>, <&kp QMARK>; tapping-term-ms = <TAPDANCE_TERM>; )
 ZMK_TAP_DANCE(space_dot, bindings = <&lt L_MOD SPACE>, <&kp DOT>, <&kp COMMA>; tapping-term-ms = <TAPDANCE_TERM>; )
 
-ZMK_COMBO(test_enter, &mt EXCL ENTER, T1 B1, L_FUNC)
+ZMK_COMBO(test_enter, &combo_tap_hold EXCL ENTER, T1 B1, L_FUNC)
 
 
 
