@@ -254,8 +254,8 @@ ZMK_COMBO(combo_w,  &kp W, B4 B3 B2   , L_BASE)
   quicknav {     
     display-name = "QNAV";
     bindings = <                      
-      &none        &kb K_VOL_DN  &kp K_MUTE  &kp K_VOL_UP
-      &mo L_QNAV   &kb K_APP     &left_home  &right_end
+      &none        &kp K_VOL_DN  &kp K_MUTE  &kp K_VOL_UP
+      &mo L_QNAV   &kp K_APP     &left_home  &right_end
 //       &mo L_QNAV   &kp DOWN   &mt LC(DEL)  DEL     &mt LC(BSPC)  BSPC
     >;         
   };
