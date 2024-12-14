@@ -137,9 +137,14 @@ ZMK_COMBO(qnav_up, &kp UP,        B3 B2   , L_QNAV)
 ZMK_COMBO(qnav_dn, &kp DOWN,         B2 B1, L_QNAV)
 ZMK_COMBO(qnav_pgup, &kp PG_UP,   B3    B1, L_QNAV)
 ZMK_COMBO(qnav_pgdn,  &kp PG_DN,  B3 B2 B1, L_QNAV)
+#define NAV_TAP_TERM 150
+ZMK_TAP_DANCE(left_home, bindings = <&mt HOME LEFT>, <&kp LC(LEFT)>;  tapping-term-ms = <NAV_TAP_TERM>; )
+ZMK_TAP_DANCE(right_end, bindings = <&mt END RIGHT>, <&kp LC(RIGHT)>; tapping-term-ms = <NAV_TAP_TERM>; )
 
-ZMK_TAP_DANCE(left_home, bindings = <&mt HOME LEFT>, <&kp LC(LEFT)>;  tapping-term-ms = <TAPDANCE_TERM>; )
-ZMK_TAP_DANCE(right_end, bindings = <&mt END RIGHT>, <&kp LC(RIGHT)>; tapping-term-ms = <TAPDANCE_TERM>; )
+ZMK_COMBO(media_next, &kp K_NEXT,          T2 T1, L_QNAV)
+ZMK_COMBO(media_prev, &kp K_PREV,       T3 T2   , L_QNAV)
+ZMK_COMBO(media_play, &kp K_PLAY_PAUSE, T3 T2 T1, L_QNAV)
+
 
 // C_AC_UNDO/K_UNDO and K_REDO work in LibreOffice but not in Kate/Gedit/Firefox
 // ZMK_COMBO(qnav_undo,  &kp LC(Z),      T3 T2 T1, L_QNAV)
@@ -158,7 +163,6 @@ ZMK_COMBO(bt_clear_current_profile, &bt BT_CLR, T3 T2 B3 B2, L_BT_S)
 
 
 // TODO: Functions F1-F12, Accented characters or combining accents
-// Combos letters
 // Punctuation
 // Most used keyboard shortcuts Alt+Tab, Alt+Shift+Tab, Ctrl+(C|X|V|Z),  Alt+Caps
 // Media keys Vol UP/DOWN/MUTE, PlayPause/PREV/NEXT, PrintScr,Ins
@@ -250,8 +254,8 @@ ZMK_COMBO(combo_w,  &kp W, B4 B3 B2   , L_BASE)
   quicknav {     
     display-name = "QNAV";
     bindings = <                      
-      &none        &none    &none         &none 
-      &mo L_QNAV   &none    &left_home    &right_end
+      &none        &kb K_VOL_DN  &kp K_MUTE  &kp K_VOL_UP
+      &mo L_QNAV   &kb K_APP     &left_home  &right_end
 //       &mo L_QNAV   &kp DOWN   &mt LC(DEL)  DEL     &mt LC(BSPC)  BSPC
     >;         
   };
