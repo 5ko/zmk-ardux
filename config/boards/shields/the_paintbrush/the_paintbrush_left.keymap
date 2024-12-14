@@ -113,13 +113,10 @@
 ZMK_COMBO(reset, &sys_reset, 0 1 2 3 4 5 6 7)
 // ZMK_COMBO(release_mods, &release_all, T1 B1)
 
-ZMK_COMBO(layer_bt_select, &sl L_BT_S, T1 B1 T4 B4)
-ZMK_COMBO(layer_func, &tog L_FUNC, B4 T3 T2)
+// ZMK_COMBO(layer_func, &tog L_FUNC, B4 T3 T2)
 
 // Tap dance is difficult with fingers 3 & 4, better use mod-taps
 // ZMK_TAP_DANCE(n1, bindings = <&kp N1>, <&kp N2>, <&kp N3>; tapping-term-ms = <TAPDANCE_TERM>; )
-// ZMK_TAP_DANCE(n4, bindings = <&kp N4>, <&kp N5>, <&kp N6>; tapping-term-ms = <TAPDANCE_TERM>; )
-// ZMK_TAP_DANCE(n7, bindings = <&kp N7>, <&kp N8>, <&kp N9>; tapping-term-ms = <TAPDANCE_TERM>; )
 
 // ZMK_COMBO(combo_space, &kp SPACE, B4 B3 B2 B1, L_BASE)
 
@@ -136,14 +133,17 @@ ZMK_COMBO(num_9, &kp N9, B2 B1, L_NUMB)
 
 
 // Combos QUICK NAV layer
-ZMK_COMBO(qnav_pgup, &kp PG_UP, T3 T2, L_QNAV)
-ZMK_COMBO(qnav_pgdn, &kp PG_DN, B3 B2, L_QNAV)
-ZMK_COMBO(qnav_home, &kp HOME,  T2 T1, L_QNAV)
-ZMK_COMBO(qnav_end,  &kp END,   B2 B1, L_QNAV)
+ZMK_COMBO(qnav_up, &kp UP,        B3 B2   , L_QNAV)
+ZMK_COMBO(qnav_dn, &kp DOWN,         B2 B1, L_QNAV)
+ZMK_COMBO(qnav_pgup, &kp PG_UP,   B3    B1, L_QNAV)
+ZMK_COMBO(qnav_pgdn,  &kp PG_DN,  B3 B2 B1, L_QNAV)
+
+ZMK_TAP_DANCE(left_home, bindings = <&mt HOME LEFT>, <&kp LC(LEFT)>;  tapping-term-ms = <TAPDANCE_TERM>; )
+ZMK_TAP_DANCE(right_end, bindings = <&mt END RIGHT>, <&kp LC(RIGHT)>; tapping-term-ms = <TAPDANCE_TERM>; )
 
 // C_AC_UNDO/K_UNDO and K_REDO work in LibreOffice but not in Kate/Gedit/Firefox
-ZMK_COMBO(qnav_undo,  &kp LC(Z),      T3 T2 T1, L_QNAV)
-ZMK_COMBO(qnav_redo,  &kp LC(LS(Z)),  B3 B2 B1, L_QNAV)
+// ZMK_COMBO(qnav_undo,  &kp LC(Z),      T3 T2 T1, L_QNAV)
+// ZMK_COMBO(qnav_redo,  &kp LC(LS(Z)),  B3 B2 B1, L_QNAV)
 
 ZMK_COMBO(func_9,  &kp F9,  T2 T1, L_FUNC)
 ZMK_COMBO(func_10, &kp F10, T4 T3, L_FUNC)
@@ -152,6 +152,7 @@ ZMK_COMBO(func_12, &kp F12, B4 B3, L_FUNC)
 
 
 // Combos BLUETOOTH layer
+ZMK_COMBO(layer_bt_select, &sl L_BT_S, T1 B1 T4 B4) // ALL layers
 ZMK_COMBO(bt_clear_current_profile, &bt BT_CLR, T3 T2 B3 B2, L_BT_S)
 
 
@@ -165,21 +166,57 @@ ZMK_COMBO(bt_clear_current_profile, &bt BT_CLR, T3 T2 B3 B2, L_BT_S)
 // Display
 
 
-// etinoars
+// etinoars lcpduh fmgbvyw xkjzq
 // TODO: lc.pduhfm,()g=b:"-;vyw{}0x/k'1[]2&_jz\$q+53*4!|9>#68@%?7<^`~
 // TODO: list other stats from keylogger
 // modifiers: 
 
+// 
+// etinoars lcpduh fmgbvyw xkjzq
+//          2:hducgb -1-1:yk 2-1:pq        3:mlfw  1--1:vx  1-1-:jz 1-2:  4:
+// etaonris hdlfcm u gypwb vkjxzq : Zim cryptography
+// etaoinsh rdlucm f wypvbg kqjxz : Linotype 
+// etaoinsh rdlcum w fgypbv kjxqz : Lewand
+// 
+// 
+
 #define SK_TK(key) &sk_tog key key   // Macro to apply momentary-layer-on-hold/toggle-layer-on-tap to a specific layer
 
 
-ZMK_TAP_DANCE(enter_excl, bindings = <&lt L_SYMB ENTER>, <&kp EXCL>, <&kp QMARK>; tapping-term-ms = <TAPDANCE_TERM>; )
-ZMK_TAP_DANCE(space_dot, bindings = <&lt L_MOD SPACE>, <&kp DOT>, <&kp COMMA>; tapping-term-ms = <TAPDANCE_TERM>; )
+// ZMK_TAP_DANCE(space_dot, bindings = <&lt L_MOD SPACE>, <&kp DOT>, <&kp COMMA>; tapping-term-ms = <TAPDANCE_TERM>; )
 
-ZMK_COMBO(test_enter, &mt EXCL ENTER, T1 B1)
-
+ZMK_COMBO(enter_excl, &mt EXCL ENTER, T1 B1)
 
 
+
+// Base letter combos
+// etinoars lcpduh fmgbvyw xkjzq
+//          2:hducgb -1-1:yk 2-1:pq   3:mlfw    1--1:vx  1-1-:jz 1-2:  4:
+// etaonris hdlfcm u gypwb vkjxzq : Zim cryptography
+// etaoinsh rdlucm f wypvbg kqjxz : Linotype 
+ZMK_COMBO(combo_b,  &kp B, T4 T3      , L_BASE)
+ZMK_COMBO(combo_c,  &kp C,    T3 T2   , L_BASE)
+ZMK_COMBO(combo_d,  &kp D,       T2 T1, L_BASE)
+ZMK_COMBO(combo_h,  &kp H,       B2 B1, L_BASE)
+ZMK_COMBO(combo_u,  &kp U,    B3 B2   , L_BASE)
+ZMK_COMBO(combo_g,  &kp G, B4 B3      , L_BASE)
+
+ZMK_COMBO(combo_k,  &kp K,    T3    T1, L_BASE)
+ZMK_COMBO(combo_y,  &kp Y,    B3    B1, L_BASE)
+ZMK_COMBO(combo_j,  &kp J, T4    T2   , L_BASE)
+ZMK_COMBO(combo_z,  &kp Z, B4    B2   , L_BASE)
+
+
+ZMK_COMBO(combo_v,  &kp V, T4       T1, L_BASE)
+ZMK_COMBO(combo_x,  &kp X, B4       B1, L_BASE)
+
+ZMK_COMBO(combo_p,  &kp P, T4 T3    T1, L_BASE)
+ZMK_COMBO(combo_q,  &kp Q, B4 B3    B1, L_BASE)
+
+ZMK_COMBO(combo_l,  &kp L,    T3 T2 T1, L_BASE)
+ZMK_COMBO(combo_m,  &kp M,    B3 B2 B1, L_BASE)
+ZMK_COMBO(combo_f,  &kp F, T4 T3 T2   , L_BASE)
+ZMK_COMBO(combo_w,  &kp W, B4 B3 B2   , L_BASE)
 
 
 
@@ -192,8 +229,8 @@ ZMK_COMBO(test_enter, &mt EXCL ENTER, T1 B1)
   base {
     display-name = "Base";
     bindings = <
-      &lt L_NUMB I  &kp T   &kp A   &enter_excl
-      &lt L_QNAV O  &kp S   &kp E   &space_dot
+      &lt L_NUMB R  &kp I  &kp T   &kp A
+      &lt L_QNAV N  &kp O  &kp S   &kp E
     >;
   };
   modif {
@@ -213,8 +250,9 @@ ZMK_COMBO(test_enter, &mt EXCL ENTER, T1 B1)
   quicknav {     
     display-name = "QNAV";
     bindings = <                      
-      &none        &kp UP     &mt LC(LEFT) LEFT    &mt LC(RIGHT) RIGHT
-      &mo L_QNAV   &kp DOWN   &mt LC(DEL)  DEL     &mt LC(BSPC)  BSPC
+      &none        &none    &none         &none 
+      &mo L_QNAV   &none    &left_home    &right_end
+//       &mo L_QNAV   &kp DOWN   &mt LC(DEL)  DEL     &mt LC(BSPC)  BSPC
     >;         
   };
   bt {
