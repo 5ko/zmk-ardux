@@ -176,6 +176,8 @@ ZMK_COMBO(kblayout, &kp LA(CAPS),              B4 B3 T2 T1)
 
 // ZMK_COMBO(name, bindings, keypos, layers, timeout, prior_idle, extra)
 ZMK_COMBO(reset, &sys_reset, 0 1 2 3 4 5 6 7)
+ZMK_COMBO(reflash, &bootloader, T1 B4 B3 B2 B1)
+
 // ZMK_COMBO(release_mods, &release_all, T1 B1)
 
 // ZMK_COMBO(layer_func, &tog L_FUNC, B4 T3 T2)
