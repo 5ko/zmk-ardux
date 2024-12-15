@@ -89,7 +89,7 @@
 #define L_QNAV 4
 #define L_BT_S 5
 #define L_FUNC 6
-#define L_FRE  7
+// #define L_FRE  7
 
 
 
@@ -97,6 +97,7 @@
 // Delay for combo
 #undef COMBO_TERM
 #define COMBO_TERM 175
+#define NAV_TAP_TERM 150
 #define TAPDANCE_TERM 400
 #define HOLDTAP_TERM 200
 #define HOLDTAP_LAYER_TERM 300
@@ -188,7 +189,6 @@ ZMK_COMBO(qnav_up, &kp UP,        B3 B2   , L_QNAV)
 ZMK_COMBO(qnav_dn, &kp DOWN,         B2 B1, L_QNAV)
 ZMK_COMBO(qnav_pgup, &kp PG_UP,   B3    B1, L_QNAV)
 ZMK_COMBO(qnav_pgdn,  &kp PG_DN,  B3 B2 B1, L_QNAV)
-#define NAV_TAP_TERM 150
 ZMK_TAP_DANCE(left_home, bindings = <&mt HOME LEFT>, <&kp LC(LEFT)>;  tapping-term-ms = <NAV_TAP_TERM>; )
 ZMK_TAP_DANCE(right_end, bindings = <&mt END RIGHT>, <&kp LC(RIGHT)>; tapping-term-ms = <NAV_TAP_TERM>; )
 
@@ -301,15 +301,15 @@ ZMK_COMBO(combo_space, &kp SPACE, B4 B3 B2 B1, L_BASE)
 // 
 
 
-
 // ZMK_TAP_DANCE(space_dot, bindings = <&lt L_MOD SPACE>, <&kp DOT>, <&kp COMMA>; tapping-term-ms = <TAPDANCE_TERM>; )
 
 
 // GLOBAL Combos 
-ZMK_COMBO(cancel_layers, &to L_BASE, B4 T3, L_FUNC L_FRE) // add here other layers to cancel
+ZMK_COMBO(cancel_layers, &to L_BASE, B4 T3, L_FUNC ) //L_FRE add here other layers to cancel
 ZMK_COMBO(escape,  &kp ESC, B4 T3     )
 
 ZMK_COMBO(enter_excl, &mt EXCL ENTER, T1 B1)
+
 
 ZMK_COMBO(backspace, &mt LC(BSPC) BSPC,       T2 B1)
 ZMK_COMBO(delete,    &mt LC(DEL)  DEL ,    B3 T2   )
@@ -393,15 +393,15 @@ ZMK_COMBO(reflash, &bootloader, T1 B4 B3 B2 B1)
 // Ocirc+Icirc  Ocirc+Otrema Ugrave+Ucirc Agrave+Acirc
 // Etrema+Utrema Icirc+Itrema Ecirc+Etrema Eacute+Egrave
 // Combo N=Ntilde
-  french {
-    display-name = "FRE";
-    bindings = <
-      &none &none &none &none
-      &none &none &none &none 
-//       &none        &kp2 DCRC I  &kp2 DCRC A  &kp2 DGRV A
-//       &kp2 DGRV U  &kp2 DCRC O  &kp EAQT     &kp2 DGRV E
-    >;
-  };
+//   french {
+//     display-name = "FRE";
+//     bindings = <
+//       &none &none &none &none
+//       &none &none &none &none 
+// //       &none        &kp2 DCRC I  &kp2 DCRC A  &kp2 DGRV A
+// //       &kp2 DGRV U  &kp2 DCRC O  &kp EAQT     &kp2 DGRV E
+//     >;
+//   };
   
   
 //   big_ardux_symbol {  &mt MINUS PLUS
