@@ -224,7 +224,6 @@ ZMK_COMBO(combo_equals, &kp EQUAL    ,    T3 T2   , L_SYMB)
 // ZMK_TAP_DANCE(space_dot, bindings = <&lt L_MOD SPACE>, <&kp DOT>, <&kp COMMA>; tapping-term-ms = <TAPDANCE_TERM>; )
 
 
-аи
 
 // Base letter combos
 // etinoars lcpduh fmgbvyw xkjzq
