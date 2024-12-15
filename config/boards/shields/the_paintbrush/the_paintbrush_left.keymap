@@ -251,8 +251,8 @@ ZMK_COMBO(combo_q,  &kp Q, B4 B3    B1, L_BASE)
 
 ZMK_COMBO(combo_l,  &kp L,    T3 T2 T1, L_BASE)
 ZMK_COMBO(combo_m,  &kp M,    B3 B2 B1, L_BASE)
-ZMK_COMBO(combo_f,  &kp F, T4 T3 T2   , L_BASE)
-// ZMK_COMBO(combo_f,  &toglay_key L_FUNC F, T4 T3 T2   , L_BASE)
+// ZMK_COMBO(combo_f,  &kp F, T4 T3 T2   , L_BASE)
+ZMK_COMBO(combo_f,  &toglay_key L_FUNC F, T4 T3 T2   , L_BASE)
 ZMK_COMBO(combo_w,  &kp W, B4 B3 B2   , L_BASE)
 
 ZMK_COMBO(combo_space, &kp SPACE, B4 B3 B2 B1, L_BASE)
