@@ -49,7 +49,7 @@
 #define AELG RA(Z)
 #define DEG  RA(COLON)
 #define MU   RA(M)
-#define COPY RA(C)
+// #define COPY RA(C)
 #define CCDL RA(COMMA)
 
 // MISSING LETTERS (macros): 
@@ -146,7 +146,15 @@
     bindings = <&to>, <&kp>;
   };
   
+  kp2: macro_two_keys {
+    compatible = "zmk,behavior-macro";
+    #binding-cells = <2>;
+    bindings = <&kp>, <&kp>;
+  };
+  
 }; };
+
+
 #define SK_TK(key) &togkey_stikey key key   // Macro to apply momentary-layer-on-hold/toggle-layer-on-tap to a specific layer
 
 
@@ -226,12 +234,6 @@ ZMK_COMBO(dead_grave, &kp DGRV,    T3 B2   , L_SYM2)
 // ZMK_COMBO(oelig,  &mt RA(Z) RA(X)    , T4 T3      , L_SYM2)
 // ZMK_COMBO(ccedil, &mt RA(N) RA(COMMA), B4 B3      , L_SYM2)
 
-
-// FRENCH layer
-ZMK_MACRO_TWO_PARAM(kp2, 
-  #binding-cells = <2>;
-  bindings = <&kp>, <&kp>;
-)
 
 
 
