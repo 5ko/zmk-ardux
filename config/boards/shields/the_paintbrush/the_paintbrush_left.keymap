@@ -117,6 +117,43 @@
 }; };
 #define SK_TK(key) &togkey_stikey key key   // Macro to apply momentary-layer-on-hold/toggle-layer-on-tap to a specific layer
 
+
+// Base letter combos
+// etinoars lcpduh fmgbvyw xkjzq
+//          2:hducgb -1-1:yk 2-1:pq   3:mlfw    1--1:vx  1-1-:jz 1-2:  4:
+// etaonris hdlfcm u gypwb vkjxzq : Zim cryptography
+// etaoinsh rdlucm f wypvbg kqjxz : Linotype 
+ZMK_COMBO(combo_b,  &kp B      , T4 T3      , L_BASE)
+ZMK_COMBO(combo_c,  &kp C      ,    T3 T2   , L_BASE)
+ZMK_COMBO(combo_d,  &kp D      ,       T2 T1, L_BASE)
+ZMK_COMBO(combo_h,  &kp H      ,       B2 B1, L_BASE)
+ZMK_COMBO(combo_u,  &mt UNDER U,    B3 B2   , L_BASE)
+ZMK_COMBO(combo_g,  &kp G      , B4 B3      , L_BASE)
+
+ZMK_COMBO(combo_k,  &kp K,    T3    T1, L_BASE)
+ZMK_COMBO(combo_y,  &kp Y,    B3    B1, L_BASE)
+ZMK_COMBO(combo_j,  &kp J, T4    T2   , L_BASE)
+ZMK_COMBO(combo_z,  &kp Z, B4    B2   , L_BASE)
+
+
+ZMK_COMBO(combo_v,  &kp V, T4       T1, L_BASE)
+ZMK_COMBO(combo_x,  &kp X, B4       B1, L_BASE)
+
+ZMK_COMBO(combo_p,  &kp P, T4 T3    T1, L_BASE)
+ZMK_COMBO(combo_q,  &kp Q, B4 B3    B1, L_BASE)
+
+ZMK_COMBO(combo_l,  &kp L,    T3 T2 T1, L_BASE)
+ZMK_COMBO(combo_m,  &kp M,    B3 B2 B1, L_BASE)
+// ZMK_COMBO(combo_f,  &kp F, T4 T3 T2   , L_BASE)
+ZMK_COMBO(combo_f,  &toglay_key L_FUNC F, T4 T3 T2   , L_BASE)
+ZMK_COMBO(combo_w,  &kp W, B4 B3 B2   , L_BASE)
+
+ZMK_COMBO(combo_space, &kp SPACE, B4 B3 B2 B1, L_BASE)
+// ZMK_COMBO(combo_space, &mt UNDERSCORE SPACE, B4 B3 B2 B1, L_BASE)
+
+
+
+
 // Combos editing
 ZMK_COMBO(enter_excl, &mt EXCL ENTER, T1 B1)
 
@@ -223,40 +260,6 @@ ZMK_COMBO(combo_equals, &kp EQUAL    ,    T3 T2   , L_SYMB)
 
 // ZMK_TAP_DANCE(space_dot, bindings = <&lt L_MOD SPACE>, <&kp DOT>, <&kp COMMA>; tapping-term-ms = <TAPDANCE_TERM>; )
 
-
-
-// Base letter combos
-// etinoars lcpduh fmgbvyw xkjzq
-//          2:hducgb -1-1:yk 2-1:pq   3:mlfw    1--1:vx  1-1-:jz 1-2:  4:
-// etaonris hdlfcm u gypwb vkjxzq : Zim cryptography
-// etaoinsh rdlucm f wypvbg kqjxz : Linotype 
-ZMK_COMBO(combo_b,  &kp B      , T4 T3      , L_BASE)
-ZMK_COMBO(combo_c,  &kp C      ,    T3 T2   , L_BASE)
-ZMK_COMBO(combo_d,  &kp D      ,       T2 T1, L_BASE)
-ZMK_COMBO(combo_h,  &kp H      ,       B2 B1, L_BASE)
-ZMK_COMBO(combo_u,  &mt UNDER U,    B3 B2   , L_BASE)
-ZMK_COMBO(combo_g,  &kp G      , B4 B3      , L_BASE)
-
-ZMK_COMBO(combo_k,  &kp K,    T3    T1, L_BASE)
-ZMK_COMBO(combo_y,  &kp Y,    B3    B1, L_BASE)
-ZMK_COMBO(combo_j,  &kp J, T4    T2   , L_BASE)
-ZMK_COMBO(combo_z,  &kp Z, B4    B2   , L_BASE)
-
-
-ZMK_COMBO(combo_v,  &kp V, T4       T1, L_BASE)
-ZMK_COMBO(combo_x,  &kp X, B4       B1, L_BASE)
-
-ZMK_COMBO(combo_p,  &kp P, T4 T3    T1, L_BASE)
-ZMK_COMBO(combo_q,  &kp Q, B4 B3    B1, L_BASE)
-
-ZMK_COMBO(combo_l,  &kp L,    T3 T2 T1, L_BASE)
-ZMK_COMBO(combo_m,  &kp M,    B3 B2 B1, L_BASE)
-// ZMK_COMBO(combo_f,  &kp F, T4 T3 T2   , L_BASE)
-ZMK_COMBO(combo_f,  &toglay_key L_FUNC F, T4 T3 T2   , L_BASE)
-ZMK_COMBO(combo_w,  &kp W, B4 B3 B2   , L_BASE)
-
-ZMK_COMBO(combo_space, &kp SPACE, B4 B3 B2 B1, L_BASE)
-// ZMK_COMBO(combo_space, &mt UNDERSCORE SPACE, B4 B3 B2 B1, L_BASE)
 
 
 /*****************************************
