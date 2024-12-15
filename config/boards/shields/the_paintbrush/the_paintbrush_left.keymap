@@ -221,9 +221,9 @@ ZMK_COMBO(func_10, &kp F10, T4 T3, L_FUNC)
 ZMK_COMBO(func_11, &kp F11, B2 B1, L_FUNC)
 ZMK_COMBO(func_12, &kp F12, B4 B3, L_FUNC)
 ZMK_COMBO(cancel_func,      &to L_BASE, B4 T3      , L_FUNC)
-ZMK_COMBO(cancel_func_2,    &to L_BASE, T4 T3 T2   , L_FUNC)
-ZMK_COMBO(cancel_func_3,    &to L_BASE,    T3 T2 T1, L_FUNC)
-ZMK_COMBO(cancel_func_4,    &to L_BASE, B4 B3 B2   , L_FUNC)
+// ZMK_COMBO(cancel_func_2,    &to L_BASE, T4 T3 T2   , L_FUNC)
+ZMK_COMBO(cancel_func_3,    &to L_BASE, T4 B4, L_FUNC)
+// ZMK_COMBO(cancel_func_4,    &to L_BASE, B4 B3 B2   , L_FUNC)
 
 
 // Combos BLUETOOTH layer
