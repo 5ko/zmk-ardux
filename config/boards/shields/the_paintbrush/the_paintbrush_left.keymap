@@ -127,9 +127,8 @@ ZMK_COMBO(shift,   &togkey_stikey LSHFT LSHFT,    T3    B1)
 ZMK_COMBO(capsock, &caps_tog 0 CAPS,              T4 T3    B1)
 ZMK_COMBO(alt,     &togkey_stikey LALT   LALT,    T3 B2 B1)
 ZMK_COMBO(gui,     &togkey_stikey LGUI   LGUI, T4 T3 B2 B1)
-// Toggle keyboard layout
-ZMK_COMBO(kblayout, &kp LS(LALT),              B4 B3 T2 T1)
-
+// Toggle keyboard layout FIXME: why Alt+Shift doesn't work? Add macro GLOBE
+ZMK_COMBO(kblayout, &kp LA(CAPS),              B4 B3 T2 T1)
 
 
 // ZMK_COMBO(name, bindings, keypos, layers, timeout, prior_idle, extra)
@@ -300,8 +299,8 @@ ZMK_COMBO(combo_space, &kp SPACE, B4 B3 B2 B1, L_BASE)
   symbols {
     display-name = "Symbol";
     bindings = <
-      &kp GRAVE            &kp SEMI  &kp BSLH  &mo L_SYMB
-      &kp EQUAL            &kp MINUS &kp QMARK &none
+      &mt RBRC LBRC    &mt RBKT LBKT   &mt RPAR LPAR   &mo L_SYMB
+      &kp EQUAL        &kp MINUS       &kp QMARK       &none
     >;
   };
   
