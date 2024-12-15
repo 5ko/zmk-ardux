@@ -117,7 +117,6 @@
 }; };
 #define SK_TK(key) &togkey_stikey key key   // Macro to apply momentary-layer-on-hold/toggle-layer-on-tap to a specific layer
 
-
 // Combos editing
 ZMK_COMBO(enter_excl, &mt EXCL ENTER, T1 B1)
 
@@ -125,7 +124,6 @@ ZMK_COMBO(backspace, &mt LC(BSPC) BSPC,       T2 B1)
 ZMK_COMBO(delete,    &mt LC(DEL)  DEL ,    B3 T2   )
 ZMK_COMBO(escape,    &kp ESC          , B4 T3      )
 ZMK_COMBO(tab,       &mt LS(TAB)  TAB , B4 T3 T2   )
-
 
 
 
@@ -180,6 +178,7 @@ ZMK_COMBO(media_play, &kp K_PLAY_PAUSE, T3 T2 T1, L_QNAV)
 // ZMK_COMBO(qnav_undo,  &kp LC(Z),      T3 T2 T1, L_QNAV)
 // ZMK_COMBO(qnav_redo,  &kp LC(LS(Z)),  B3 B2 B1, L_QNAV)
 
+// combos Functions layer
 ZMK_COMBO(func_9,  &kp F9,  T2 T1, L_FUNC)
 ZMK_COMBO(func_10, &kp F10, T4 T3, L_FUNC)
 ZMK_COMBO(func_11, &kp F11, B2 B1, L_FUNC)
@@ -191,6 +190,11 @@ ZMK_COMBO(cancel_func,    &tog L_FUNC          , B4 T3      , L_FUNC)
 ZMK_COMBO(layer_bt_select, &sl L_BT_S, T1 B1 T4 B4) // ALL layers
 ZMK_COMBO(bt_clear_current_profile, &bt BT_CLR, T3 T2 B3 B2, L_BT_S)
 
+
+
+// Combos SYM layer
+ZMK_COMBO(combo_ltgt,   &mt GT LT    , T4 T3      , L_SYMB)
+ZMK_COMBO(combo_equals, &kp EQUAL    ,    T3 T2   , L_SYMB)
 
 
 // TODO: Functions F1-F12, Accented characters or combining accents
@@ -220,7 +224,7 @@ ZMK_COMBO(bt_clear_current_profile, &bt BT_CLR, T3 T2 B3 B2, L_BT_S)
 // ZMK_TAP_DANCE(space_dot, bindings = <&lt L_MOD SPACE>, <&kp DOT>, <&kp COMMA>; tapping-term-ms = <TAPDANCE_TERM>; )
 
 
-
+аи
 
 // Base letter combos
 // etinoars lcpduh fmgbvyw xkjzq
@@ -248,8 +252,8 @@ ZMK_COMBO(combo_q,  &kp Q, B4 B3    B1, L_BASE)
 
 ZMK_COMBO(combo_l,  &kp L,    T3 T2 T1, L_BASE)
 ZMK_COMBO(combo_m,  &kp M,    B3 B2 B1, L_BASE)
-// ZMK_COMBO(combo_f,  &kp F, T4 T3 T2   , L_BASE)
-ZMK_COMBO(combo_f,  &toglay_key L_FUNC F, T4 T3 T2   , L_BASE)
+ZMK_COMBO(combo_f,  &kp F, T4 T3 T2   , L_BASE)
+// ZMK_COMBO(combo_f,  &toglay_key L_FUNC F, T4 T3 T2   , L_BASE)
 ZMK_COMBO(combo_w,  &kp W, B4 B3 B2   , L_BASE)
 
 ZMK_COMBO(combo_space, &kp SPACE, B4 B3 B2 B1, L_BASE)
