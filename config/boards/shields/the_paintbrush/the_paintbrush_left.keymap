@@ -90,10 +90,10 @@
   
   caps_tog: behavior_caps_tog {
     compatible = "zmk,behavior-hold-tap";
-    #binding-cells = <0>;
+    #binding-cells = <2>;
     flavor = "hold-preferred";
     tapping-term-ms = <HOLDTAP_TERM>;
-    bindings = <&caps_word>, <&kp CAPS>;
+    bindings = <&caps_word>, <&kp>;
   };
   
   release_all: release_all {
@@ -124,7 +124,7 @@ ZMK_COMBO(tab,       &mt LS(TAB)  TAB , B4 T3 T2   )
 // Combos modifiers
 ZMK_COMBO(ctrl,    &togkey_stikey LCTRL LCTRL,    T3 T2 B1)
 ZMK_COMBO(shift,   &togkey_stikey LSHFT LSHFT,    T3    B1)
-ZMK_COMBO(capsock, &caps_tog,                  T4 T3    B1)
+ZMK_COMBO(capsock, &caps_tog 0 CAPS,              T4 T3    B1)
 ZMK_COMBO(alt,     &togkey_stikey LALT   LALT,    T3 B2 B1)
 ZMK_COMBO(gui,     &togkey_stikey LGUI   LGUI, T4 T3 B2 B1)
 // Toggle keyboard layout
