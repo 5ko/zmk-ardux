@@ -28,29 +28,29 @@
 
 // French characters and accents from layout
 // "English (US, intl., with AltGr dead keys)":
-#define SUP2 RA(N2)
-#define DGRV RA(GRAVE)
-#define DTLD RA(TILDE)
-#define DAQT RA(SQT)
-#define DTRM RA(DQT)
-#define DCRC RA(N6)
-#define DCDL RA(PERCENT)
+#define F_SUP2 RA(N2)
+#define F_DGRV RA(GRAVE)
+#define F_DTLD RA(TILDE)
+#define F_DAQT RA(SQT)
+#define F_DTRM RA(DQT)
+#define F_DCRC RA(N6)
+#define F_DCDL RA(PERCENT)
 
-#define GBP  RA(DOLLAR)
-#define EURO RA(N5)
+#define F_GBP  RA(DOLLAR)
+#define F_EUR  RA(N5)
 
 
-#define NTLD RA(N)
-#define EAQT RA(E)
-#define ETRM RA(R)
-#define OTRM RA(P)
-#define UTRM RA(Y)
-#define OELG RA(X)
-#define AELG RA(Z)
-#define DEG  RA(COLON)
-#define MU   RA(M)
+#define F_NTLD RA(N)
+#define F_EAQT RA(E)
+#define F_ETRM RA(R)
+#define F_OTRM RA(P)
+#define F_UTRM RA(Y)
+#define F_OELG RA(X)
+#define F_AELG RA(Z)
+#define F_DEG  RA(COLON)
+#define F_MU   RA(M)
 // #define COPY RA(C)
-#define CCDL RA(COMMA)
+#define F_CCDL RA(COMMA)
 
 // MISSING LETTERS (macros): 
 // Agrave ACirc Egrave
@@ -146,17 +146,17 @@
     bindings = <&to>, <&kp>;
   };
   
-  kp2: macro_two_keys {
-    compatible = "zmk,behavior-macro-two-param";
-    #binding-cells = <2>;
-    bindings = <&macro_param_1to1>, <&kp MACRO_PLACEHOLDER>, 
-      <&macro_param_2to2>, <&kp MACRO_PLACEHOLDER>;
-  };
+//   kp2: macro_two_keys {
+//     compatible = "zmk,behavior-macro-two-param";
+//     #binding-cells = <2>;
+//     bindings = <&macro_param_1to1>, <&kp MACRO_PLACEHOLDER>, 
+//       <&macro_param_2to2>, <&kp MACRO_PLACEHOLDER>;
+//   };
   
 }; };
 
 
-#define SK_TK(key) &togkey_stikey key key   // Macro to apply momentary-layer-on-hold/toggle-layer-on-tap to a specific layer
+// #define SK_TK(key) &togkey_stikey key key   // Macro to apply momentary-layer-on-hold/toggle-layer-on-tap to a specific layer
 
 
 
@@ -171,10 +171,10 @@
 
 
 // Combos NUM layer
-ZMK_COMBO(num_7, &kp     N7,    T2 T1, L_NUMB)
-ZMK_COMBO(num_8, &kp     N8, T3 T2   , L_NUMB)
-ZMK_COMBO(num_0, &mt DEG N0, B3 B2   , L_NUMB)
-ZMK_COMBO(num_9, &kp     N9,    B2 B1, L_NUMB)
+ZMK_COMBO(num_7, &kp       N7,    T2 T1, L_NUMB)
+ZMK_COMBO(num_8, &kp       N8, T3 T2   , L_NUMB)
+ZMK_COMBO(num_0, &mt F_DEG N0, B3 B2   , L_NUMB)
+ZMK_COMBO(num_9, &kp       N9,    B2 B1, L_NUMB)
 // ZMK_COMBO(num_???, &kp ?, T3 T1, L_NUMB)
 // ZMK_COMBO(num_???, &kp ?, B3 B1, L_NUMB)
 // ZMK_COMBO(num_???, &kp ?, T3 T2 T1, L_NUMB)
@@ -224,13 +224,13 @@ ZMK_TAP_DANCE(td_quotes, bindings = <&mt DQT SQT>, <&kp GRAVE>;  tapping-term-ms
 // Combos SYM2 layer
 
 ZMK_TAP_DANCE(amp_pipe, bindings = <&mt PIPE AMPS>, <&kp CARET>;  tapping-term-ms = <TAPDANCE_TERM>; )
-ZMK_TAP_DANCE(dollar_euro, bindings = <&mt RA(N5) DOLLAR>, <&kp RA(LS(N4))>;  tapping-term-ms = <TAPDANCE_TERM>; )
+ZMK_TAP_DANCE(dollar_euro, bindings = <&mt F_EUR DOLLAR>, <&kp F_GBP>;  tapping-term-ms = <TAPDANCE_TERM>; )
 
-ZMK_COMBO(dead_trem,  &kp DTRM,    T3 T2   , L_SYM2)
-ZMK_COMBO(dead_circ,  &kp DCRC,    B3 B2   , L_SYM2)
+ZMK_COMBO(dead_trem,  &kp F_DTRM,    T3 T2   , L_SYM2)
+ZMK_COMBO(dead_circ,  &kp F_DCRC,    B3 B2   , L_SYM2)
 
-ZMK_COMBO(dead_acute, &kp DAQT,    B3 T2   , L_SYM2)
-ZMK_COMBO(dead_grave, &kp DGRV,    T3 B2   , L_SYM2)
+ZMK_COMBO(dead_acute, &kp F_DAQT,    B3 T2   , L_SYM2)
+ZMK_COMBO(dead_grave, &kp F_DGRV,    T3 B2   , L_SYM2)
 
 // ZMK_COMBO(oelig,  &mt RA(Z) RA(X)    , T4 T3      , L_SYM2)
 // ZMK_COMBO(ccedil, &mt RA(N) RA(COMMA), B4 B3      , L_SYM2)
@@ -243,27 +243,27 @@ ZMK_COMBO(dead_grave, &kp DGRV,    T3 B2   , L_SYM2)
 //          2:hducgb -1-1:yk 2-1:pq   3:mlfw    1--1:vx  1-1-:jz 1-2:  4:
 // etaonris hdlfcm u gypwb vkjxzq : Zim cryptography
 // etaoinsh rdlucm f wypvbg kqjxz : Linotype 
-ZMK_COMBO(combo_b,  &kp B      , T4 T3      , L_BASE)
-ZMK_COMBO(combo_c,  &mt CCDL C ,    T3 T2   , L_BASE)
-ZMK_COMBO(combo_d,  &kp D      ,       T2 T1, L_BASE)
-ZMK_COMBO(combo_h,  &kp H      ,       B2 B1, L_BASE)
-ZMK_COMBO(combo_u,  &mt UNDER U,    B3 B2   , L_BASE)
-ZMK_COMBO(combo_g,  &kp G      , B4 B3      , L_BASE)
+ZMK_COMBO(combo_b,  &kp B        , T4 T3      , L_BASE)
+ZMK_COMBO(combo_c,  &mt F_CCDL C ,    T3 T2   , L_BASE)
+ZMK_COMBO(combo_d,  &kp D        ,       T2 T1, L_BASE)
+ZMK_COMBO(combo_h,  &kp H        ,       B2 B1, L_BASE)
+ZMK_COMBO(combo_u,  &mt UNDER U  ,    B3 B2   , L_BASE)
+ZMK_COMBO(combo_g,  &kp G        , B4 B3      , L_BASE)
 
-ZMK_COMBO(combo_k,  &kp K,    T3    T1, L_BASE)
-ZMK_COMBO(combo_y,  &kp Y,    B3    B1, L_BASE)
-ZMK_COMBO(combo_j,  &kp J, T4    T2   , L_BASE)
-ZMK_COMBO(combo_z,  &kp Z, B4    B2   , L_BASE)
+ZMK_COMBO(combo_k,  &kp K        ,    T3    T1, L_BASE)
+ZMK_COMBO(combo_y,  &kp Y        ,    B3    B1, L_BASE)
+ZMK_COMBO(combo_j,  &kp J        , T4    T2   , L_BASE)
+ZMK_COMBO(combo_z,  &kp Z        , B4    B2   , L_BASE)
 
 
-ZMK_COMBO(combo_v,  &mt OELG V, T4       T1, L_BASE)
-ZMK_COMBO(combo_x,  &mt AELG X, B4       B1, L_BASE)
+ZMK_COMBO(combo_v,  &mt F_OELG V, T4       T1, L_BASE)
+ZMK_COMBO(combo_x,  &mt F_AELG X, B4       B1, L_BASE)
 
-ZMK_COMBO(combo_p,  &kp P, T4 T3    T1, L_BASE)
-ZMK_COMBO(combo_q,  &kp Q, B4 B3    B1, L_BASE)
+ZMK_COMBO(combo_p,  &kp P       , T4 T3    T1, L_BASE)
+ZMK_COMBO(combo_q,  &kp Q       , B4 B3    B1, L_BASE)
 
-ZMK_COMBO(combo_m,  &kp M,    B3 B2 B1, L_BASE)
-ZMK_COMBO(combo_w,  &kp W, B4 B3 B2   , L_BASE)
+ZMK_COMBO(combo_m,  &kp M       ,    B3 B2 B1, L_BASE)
+ZMK_COMBO(combo_w,  &kp W       , B4 B3 B2   , L_BASE)
 ZMK_COMBO(combo_l,  &toglay_key L_FRE L ,    T3 T2 T1, L_BASE)
 ZMK_COMBO(combo_f,  &toglay_key L_FUNC F, T4 T3 T2   , L_BASE)
 
@@ -357,8 +357,8 @@ ZMK_COMBO(reflash, &bootloader, T1 B4 B3 B2 B1)
   numbers {
     display-name = "NUM";
     bindings = <
-      &mo L_NUMB   &mt STAR  N3   &mt SUP2 N2    &mt DOT   N1
-      &none        &mt SLASH N6   &mt MINUS N5   &mt COMMA N4
+      &mo L_NUMB   &mt STAR  N3   &mt F_SUP2 N2    &mt DOT   N1
+      &none        &mt SLASH N6   &mt MINUS N5     &mt COMMA N4
     >;
   };
   quicknav {     
@@ -391,8 +391,10 @@ ZMK_COMBO(reflash, &bootloader, T1 B4 B3 B2 B1)
   french {
     display-name = "FRE";
     bindings = <
-      &none        &kp2 DCRC I  &kp2 DCRC A  &kp2 DGRV A
-      &kp2 DGRV U  &kp2 DCRC O  &kp EAQT     &kp2 DGRV E
+      &none &none &none &none
+      &none &none &none &none 
+//       &none        &kp2 DCRC I  &kp2 DCRC A  &kp2 DGRV A
+//       &kp2 DGRV U  &kp2 DCRC O  &kp EAQT     &kp2 DGRV E
     >;
   };
   
