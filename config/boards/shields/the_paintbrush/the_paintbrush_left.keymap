@@ -67,6 +67,7 @@
 #define COMBO_TERM 175
 #define TAPDANCE_TERM 400
 #define HOLDTAP_TERM 200
+#define HOLDTAP_LAYER_TERM 300
 #define  TIMEOUT_STICKY_LEADER_KEY  5000
 
 &sk {
@@ -105,6 +106,13 @@
       ;
   };
   
+  toglay_key: behavior_toglay_key {
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    flavor = "hold-preferred";
+    tapping-term-ms = <HOLDTAP_LAYER_TERM>;
+    bindings = <&tog>, <&kp>;
+  };
   
 }; };
 #define SK_TK(key) &togkey_stikey key key   // Macro to apply momentary-layer-on-hold/toggle-layer-on-tap to a specific layer
@@ -176,6 +184,7 @@ ZMK_COMBO(func_9,  &kp F9,  T2 T1, L_FUNC)
 ZMK_COMBO(func_10, &kp F10, T4 T3, L_FUNC)
 ZMK_COMBO(func_11, &kp F11, B2 B1, L_FUNC)
 ZMK_COMBO(func_12, &kp F12, B4 B3, L_FUNC)
+ZMK_COMBO(cancel_func,    &tog L_FUNC          , B4 T3      , L_FUNC)
 
 
 // Combos BLUETOOTH layer
@@ -239,7 +248,8 @@ ZMK_COMBO(combo_q,  &kp Q, B4 B3    B1, L_BASE)
 
 ZMK_COMBO(combo_l,  &kp L,    T3 T2 T1, L_BASE)
 ZMK_COMBO(combo_m,  &kp M,    B3 B2 B1, L_BASE)
-ZMK_COMBO(combo_f,  &kp F, T4 T3 T2   , L_BASE)
+// ZMK_COMBO(combo_f,  &kp F, T4 T3 T2   , L_BASE)
+ZMK_COMBO(combo_f,  &toglay_key L_FUNC F, T4 T3 T2   , L_BASE)
 ZMK_COMBO(combo_w,  &kp W, B4 B3 B2   , L_BASE)
 
 ZMK_COMBO(combo_space, &kp SPACE, B4 B3 B2 B1, L_BASE)
