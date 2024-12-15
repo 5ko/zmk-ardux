@@ -25,6 +25,37 @@
 
 #include "the_paintbrush_left.overlay"
 
+
+// French characters and accents from layout
+// "English (US, intl., with AltGr dead keys)":
+#define SUP2 RA(N2)
+#define DGRV RA(GRAVE)
+#define DTLD RA(TILDE)
+#define DAQT RA(SQT)
+#define DTRM RA(DQT)
+#define DCRC RA(N6)
+#define DCDL RA(PERCENT)
+
+#define GBP  RA(DOLLAR)
+#define EURO RA(N5)
+
+
+#define NTLD RA(N)
+#define EAQT RA(E)
+#define ETRM RA(R)
+#define OTRM RA(P)
+#define UTRM RA(Y)
+#define OELG RA(X)
+#define AELG RA(Z)
+#define DEG  RA(COLON)
+#define MU   RA(M)
+#define COPY RA(C)
+#define CCDL RA(COMMA)
+
+// MISSING LETTERS (macros): 
+// Agrave ACirc Egrave
+
+
 // ARTS RITA Row
 #define T4 0
 #define T3 1
@@ -52,12 +83,13 @@
  * Do NOT change these and do NOT change the order of the layers as shown below
  *****************************************/
 #define L_BASE 0
-#define L_MOD  1
-#define L_NUMB 2
-#define L_QNAV 3
-#define L_BT_S 4
-#define L_FUNC 5
-#define L_SYMB 6
+#define L_SYM1 1
+#define L_SYM2 2
+#define L_NUMB 3
+#define L_QNAV 4
+#define L_BT_S 5
+#define L_FUNC 6
+#define L_FRE  7
 
 
 
@@ -123,7 +155,6 @@
 
 // ZMK_COMBO(release_mods, &release_all, T1 B1)
 
-// ZMK_COMBO(layer_func, &tog L_FUNC, B4 T3 T2)
 
 // Tap dance is difficult with fingers 3 & 4, better use mod-taps
 // ZMK_TAP_DANCE(n1, bindings = <&kp N1>, <&kp N2>, <&kp N3>; tapping-term-ms = <TAPDANCE_TERM>; )
@@ -131,10 +162,10 @@
 
 
 // Combos NUM layer
-ZMK_COMBO(num_7, &kp N7,    T2 T1, L_NUMB)
-ZMK_COMBO(num_8, &kp N8, T3 T2   , L_NUMB)
-ZMK_COMBO(num_0, &kp N0, B3 B2   , L_NUMB)
-ZMK_COMBO(num_9, &kp N9,    B2 B1, L_NUMB)
+ZMK_COMBO(num_7, &kp     N7,    T2 T1, L_NUMB)
+ZMK_COMBO(num_8, &kp     N8, T3 T2   , L_NUMB)
+ZMK_COMBO(num_0, &mt DEG N0, B3 B2   , L_NUMB)
+ZMK_COMBO(num_9, &kp     N9,    B2 B1, L_NUMB)
 // ZMK_COMBO(num_???, &kp ?, T3 T1, L_NUMB)
 // ZMK_COMBO(num_???, &kp ?, B3 B1, L_NUMB)
 // ZMK_COMBO(num_???, &kp ?, T3 T2 T1, L_NUMB)
@@ -161,31 +192,46 @@ ZMK_COMBO(media_play, &kp K_PLAY_PAUSE, T3 T2 T1, L_QNAV)
 // ZMK_COMBO(qnav_redo,  &kp LC(LS(Z)),  B3 B2 B1, L_QNAV)
 
 // combos Functions layer
-ZMK_COMBO(func_9,  &kp F9,  T2 T1, L_FUNC)
-ZMK_COMBO(func_10, &kp F10, T4 T3, L_FUNC)
-ZMK_COMBO(func_11, &kp F11, B2 B1, L_FUNC)
-ZMK_COMBO(func_12, &kp F12, B4 B3, L_FUNC)
-ZMK_COMBO(cancel_func,      &to L_BASE, B4 T3      , L_FUNC)
-// ZMK_COMBO(cancel_func_2,    &to L_BASE, T4 T3 T2   , L_FUNC)
-ZMK_COMBO(cancel_func_3,    &to L_BASE, T4 B4, L_FUNC)
-ZMK_COMBO(question,    &kp QUESTION, T4 B4, L_BASE)
-// ZMK_COMBO(cancel_func_4,    &to L_BASE, B4 B3 B2   , L_FUNC)
+ZMK_COMBO(func_9,  &kp F9,        T2 T1, L_FUNC)
+ZMK_COMBO(func_10, &kp F10, T4 T3      , L_FUNC)
+ZMK_COMBO(func_11, &kp F11,       B2 B1, L_FUNC)
+ZMK_COMBO(func_12, &kp F12, B4 B3      , L_FUNC)
+
 
 
 // Combos BLUETOOTH layer
-ZMK_COMBO(layer_bt_select, &sl L_BT_S, T1 B1 T4 B4) // ALL layers
+ZMK_COMBO(layer_bt_select, &sl L_BT_S, T1 B1     T4 B4) // ALL layers
 ZMK_COMBO(bt_clear_current_profile, &bt BT_CLR, T3 T2 B3 B2, L_BT_S)
 
 
+// Combos SYM1 layer
+ZMK_COMBO(combo_ltgt,   &mt GT LT      , T4 T3      , L_SYM1)
+ZMK_COMBO(combo_equals, &mt TILDE EQUAL,    T3 T2   , L_SYM1)
 
-// Combos SYM layer
-ZMK_COMBO(combo_ltgt,   &mt GT LT    , T4 T3      , L_SYMB)
-ZMK_COMBO(combo_equals, &kp EQUAL    ,    T3 T2   , L_SYMB)
-
-
-
+ZMK_TAP_DANCE(td_quotes, bindings = <&mt DQT SQT>, <&kp GRAVE>;  tapping-term-ms = <TAPDANCE_TERM>; )
 
 
+
+// Combos SYM2 layer
+
+ZMK_TAP_DANCE(amp_pipe, bindings = <&mt PIPE AMPS>, <&kp CARET>;  tapping-term-ms = <TAPDANCE_TERM>; )
+ZMK_TAP_DANCE(dollar_euro, bindings = <&mt RA(N5) DOLLAR>, <&kp RA(LS(N4))>;  tapping-term-ms = <TAPDANCE_TERM>; )
+
+ZMK_COMBO(dead_trem,  &kp DTRM,    T3 T2   , L_SYM2)
+ZMK_COMBO(dead_circ,  &kp DCRC,    B3 B2   , L_SYM2)
+
+ZMK_COMBO(dead_acute, &kp DAQT,    B3 T2   , L_SYM2)
+ZMK_COMBO(dead_grave, &kp DGRV,    T3 B2   , L_SYM2)
+
+// ZMK_COMBO(oelig,  &mt RA(Z) RA(X)    , T4 T3      , L_SYM2)
+// ZMK_COMBO(ccedil, &mt RA(N) RA(COMMA), B4 B3      , L_SYM2)
+
+
+// FRENCH layer
+ZMK_MACRO_TWO_PARAM(kp2, 
+  #binding-cells = <2>;
+  bindings = <&kp>, <&kp>;
+)
 
 
 
@@ -195,7 +241,7 @@ ZMK_COMBO(combo_equals, &kp EQUAL    ,    T3 T2   , L_SYMB)
 // etaonris hdlfcm u gypwb vkjxzq : Zim cryptography
 // etaoinsh rdlucm f wypvbg kqjxz : Linotype 
 ZMK_COMBO(combo_b,  &kp B      , T4 T3      , L_BASE)
-ZMK_COMBO(combo_c,  &kp C      ,    T3 T2   , L_BASE)
+ZMK_COMBO(combo_c,  &mt CCDL C ,    T3 T2   , L_BASE)
 ZMK_COMBO(combo_d,  &kp D      ,       T2 T1, L_BASE)
 ZMK_COMBO(combo_h,  &kp H      ,       B2 B1, L_BASE)
 ZMK_COMBO(combo_u,  &mt UNDER U,    B3 B2   , L_BASE)
@@ -207,29 +253,59 @@ ZMK_COMBO(combo_j,  &kp J, T4    T2   , L_BASE)
 ZMK_COMBO(combo_z,  &kp Z, B4    B2   , L_BASE)
 
 
-ZMK_COMBO(combo_v,  &kp V, T4       T1, L_BASE)
-ZMK_COMBO(combo_x,  &kp X, B4       B1, L_BASE)
+ZMK_COMBO(combo_v,  &mt OELG V, T4       T1, L_BASE)
+ZMK_COMBO(combo_x,  &mt AELG X, B4       B1, L_BASE)
 
 ZMK_COMBO(combo_p,  &kp P, T4 T3    T1, L_BASE)
 ZMK_COMBO(combo_q,  &kp Q, B4 B3    B1, L_BASE)
 
-ZMK_COMBO(combo_l,  &kp L,    T3 T2 T1, L_BASE)
 ZMK_COMBO(combo_m,  &kp M,    B3 B2 B1, L_BASE)
-// ZMK_COMBO(combo_f,  &kp F, T4 T3 T2   , L_BASE)
-ZMK_COMBO(combo_f,  &toglay_key L_FUNC F, T4 T3 T2   , L_BASE)
 ZMK_COMBO(combo_w,  &kp W, B4 B3 B2   , L_BASE)
+ZMK_COMBO(combo_l,  &toglay_key L_FRE L ,    T3 T2 T1, L_BASE)
+ZMK_COMBO(combo_f,  &toglay_key L_FUNC F, T4 T3 T2   , L_BASE)
 
 ZMK_COMBO(combo_space, &kp SPACE, B4 B3 B2 B1, L_BASE)
-// ZMK_COMBO(combo_space, &mt UNDERSCORE SPACE, B4 B3 B2 B1, L_BASE)
 
+// ZMK_COMBO(combo_l,  &kp L,    T3 T2 T1, L_BASE)
+// ZMK_COMBO(combo_f,  &kp F, T4 T3 T2   , L_BASE)
+
+
+
+
+
+// TODO: Functions F1-F12, Accented characters or combining accents
+// Punctuation
+// Most used keyboard shortcuts Alt+Tab, Alt+Shift+Tab, Ctrl+(C|X|V|Z),  Alt+Caps
+// PrintScr,Ins
+// Mouse
+// Display
+
+
+// etinoars lcpduh fmgbvyw xkjzq
+// TODO: lc.pduhfm,()g=b:"-;vyw{}0x/k'1[]2&_jz\$q+53*4!|9>#68@%?7<^`~
+// TODO: list other stats from keylogger
+// 
+// etinoars lcpduh fmgbvyw xkjzq
+//          2:hducgb -1-1:yk 2-1:pq        3:mlfw  1--1:vx  1-1-:jz 1-2:  4:
+// etaonris hdlfcm u gypwb vkjxzq : Zim cryptography
+// etaoinsh rdlucm f wypvbg kqjxz : Linotype 
+// etaoinsh rdlcum w fgypbv kjxqz : Lewand
+// 
+// 
+
+
+
+// ZMK_TAP_DANCE(space_dot, bindings = <&lt L_MOD SPACE>, <&kp DOT>, <&kp COMMA>; tapping-term-ms = <TAPDANCE_TERM>; )
 
 
 // GLOBAL Combos 
+ZMK_COMBO(cancel_layers, &to L_BASE, B4 T3, L_FUNC L_FRE) // add here other layers to cancel
+ZMK_COMBO(escape,  &kp ESC, B4 T3     )
+
 ZMK_COMBO(enter_excl, &mt EXCL ENTER, T1 B1)
 
 ZMK_COMBO(backspace, &mt LC(BSPC) BSPC,       T2 B1)
 ZMK_COMBO(delete,    &mt LC(DEL)  DEL ,    B3 T2   )
-ZMK_COMBO(escape,    &kp ESC          , B4 T3      )
 ZMK_COMBO(tab,       &mt LS(TAB)  TAB , B4 T3 T2   )
 
 
@@ -247,38 +323,6 @@ ZMK_COMBO(kblayout, &kp LA(CAPS),              B4 B3 T2 T1)
 // ZMK_COMBO(name, bindings, keypos, layers, timeout, prior_idle, extra)
 ZMK_COMBO(reset, &sys_reset, 0 1 2 3 4 5 6 7)
 ZMK_COMBO(reflash, &bootloader, T1 B4 B3 B2 B1)
-
-
-
-
-// TODO: Functions F1-F12, Accented characters or combining accents
-// Punctuation
-// Most used keyboard shortcuts Alt+Tab, Alt+Shift+Tab, Ctrl+(C|X|V|Z),  Alt+Caps
-// PrintScr,Ins
-// Mouse
-// Display
-
-
-// etinoars lcpduh fmgbvyw xkjzq
-// TODO: lc.pduhfm,()g=b:"-;vyw{}0x/k'1[]2&_jz\$q+53*4!|9>#68@%?7<^`~
-// TODO: list other stats from keylogger
-// modifiers: 
-
-// 
-// etinoars lcpduh fmgbvyw xkjzq
-//          2:hducgb -1-1:yk 2-1:pq        3:mlfw  1--1:vx  1-1-:jz 1-2:  4:
-// etaonris hdlfcm u gypwb vkjxzq : Zim cryptography
-// etaoinsh rdlucm f wypvbg kqjxz : Linotype 
-// etaoinsh rdlcum w fgypbv kjxqz : Lewand
-// 
-// 
-
-
-
-// ZMK_TAP_DANCE(space_dot, bindings = <&lt L_MOD SPACE>, <&kp DOT>, <&kp COMMA>; tapping-term-ms = <TAPDANCE_TERM>; )
-
-
-
 /*****************************************
  * Standard ARDUX layer definitions
  * !!!!!!!!!! FOR LEFT HANDED USE !!!!!!!!!!
@@ -288,21 +332,29 @@ ZMK_COMBO(reflash, &bootloader, T1 B4 B3 B2 B1)
   base {
     display-name = "Base";
     bindings = <
-      &lt L_NUMB R  &kp I  &kp T   &lt L_SYMB A
-      &lt L_QNAV N  &kp O  &kp S   &kp E
+      &lt L_NUMB R  &kp I  &kp T   &lt L_SYM1 A
+      &lt L_QNAV N  &kp O  &kp S   &lt L_SYM2 E
     >;
   };
-  modif {
-    display-name = "Mod";
+  symbols1 {
+    display-name = "SYM1";
     bindings = <
-      SK_TK(LGUI)     &none              SK_TK(LALT)      &mt LS(TAB) TAB
-      &kp GLOBE       SK_TK(LSHFT)       SK_TK(LCTRL)     &mo L_MOD
+      &mt RBRC LBRC    &mt RBKT LBKT    &mt RPAR LPAR   &mo L_SYM1
+      &mt DOT COMMA    &kp SLASH BSLH   &td_quotes      &none
+    >;
+  };
+  symbols2 {
+    display-name = "SYM2";
+    bindings = <
+      
+      &mt PERCENT AT  &mt COLON SEMI   &amp_pipe     &mt QUESTION EXCL
+      &none           &mt DOT COMMA    &dollar_euro  &mo L_SYM2
     >;
   };
   numbers {
     display-name = "NUM";
     bindings = <
-      &mo L_NUMB   &mt STAR  N3   &mt PLUS  N2   &mt DOT   N1
+      &mo L_NUMB   &mt STAR  N3   &mt SUP2 N2    &mt DOT   N1
       &none        &mt SLASH N6   &mt MINUS N5   &mt COMMA N4
     >;
   };
@@ -310,8 +362,8 @@ ZMK_COMBO(reflash, &bootloader, T1 B4 B3 B2 B1)
     display-name = "QNAV";
     bindings = <                      
       &none        &none         &mt K_MUTE K_VOL_DN   &kp K_VOL_UP
-      &mo L_QNAV   &kp LS(F10)   &left_home            &right_end
-//       &mo L_QNAV   &kp DOWN   &mt LC(DEL)  DEL     &mt LC(BSPC)  BSPC
+      &mo L_QNAV   &kp LS(F10)   &mt HOME LEFT         &mt END RIGHT
+//    &mo L_QNAV   &kp LS(F10)   &left_home            &right_end
     >;         
   };
   bt {
@@ -329,15 +381,20 @@ ZMK_COMBO(reflash, &bootloader, T1 B4 B3 B2 B1)
     >;
   };
   
-  symbols {
-    display-name = "Symbol";
+// FRENCH LETTERS  (short long):
+// Ocirc+Icirc  Ocirc+Otrema Ugrave+Ucirc Agrave+Acirc
+// Etrema+Utrema Icirc+Itrema Ecirc+Etrema Eacute+Egrave
+// Combo N=Ntilde
+  french {
+    display-name = "FRE";
     bindings = <
-      &mt RBRC LBRC    &mt RBKT LBKT   &mt RPAR LPAR   &mo L_SYMB
-      &kp EQUAL        &kp MINUS       &kp QMARK       &none
+      &none        &kp2 DCRC I  &kp2 DCRC A  &kp2 DGRV A
+      &kp2 DGRV U  &kp2 DCRC O  &kp EAQT     &kp2 DGRV E
     >;
   };
   
-//   big_ardux_symbol { 
+  
+//   big_ardux_symbol {  &mt MINUS PLUS
 //     display-name = "Sym2";
 //     bindings = <
 //       &kp CARET &kp LBRC &kp RBRC &kp HASH  &kp GRAVE
