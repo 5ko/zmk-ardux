@@ -66,6 +66,7 @@
 #undef COMBO_TERM
 #define COMBO_TERM 175
 #define TAPDANCE_TERM 400
+#define HOLDTAP_TERM 200
 #define  TIMEOUT_STICKY_LEADER_KEY  5000
 
 &sk {
@@ -75,24 +76,24 @@
   release-after-ms = <TIMEOUT_STICKY_LEADER_KEY>;
 };
 &mt {
-  tapping-term-ms = <300>;
+  tapping-term-ms = <HOLDTAP_TERM>;
 };
 
 / { behaviors {
-  sk_tog: behavior_sk_tog {
+  togkey_stikey: behavior_sk_tog {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
     flavor = "hold-preferred";
-    tapping-term-ms = <TAPDANCE_TERM>;
-    bindings = <&kt>, <&sk>;
+    tapping-term-ms = <HOLDTAP_TERM>;
+    bindings = <&sk>, <&kt>;
   };
   
   caps_tog: behavior_caps_tog {
     compatible = "zmk,behavior-hold-tap";
-    #binding-cells = <2>;
+    #binding-cells = <0>;
     flavor = "hold-preferred";
-    tapping-term-ms = <TAPDANCE_TERM>;
-    bindings = <&kp>, <&caps_word>;
+    tapping-term-ms = <HOLDTAP_TERM>;
+    bindings = <&caps_word>, <&kp CAPS>;
   };
   
   release_all: release_all {
@@ -106,6 +107,28 @@
   
   
 }; };
+#define SK_TK(key) &togkey_stikey key key   // Macro to apply momentary-layer-on-hold/toggle-layer-on-tap to a specific layer
+
+
+// Combos editing
+ZMK_COMBO(enter_excl, &mt EXCL ENTER, T1 B1)
+
+ZMK_COMBO(backspace, &mt LC(BSPC) BSPC,       T2 B1)
+ZMK_COMBO(delete,    &mt LC(DEL)  DEL ,    B3 T2   )
+ZMK_COMBO(escape,    &kp ESC          , B4 T3      )
+ZMK_COMBO(tab,       &mt LS(TAB)  TAB , B4 T3 T2   )
+
+
+
+
+// Combos modifiers
+ZMK_COMBO(ctrl,    &togkey_stikey LCTRL LCTRL,    T3 T2 B1)
+ZMK_COMBO(shift,   &togkey_stikey LSHFT LSHFT,    T3    B1)
+ZMK_COMBO(capsock, &caps_tog,                  T4 T3    B1)
+ZMK_COMBO(alt,     &togkey_stikey LALT   LALT,    T3 B2 B1)
+ZMK_COMBO(gui,     &togkey_stikey LGUI   LGUI, T4 T3 B2 B1)
+// Toggle keyboard layout
+ZMK_COMBO(kblayout, &kp LS(LALT),              B4 B3 T2 T1)
 
 
 
@@ -184,12 +207,10 @@ ZMK_COMBO(bt_clear_current_profile, &bt BT_CLR, T3 T2 B3 B2, L_BT_S)
 // 
 // 
 
-#define SK_TK(key) &sk_tog key key   // Macro to apply momentary-layer-on-hold/toggle-layer-on-tap to a specific layer
 
 
 // ZMK_TAP_DANCE(space_dot, bindings = <&lt L_MOD SPACE>, <&kp DOT>, <&kp COMMA>; tapping-term-ms = <TAPDANCE_TERM>; )
 
-ZMK_COMBO(enter_excl, &mt EXCL ENTER, T1 B1)
 
 
 
@@ -198,12 +219,12 @@ ZMK_COMBO(enter_excl, &mt EXCL ENTER, T1 B1)
 //          2:hducgb -1-1:yk 2-1:pq   3:mlfw    1--1:vx  1-1-:jz 1-2:  4:
 // etaonris hdlfcm u gypwb vkjxzq : Zim cryptography
 // etaoinsh rdlucm f wypvbg kqjxz : Linotype 
-ZMK_COMBO(combo_b,  &kp B, T4 T3      , L_BASE)
-ZMK_COMBO(combo_c,  &kp C,    T3 T2   , L_BASE)
-ZMK_COMBO(combo_d,  &kp D,       T2 T1, L_BASE)
-ZMK_COMBO(combo_h,  &kp H,       B2 B1, L_BASE)
-ZMK_COMBO(combo_u,  &kp U,    B3 B2   , L_BASE)
-ZMK_COMBO(combo_g,  &kp G, B4 B3      , L_BASE)
+ZMK_COMBO(combo_b,  &kp B      , T4 T3      , L_BASE)
+ZMK_COMBO(combo_c,  &kp C      ,    T3 T2   , L_BASE)
+ZMK_COMBO(combo_d,  &kp D      ,       T2 T1, L_BASE)
+ZMK_COMBO(combo_h,  &kp H      ,       B2 B1, L_BASE)
+ZMK_COMBO(combo_u,  &mt UNDER U,    B3 B2   , L_BASE)
+ZMK_COMBO(combo_g,  &kp G      , B4 B3      , L_BASE)
 
 ZMK_COMBO(combo_k,  &kp K,    T3    T1, L_BASE)
 ZMK_COMBO(combo_y,  &kp Y,    B3    B1, L_BASE)
@@ -222,7 +243,8 @@ ZMK_COMBO(combo_m,  &kp M,    B3 B2 B1, L_BASE)
 ZMK_COMBO(combo_f,  &kp F, T4 T3 T2   , L_BASE)
 ZMK_COMBO(combo_w,  &kp W, B4 B3 B2   , L_BASE)
 
-ZMK_COMBO(combo_space, &mt UNDERSCORE SPACE, B4 B3 B2 B1, L_BASE)
+ZMK_COMBO(combo_space, &kp SPACE, B4 B3 B2 B1, L_BASE)
+// ZMK_COMBO(combo_space, &mt UNDERSCORE SPACE, B4 B3 B2 B1, L_BASE)
 
 
 /*****************************************
@@ -234,14 +256,14 @@ ZMK_COMBO(combo_space, &mt UNDERSCORE SPACE, B4 B3 B2 B1, L_BASE)
   base {
     display-name = "Base";
     bindings = <
-      &lt L_NUMB R  &kp I  &kp T   &kp A
-      &lt L_QNAV N  &kp O  &kp S   &lt L_MOD E
+      &lt L_NUMB R  &kp I  &kp T   &lt L_SYMB A
+      &lt L_QNAV N  &kp O  &kp S   &kp E
     >;
   };
   modif {
     display-name = "Mod";
     bindings = <
-      SK_TK(LGUI)     &caps_tog CAPS 0   SK_TK(LALT)      &mt LS(TAB) TAB
+      SK_TK(LGUI)     &none              SK_TK(LALT)      &mt LS(TAB) TAB
       &kp GLOBE       SK_TK(LSHFT)       SK_TK(LCTRL)     &mo L_MOD
     >;
   };
@@ -278,8 +300,8 @@ ZMK_COMBO(combo_space, &mt UNDERSCORE SPACE, B4 B3 B2 B1, L_BASE)
   symbols {
     display-name = "Symbol";
     bindings = <
-      &kp GRAVE            &kp SEMI  &kp BSLH  &kp EXCL
-      &kp EQUAL            &kp MINUS &kp QMARK &mo L_SYMB
+      &kp GRAVE            &kp SEMI  &kp BSLH  &mo L_SYMB
+      &kp EQUAL            &kp MINUS &kp QMARK &none
     >;
   };
   
