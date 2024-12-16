@@ -67,12 +67,12 @@
  * Do NOT change these and do NOT change the order of the layers as shown below
  *****************************************/
 #define L_BASE 0
-#define L_MOD  1
-#define L_NUMB 2
-#define L_NAV  3
-#define L_BT_S 4
-#define L_FUNC 5
-#define L_SYMB 6
+#define L_SYM1 1
+#define L_SYM2 2
+#define L_NUMB 3
+#define L_NAV  4
+#define L_BT_S 5
+#define L_FUNC 6
 
 
 
@@ -84,7 +84,7 @@
 #define TAPDANCE_TERM 400
 #define HOLDTAP_TERM 200
 #define HOLDTAP_LAYER_TERM 300
-#define  TIMEOUT_STICKY_LEADER_KEY  5000
+#define TIMEOUT_STICKY_LEADER_KEY  5000
 
 &sk {
   release-after-ms = <TIMEOUT_STICKY_LEADER_KEY>;
@@ -193,8 +193,8 @@ ZMK_COMBO(bt_clear_current_profile, &bt BT_CLR, T3 T2 B3 B2, L_BT_S)
 
 
 // Combos SYM layer
-ZMK_COMBO(combo_ltgt,   &mt GT LT    , T4 T3      , L_SYMB)
-ZMK_COMBO(combo_equals, &kp EQUAL    ,    T3 T2   , L_SYMB)
+ZMK_COMBO(combo_ltgt,   &mt GT LT      , T4 T3      , L_SYM1)
+ZMK_COMBO(combo_equals, &mt TILDE EQUAL,    T3 T2   , L_SYM1)
 
 
 
@@ -311,15 +311,22 @@ ZMK_COMBO(combo_reflash, &bootloader, T1 B4 B3 B2 B1)
   base {
     display-name = "Base";
     bindings = <
-      &lt L_NUMB R  &kp I  &kp T         &lt L_SYMB A
+      &lt L_NUMB R  &kp I  &kp T        &lt L_SYM1 A
       &lt L_NAV N  &kp O  &mt S_SRP S   &kp E
     >;
   };
-  modif {
-    display-name = "Mod";
+  symbols1 {
+    display-name = "SYM1";
     bindings = <
-      SK_TK(LGUI)     &none              SK_TK(LALT)      &mt LS(TAB) TAB
-      &kp GLOBE       SK_TK(LSHFT)       SK_TK(LCTRL)     &mo L_MOD
+      &mt RBRC LBRC    &mt RBKT LBKT   &mt RPAR LPAR   &mo L_SYM1
+     &none   &none  &none &none
+    >;
+  };
+  symbols2 {
+    display-name = "SYM2";
+    bindings = <
+      &none   &none   &none   &none
+      &none   &none   &none   &mo L_SYM2
     >;
   };
   numbers {
@@ -332,9 +339,8 @@ ZMK_COMBO(combo_reflash, &bootloader, T1 B4 B3 B2 B1)
   quicknav {     
     display-name = "NAV";
     bindings = <                      
-      &none        &none         &mt K_MUTE K_VOL_DN   &kp K_VOL_UP
+      &none       &none         &mt K_MUTE K_VOL_DN   &kp K_VOL_UP
       &mo L_NAV   &kp LS(F10)   &left_home            &right_end
-//       &mo L_NAV   &kp DOWN   &mt LC(DEL)  DEL     &mt LC(BSPC)  BSPC
     >;         
   };
   bt {
@@ -350,15 +356,8 @@ ZMK_COMBO(combo_reflash, &bootloader, T1 B4 B3 B2 B1)
       &kp F1   &kp F2    &kp F3    &kp F4
       &kp F9   &kp F10   &kp F11   &kp F12
     >;
-  };
+  };ije
   
-  symbols {
-    display-name = "Symbol";
-    bindings = <
-      &mt RBRC LBRC    &mt RBKT LBKT   &mt RPAR LPAR   &mo L_SYMB
-      &kp EQUAL        &kp MINUS       &kp QMARK       &none
-    >;
-  };
   
 //   big_ardux_symbol { 
 //     display-name = "Sym2";
