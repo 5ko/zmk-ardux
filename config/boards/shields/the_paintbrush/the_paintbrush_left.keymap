@@ -35,7 +35,9 @@
 #define DEAD_DIAERESIS RA(DQT)
 #define DEAD_CIRCUMFLEX RA(N6)
 #define DEGREE RA(COLON)
-#define F_DCDL RA(PERCENT)
+#define C_CDL RA(COMMA)
+#define S_SRP RA(S)
+
 
 
 // ARTS RITA Row
@@ -67,7 +69,7 @@
 #define L_BASE 0
 #define L_MOD  1
 #define L_NUMB 2
-#define L_QNAV 3
+#define L_NAV  3
 #define L_BT_S 4
 #define L_FUNC 5
 #define L_SYMB 6
@@ -157,21 +159,21 @@ ZMK_COMBO(num_9, &kp N9       ,    B2 B1, L_NUMB)
 
 
 // Combos QUICK NAV layer
-ZMK_COMBO(qnav_up, &kp UP,        B3 B2   , L_QNAV)
-ZMK_COMBO(qnav_dn, &kp DOWN,         B2 B1, L_QNAV)
-ZMK_COMBO(qnav_pgup, &kp PG_UP,   B3    B1, L_QNAV)
-ZMK_COMBO(qnav_pgdn,  &kp PG_DN,  B3 B2 B1, L_QNAV)
+ZMK_COMBO(qnav_up, &kp UP,        B3 B2   , L_NAV)
+ZMK_COMBO(qnav_dn, &kp DOWN,         B2 B1, L_NAV)
+ZMK_COMBO(qnav_pgup, &kp PG_UP,   B3    B1, L_NAV)
+ZMK_COMBO(qnav_pgdn,  &kp PG_DN,  B3 B2 B1, L_NAV)
 ZMK_TAP_DANCE(left_home, bindings = <&mt HOME LEFT>, <&kp LC(LEFT)>;  tapping-term-ms = <NAV_TAP_TERM>; )
 ZMK_TAP_DANCE(right_end, bindings = <&mt END RIGHT>, <&kp LC(RIGHT)>; tapping-term-ms = <NAV_TAP_TERM>; )
 
-ZMK_COMBO(media_next, &kp K_NEXT,          T2 T1, L_QNAV)
-ZMK_COMBO(media_prev, &kp K_PREV,       T3 T2   , L_QNAV)
-ZMK_COMBO(media_play, &kp K_PLAY_PAUSE, T3 T2 T1, L_QNAV)
+ZMK_COMBO(media_next, &kp K_NEXT,          T2 T1, L_NAV)
+ZMK_COMBO(media_prev, &kp K_PREV,       T3 T2   , L_NAV)
+ZMK_COMBO(media_play, &kp K_PLAY_PAUSE, T3 T2 T1, L_NAV)
 
 
 // C_AC_UNDO/K_UNDO and K_REDO work in LibreOffice but not in Kate/Gedit/Firefox
-// ZMK_COMBO(qnav_undo,  &kp LC(Z),      T3 T2 T1, L_QNAV)
-// ZMK_COMBO(qnav_redo,  &kp LC(LS(Z)),  B3 B2 B1, L_QNAV)
+// ZMK_COMBO(qnav_undo,  &kp LC(Z),      T3 T2 T1, L_NAV)
+// ZMK_COMBO(qnav_redo,  &kp LC(LS(Z)),  B3 B2 B1, L_NAV)
 
 // combos Functions layer
 ZMK_COMBO(func_5, &kp F5,    T3 T2   , L_FUNC) // 5=2+3
@@ -211,7 +213,7 @@ ZMK_COMBO(combo_equals, &kp EQUAL    ,    T3 T2   , L_SYMB)
 // etaonris hdlfcm u gypwb vkjxzq : Zim cryptography
 // etaoinsh rdlucm f wypvbg kqjxz : Linotype 
 ZMK_COMBO(combo_b,  &kp B      , T4 T3      , L_BASE)
-ZMK_COMBO(combo_c,  &kp C      ,    T3 T2   , L_BASE)
+ZMK_COMBO(combo_c,  &mt C_CDL C,    T3 T2   , L_BASE)
 ZMK_COMBO(combo_d,  &kp D      ,       T2 T1, L_BASE)
 ZMK_COMBO(combo_h,  &kp H      ,       B2 B1, L_BASE)
 ZMK_COMBO(combo_u,  &mt UNDER U,    B3 B2   , L_BASE)
@@ -229,14 +231,22 @@ ZMK_COMBO(combo_x,  &mt DEAD_CIRCUMFLEX X, B4       B1, L_BASE)
 ZMK_COMBO(combo_p,  &kp P, T4 T3    T1, L_BASE)
 ZMK_COMBO(combo_q,  &kp Q, B4 B3    B1, L_BASE)
 
-ZMK_COMBO(combo_l,  &kp L,    T3 T2 T1, L_BASE)
-ZMK_COMBO(combo_m,  &kp M,    B3 B2 B1, L_BASE)
+ZMK_COMBO(combo_l,  &mt PLUS  L,    T3 T2 T1, L_BASE)
+ZMK_COMBO(combo_m,  &mt MINUS M,    B3 B2 B1, L_BASE)
 // ZMK_COMBO(combo_f,  &kp F, T4 T3 T2   , L_BASE)
 ZMK_COMBO(combo_f,  &toglay_key L_FUNC F, T4 T3 T2   , L_BASE)
 ZMK_COMBO(combo_w,  &kp W, B4 B3 B2   , L_BASE)
 
 ZMK_COMBO(combo_space, &kp SPACE, B4 B3 B2 B1, L_BASE)
 // ZMK_COMBO(combo_space, &mt UNDERSCORE SPACE, B4 B3 B2 B1, L_BASE)
+
+// Base punctuation
+ZMK_COMBO(combo_slash,  &mt DEAD_ACUTE SLASH, B4       T1, L_BASE)
+ZMK_COMBO(combo_backs,  &mt DEAD_GRAVE BSLH , T4       B1, L_BASE)
+ZMK_COMBO(combo_comma,  &mt DOT COMMA       ,       B2 T1, L_BASE)
+ZMK_COMBO(combo_colon,  &mt COLON SEMI      ,    B2 T2   , L_BASE)
+ZMK_COMBO(combo_quote,  &mt DQT SQT         ,    B3 T3   , L_BASE)
+ZMK_COMBO(combo_exclq,  &mt QMARK EXCL      , B4 T4      , L_BASE)
 
 
 
@@ -247,7 +257,6 @@ ZMK_COMBO(backspace, &mt LC(BSPC) BSPC,       T2 B1)
 ZMK_COMBO(delete,    &mt LC(DEL)  DEL ,    B3 T2   )
 ZMK_COMBO(escape,    &kp ESC          , B4 T3      )
 ZMK_COMBO(tab,       &mt LS(TAB)  TAB , B4 T3 T2   )
-
 
 
 // Combos modifiers
@@ -304,8 +313,8 @@ ZMK_COMBO(reflash, &bootloader, T1 B4 B3 B2 B1)
   base {
     display-name = "Base";
     bindings = <
-      &lt L_NUMB R  &kp I  &kp T   &lt L_SYMB A
-      &lt L_QNAV N  &kp O  &kp S   &kp E
+      &lt L_NUMB R  &kp I  &kp T         &lt L_SYMB A
+      &lt L_NAV N  &kp O  &mt S_SRP S   &kp E
     >;
   };
   modif {
@@ -323,11 +332,11 @@ ZMK_COMBO(reflash, &bootloader, T1 B4 B3 B2 B1)
     >;
   };
   quicknav {     
-    display-name = "QNAV";
+    display-name = "NAV";
     bindings = <                      
       &none        &none         &mt K_MUTE K_VOL_DN   &kp K_VOL_UP
-      &mo L_QNAV   &kp LS(F10)   &left_home            &right_end
-//       &mo L_QNAV   &kp DOWN   &mt LC(DEL)  DEL     &mt LC(BSPC)  BSPC
+      &mo L_NAV   &kp LS(F10)   &left_home            &right_end
+//       &mo L_NAV   &kp DOWN   &mt LC(DEL)  DEL     &mt LC(BSPC)  BSPC
     >;         
   };
   bt {
