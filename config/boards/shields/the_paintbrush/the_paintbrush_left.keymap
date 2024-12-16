@@ -285,7 +285,7 @@ ZMK_COMBO(combo_reflash, &bootloader, T1 B4 B3 B2 B1)
 // PrintScr,Ins
 // Mouse
 // Display
-// MAYBE? ()={}[]><~ on SYM1
+// MAYBE? ( ) = { } [ ] > < ~  on SYM1
 
 
 
@@ -333,10 +333,10 @@ ZMK_COMBO(combo_reflash, &bootloader, T1 B4 B3 B2 B1)
   symbols2 {
     display-name = "SYM2";
     bindings = <
-      K_CUT    K_COPY    K_PASTE     &none
-      C_AC_CUT C_AC_COPY C_AC_PASTE  &mo L_SYM2
-//       &none   &none   &none   &none
-//       &none   &none   &none   &mo L_SYM2
+//       K_CUT    K_COPY    K_PASTE     &none
+//       C_AC_CUT C_AC_COPY C_AC_PASTE  &mo L_SYM2
+      &none   &none   &none   &none
+      &none   &none   &none   &mo L_SYM2
     >;
   };
   numbers {
