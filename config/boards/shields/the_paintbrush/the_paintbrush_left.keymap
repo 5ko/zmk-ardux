@@ -242,35 +242,35 @@ ZMK_COMBO(combo_backs,  &mt DEAD_GRAVE BSLH , T4       B1, L_BASE)
 ZMK_COMBO(combo_comma,  &mt DOT COMMA       ,       B2 T1, L_BASE)
 ZMK_COMBO(combo_colon,  &mt COLON SEMI      ,    B2 T2   , L_BASE)
 ZMK_COMBO(combo_quote,  &mt DQT SQT         ,    B3 T3   , L_BASE)
-ZMK_COMBO(combo_exclq,  &mt EXCL QMARK      , B4 T4      , L_BASE)
+ZMK_COMBO(combo_exclq,  &mt QMARK EXCL      , B4 T4      , L_BASE)
 
 
 
 // GLOBAL Combos 
-ZMK_COMBO(cancel_layers, &to L_BASE, B4 T3, L_FUNC ) //L_FRE add here other layers to cancel
-ZMK_COMBO(escape,  &kp ESC, B4 T3     )
-ZMK_COMBO(enter_excl, &kp ENTER, T1 B1)
+ZMK_COMBO(combo_cancel_layers, &to L_BASE, B4 T3, L_FUNC ) //L_FRE add here other layers to cancel
+ZMK_COMBO(combo_escape,  &kp ESC, B4 T3     )
+ZMK_COMBO(combo_enter, &kp ENTER, T1 B1)
 
-ZMK_COMBO(backspace, &mt LC(BSPC) BSPC,       T2 B1)
-ZMK_COMBO(delete,    &mt LC(DEL)  DEL ,    B3 T2   )
-ZMK_COMBO(escape,    &kp ESC          , B4 T3      )
-ZMK_COMBO(tab,       &mt LS(TAB)  TAB , B4 T3 T2   )
+ZMK_COMBO(combo_backspace, &mt LC(BSPC) BSPC,       T2 B1)
+ZMK_COMBO(combo_delete,    &mt LC(DEL)  DEL ,    B3 T2   )
+ZMK_COMBO(combo_escape,    &kp ESC          , B4 T3      )
+ZMK_COMBO(combo_tab,       &mt LS(TAB)  TAB , B4 T3 T2   )
 
 
 
 // Combos modifiers
-ZMK_COMBO(ctrl,    &togkey_stikey LCTRL LCTRL,    T3 T2 B1)
-ZMK_COMBO(shift,   &togkey_stikey LSHFT LSHFT,    T3    B1)
-ZMK_COMBO(capsock, &caps_tog 0 CAPS,              T4 T3    B1)
-ZMK_COMBO(alt,     &togkey_stikey LALT   LALT,    T3 B2 B1)
-ZMK_COMBO(gui,     &togkey_stikey LGUI   LGUI, T4 T3 B2 B1)
+ZMK_COMBO(combo_ctrl,    &togkey_stikey LCTRL LCTRL,    T3 T2 B1)
+ZMK_COMBO(combo_shift,   &togkey_stikey LSHFT LSHFT,    T3    B1)
+ZMK_COMBO(combo_capsock, &caps_tog 0 CAPS,              T4 T3    B1)
+ZMK_COMBO(combo_alt,     &togkey_stikey LALT   LALT,    T3 B2 B1)
+ZMK_COMBO(combo_gui,     &togkey_stikey LGUI   LGUI, T4 T3 B2 B1)
 // Toggle keyboard layout FIXME: why Alt+Shift doesn't work? Add macro GLOBE
-ZMK_COMBO(kblayout, &kp LA(CAPS),              B4 B3 T2 T1)
+ZMK_COMBO(combo_kblayout, &kp LA(CAPS),              B4 B3 T2 T1)
 
 
 // ZMK_COMBO(name, bindings, keypos, layers, timeout, prior_idle, extra)
-ZMK_COMBO(reset, &sys_reset, 0 1 2 3 4 5 6 7)
-ZMK_COMBO(reflash, &bootloader, T1 B4 B3 B2 B1)
+ZMK_COMBO(combo_reset, &sys_reset, 0 1 2 3 4 5 6 7)
+ZMK_COMBO(combo_reflash, &bootloader, T1 B4 B3 B2 B1)
 
 
 
