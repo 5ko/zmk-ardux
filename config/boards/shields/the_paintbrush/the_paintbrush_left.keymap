@@ -25,6 +25,19 @@
 
 #include "the_paintbrush_left.overlay"
 
+
+// French characters and accents from layout
+// "English (US, intl., with AltGr dead keys)":
+#define SUP2 RA(N2)
+// #define DEAD_GRAVE RA(GRAVE)
+// #define DEAD_TILDE RA(TILDE)
+// #define DEAD_ACUTE RA(SQT)
+// #define DEAD_DIAERESIS RA(DQT)
+// #define DEAD_CIRCUMFLEX RA(N6)
+// #define DEGREE RA(COLON)
+// #define F_DCDL RA(PERCENT)
+
+
 // ARTS RITA Row
 #define T4 0
 #define T3 1
@@ -65,6 +78,7 @@
 // Delay for combo
 #undef COMBO_TERM
 #define COMBO_TERM 175
+#define NAV_TAP_TERM 300
 #define TAPDANCE_TERM 400
 #define HOLDTAP_TERM 200
 #define HOLDTAP_LAYER_TERM 300
@@ -147,7 +161,6 @@ ZMK_COMBO(qnav_up, &kp UP,        B3 B2   , L_QNAV)
 ZMK_COMBO(qnav_dn, &kp DOWN,         B2 B1, L_QNAV)
 ZMK_COMBO(qnav_pgup, &kp PG_UP,   B3    B1, L_QNAV)
 ZMK_COMBO(qnav_pgdn,  &kp PG_DN,  B3 B2 B1, L_QNAV)
-#define NAV_TAP_TERM 150
 ZMK_TAP_DANCE(left_home, bindings = <&mt HOME LEFT>, <&kp LC(LEFT)>;  tapping-term-ms = <NAV_TAP_TERM>; )
 ZMK_TAP_DANCE(right_end, bindings = <&mt END RIGHT>, <&kp LC(RIGHT)>; tapping-term-ms = <NAV_TAP_TERM>; )
 
