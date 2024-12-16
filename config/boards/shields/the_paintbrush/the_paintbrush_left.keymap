@@ -43,6 +43,7 @@
 #define AELIG RA(Z)
 #define EURO  RA(5)
 #define GBP   RA(DOLLAR)
+#define NEXTLAYOUT LA(LSHFT)
 
 
 
@@ -146,12 +147,10 @@
 
 
 
+// Does this work? 
 // ZMK_COMBO(release_mods, &release_all, T1 B1)
 
-// ZMK_COMBO(layer_func, &tog L_FUNC, B4 T3 T2)
-
 // Tap dance is difficult with fingers 3 & 4, better use mod-taps
-// ZMK_TAP_DANCE(n1, bindings = <&kp N1>, <&kp N2>, <&kp N3>; tapping-term-ms = <TAPDANCE_TERM>; )
 
 
 
@@ -191,7 +190,6 @@ ZMK_COMBO(func_G, &kp F6, T4 T3 T2   , L_FUNC) // 6=1+2+3
 ZMK_COMBO(func_7, &kp F7,       T2 T1, L_FUNC) // 7=3+4
 ZMK_COMBO(func_H, &kp F7, T4 T3    T1, L_FUNC) // 7=1+2+4
 ZMK_COMBO(func_8, &kp F8, T4    T2 T1, L_FUNC) // 8=4+3+1
-// ZMK_COMBO(cancel_func,      &to L_BASE, B4 T3      , L_FUNC)
 
 
 // Combos BLUETOOTH layer
@@ -206,33 +204,7 @@ ZMK_COMBO(combo_equals, &mt TILDE EQUAL,    T3 T2   , L_SYM1)
 
 
 
-
-// ZMK_MACRO(egrave, bindings = <&kp DEAD_GRAVE &kp E>; wait-ms = <50>; tap-ms = <5>; )
-// ZMK_MACRO(agrave, bindings = <&kp DEAD_GRAVE &kp A>; wait-ms = <50>; tap-ms = <5>; )
-// ZMK_MACRO(ugrave, bindings = <&kp DEAD_GRAVE &kp U>; wait-ms = <50>; tap-ms = <5>; )
-// ZMK_MACRO(ecirc , bindings = <&kp DEAD_CIRCUMFLEX &kp E>; wait-ms = <50>; tap-ms = <5>; )
-// ZMK_MACRO(acirc , bindings = <&kp DEAD_CIRCUMFLEX &kp A>; wait-ms = <50>; tap-ms = <5>; )
-// ZMK_MACRO(icirc , bindings = <&kp DEAD_CIRCUMFLEX &kp I>; wait-ms = <50>; tap-ms = <5>; )
-// ZMK_MACRO(ocirc , bindings = <&kp DEAD_CIRCUMFLEX &kp O>; wait-ms = <50>; tap-ms = <5>; )
-// ZMK_MACRO(ucirc , bindings = <&kp DEAD_CIRCUMFLEX &kp U>; wait-ms = <50>; tap-ms = <5>; )
-// ZMK_MACRO(idiaer , bindings = <&kp DEAD_DIAERESIS &kp I>; wait-ms = <50>; tap-ms = <5>; )
-
-
-// ZMK_TAP_DANCE(eeee, bindings = <&mt L_SYM2 E>, <&kp EACUTE>, <&egrave>, <&ecirc>; tapping-term-ms = <TAPDANCE_3_TERM>; )
-// ZMK_TAP_DANCE(aaaa, bindings = <&mt L_SYM1 A>, <&agrave>, <&acirc>; tapping-term-ms = <TAPDANCE_3_TERM>; )
-
-// ZMK_TAP_DANCE(oouu, bindings = <&kp O>, <&ocirc>, <&ucirc>, <&ugrave>; tapping-term-ms = <TAPDANCE_4_TERM>; )
-
-// ZMK_TAP_DANCE(iiii, bindings = <&kp I>, <&icirc>, <&idiaer>; tapping-term-ms = <TAPDANCE_3_TERM>; )
-
-// ZMK_TAP_DANCE(nnnn, bindings = <&mt L_NAV N>, <&kp NTILDE>; tapping-term-ms = <TAPDANCE_3_TERM>; )
-// ZMK_TAP_DANCE(ssss, bindings = <&mt STAR S>, <&kp S_SRP>; tapping-term-ms = <TAPDANCE_2_TERM>; )
-
-// Base letter combost
-// etinoars lcpduh fmgbvyw xkjzq
-//          2:hducgb -1-1:yk 2-1:pq   3:mlfw    1--1:vx  1-1-:jz 1-2:  4:
-// etaonris hdlfcm u gypwb vkjxzq : Zim cryptography
-// etaoinsh rdlucm f wypvbg kqjxz : Linotype 
+// Base letter combos
 ZMK_COMBO(combo_b,  &mt AMPS  B, T4 T3      , L_BASE)
 ZMK_COMBO(combo_c,  &mt C_CDL C,    T3 T2   , L_BASE)
 ZMK_COMBO(combo_d,  &mt DLLR  D,       T2 T1, L_BASE)
@@ -286,11 +258,12 @@ ZMK_COMBO(combo_tab,       &mt LS(TAB)  TAB , B4 T3 T2   )
 // Combos modifiers
 ZMK_COMBO(combo_ctrl,    &togkey_stikey LCTRL LCTRL,    T3 T2 B1)
 ZMK_COMBO(combo_shift,   &togkey_stikey LSHFT LSHFT,    T3    B1)
-ZMK_COMBO(combo_capsock, &caps_tog 0 CAPS,           T4 T3    B1)
+ZMK_COMBO(combo_capsock, &kp CAPS,                   T4 T3    B1)
 ZMK_COMBO(combo_alt,     &togkey_stikey LALT   LALT,    T3 B2 B1)
+ZMK_COMBO(combo_altgr,   &togkey_stikey RALT   RALT, T4 T3 B2 B1)
 ZMK_COMBO(combo_gui,     &togkey_stikey LGUI   LGUI, T4 T3 B2 B1)
-// Toggle keyboard layout FIXME: why Alt+Shift doesn't work? Add macro GLOBE
-ZMK_COMBO(combo_kblayout, &kp LA(CAPS),              B4 B3 T2 T1)
+ZMK_COMBO(combo_kblayout, &mt GLOBE NEXTLAYOUT     , B4 B3 T2 T1)
+
 
 
 // ZMK_COMBO(name, bindings, keypos, layers, timeout, prior_idle, extra)
