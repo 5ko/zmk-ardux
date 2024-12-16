@@ -183,11 +183,7 @@ ZMK_COMBO(func_G, &kp F6, T4 T3 T2   , L_FUNC) // 6=1+2+3
 ZMK_COMBO(func_7, &kp F7,       T2 T1, L_FUNC) // 7=3+4
 ZMK_COMBO(func_H, &kp F7, T4 T3    T1, L_FUNC) // 7=1+2+4
 ZMK_COMBO(func_8, &kp F8, T4    T2 T1, L_FUNC) // 8=4+3+1
-ZMK_COMBO(cancel_func,      &to L_BASE, B4 T3      , L_FUNC)
-// ZMK_COMBO(cancel_func_2,    &to L_BASE, T4 T3 T2   , L_FUNC)
-ZMK_COMBO(cancel_func_3,    &to L_BASE, T4 B4, L_FUNC)
-ZMK_COMBO(question,    &kp QUESTION, T4 B4, L_BASE)
-// ZMK_COMBO(cancel_func_4,    &to L_BASE, B4 B3 B2   , L_FUNC)
+// ZMK_COMBO(cancel_func,      &to L_BASE, B4 T3      , L_FUNC)
 
 
 // Combos BLUETOOTH layer
@@ -233,7 +229,7 @@ ZMK_COMBO(combo_q,  &kp Q, B4 B3    B1, L_BASE)
 
 ZMK_COMBO(combo_l,  &mt PLUS  L,    T3 T2 T1, L_BASE)
 ZMK_COMBO(combo_m,  &mt MINUS M,    B3 B2 B1, L_BASE)
-// ZMK_COMBO(combo_f,  &kp F, T4 T3 T2   , L_BASE)
+
 ZMK_COMBO(combo_f,  &toglay_key L_FUNC F, T4 T3 T2   , L_BASE)
 ZMK_COMBO(combo_w,  &kp W, B4 B3 B2   , L_BASE)
 
@@ -246,17 +242,20 @@ ZMK_COMBO(combo_backs,  &mt DEAD_GRAVE BSLH , T4       B1, L_BASE)
 ZMK_COMBO(combo_comma,  &mt DOT COMMA       ,       B2 T1, L_BASE)
 ZMK_COMBO(combo_colon,  &mt COLON SEMI      ,    B2 T2   , L_BASE)
 ZMK_COMBO(combo_quote,  &mt DQT SQT         ,    B3 T3   , L_BASE)
-ZMK_COMBO(combo_exclq,  &mt QMARK EXCL      , B4 T4      , L_BASE)
+ZMK_COMBO(combo_exclq,  &mt EXCL QMARK      , B4 T4      , L_BASE)
 
 
 
 // GLOBAL Combos 
-ZMK_COMBO(enter_excl, &mt EXCL ENTER, T1 B1)
+ZMK_COMBO(cancel_layers, &to L_BASE, B4 T3, L_FUNC ) //L_FRE add here other layers to cancel
+ZMK_COMBO(escape,  &kp ESC, B4 T3     )
+ZMK_COMBO(enter_excl, &kp ENTER, T1 B1)
 
 ZMK_COMBO(backspace, &mt LC(BSPC) BSPC,       T2 B1)
 ZMK_COMBO(delete,    &mt LC(DEL)  DEL ,    B3 T2   )
 ZMK_COMBO(escape,    &kp ESC          , B4 T3      )
 ZMK_COMBO(tab,       &mt LS(TAB)  TAB , B4 T3 T2   )
+
 
 
 // Combos modifiers
@@ -272,7 +271,6 @@ ZMK_COMBO(kblayout, &kp LA(CAPS),              B4 B3 T2 T1)
 // ZMK_COMBO(name, bindings, keypos, layers, timeout, prior_idle, extra)
 ZMK_COMBO(reset, &sys_reset, 0 1 2 3 4 5 6 7)
 ZMK_COMBO(reflash, &bootloader, T1 B4 B3 B2 B1)
-
 
 
 
