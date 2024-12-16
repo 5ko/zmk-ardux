@@ -37,10 +37,10 @@
 #define DEGREE RA(COLON)
 #define C_CDL RA(COMMA)
 #define S_SRP RA(S)
-// #define OELIG RA(K)
-// #define AELIG RA(Z)
-// #define EURO  RA(5)
-// #define GBP   RA(DOLLAR)
+#define OELIG RA(K)
+#define AELIG RA(Z)
+#define EURO  RA(5)
+#define GBP   RA(DOLLAR)
 
 
 
