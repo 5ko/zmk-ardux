@@ -79,7 +79,7 @@
 #define L_NAV  4
 #define L_BT_S 5
 #define L_FUNC 6
-
+#define L_SCT  7
 
 
 
@@ -208,28 +208,28 @@ ZMK_COMBO(combo_equals, &mt TILDE EQUAL,    T3 T2   , L_SYM1)
 
 
 
-ZMK_MACRO(egrave, bindings = <&kp DEAD_GRAVE &kp E>; wait-ms = <50>; tap-ms = <5>; )
-ZMK_MACRO(agrave, bindings = <&kp DEAD_GRAVE &kp A>; wait-ms = <50>; tap-ms = <5>; )
-ZMK_MACRO(ugrave, bindings = <&kp DEAD_GRAVE &kp U>; wait-ms = <50>; tap-ms = <5>; )
-ZMK_MACRO(ecirc , bindings = <&kp DEAD_CIRCUMFLEX &kp E>; wait-ms = <50>; tap-ms = <5>; )
-ZMK_MACRO(acirc , bindings = <&kp DEAD_CIRCUMFLEX &kp A>; wait-ms = <50>; tap-ms = <5>; )
-ZMK_MACRO(icirc , bindings = <&kp DEAD_CIRCUMFLEX &kp I>; wait-ms = <50>; tap-ms = <5>; )
-ZMK_MACRO(ocirc , bindings = <&kp DEAD_CIRCUMFLEX &kp O>; wait-ms = <50>; tap-ms = <5>; )
-ZMK_MACRO(ucirc , bindings = <&kp DEAD_CIRCUMFLEX &kp U>; wait-ms = <50>; tap-ms = <5>; )
-ZMK_MACRO(idiaer , bindings = <&kp DEAD_DIAERESIS &kp I>; wait-ms = <50>; tap-ms = <5>; )
+// ZMK_MACRO(egrave, bindings = <&kp DEAD_GRAVE &kp E>; wait-ms = <50>; tap-ms = <5>; )
+// ZMK_MACRO(agrave, bindings = <&kp DEAD_GRAVE &kp A>; wait-ms = <50>; tap-ms = <5>; )
+// ZMK_MACRO(ugrave, bindings = <&kp DEAD_GRAVE &kp U>; wait-ms = <50>; tap-ms = <5>; )
+// ZMK_MACRO(ecirc , bindings = <&kp DEAD_CIRCUMFLEX &kp E>; wait-ms = <50>; tap-ms = <5>; )
+// ZMK_MACRO(acirc , bindings = <&kp DEAD_CIRCUMFLEX &kp A>; wait-ms = <50>; tap-ms = <5>; )
+// ZMK_MACRO(icirc , bindings = <&kp DEAD_CIRCUMFLEX &kp I>; wait-ms = <50>; tap-ms = <5>; )
+// ZMK_MACRO(ocirc , bindings = <&kp DEAD_CIRCUMFLEX &kp O>; wait-ms = <50>; tap-ms = <5>; )
+// ZMK_MACRO(ucirc , bindings = <&kp DEAD_CIRCUMFLEX &kp U>; wait-ms = <50>; tap-ms = <5>; )
+// ZMK_MACRO(idiaer , bindings = <&kp DEAD_DIAERESIS &kp I>; wait-ms = <50>; tap-ms = <5>; )
 
 
-ZMK_TAP_DANCE(eeee, bindings = <&mt L_SYM2 E>, <&kp EACUTE>, <&egrave>, <&ecirc>; tapping-term-ms = <TAPDANCE_4_TERM>; )
-ZMK_TAP_DANCE(aaaa, bindings = <&mt L_SYM1 A>, <&agrave>, <&acirc>; tapping-term-ms = <TAPDANCE_3_TERM>; )
+// ZMK_TAP_DANCE(eeee, bindings = <&mt L_SYM2 E>, <&kp EACUTE>, <&egrave>, <&ecirc>; tapping-term-ms = <TAPDANCE_3_TERM>; )
+// ZMK_TAP_DANCE(aaaa, bindings = <&mt L_SYM1 A>, <&agrave>, <&acirc>; tapping-term-ms = <TAPDANCE_3_TERM>; )
 
-ZMK_TAP_DANCE(oouu, bindings = <&kp O>, <&ocirc>, <&ucirc>, <&ugrave>; tapping-term-ms = <TAPDANCE_4_TERM>; )
+// ZMK_TAP_DANCE(oouu, bindings = <&kp O>, <&ocirc>, <&ucirc>, <&ugrave>; tapping-term-ms = <TAPDANCE_4_TERM>; )
 
-ZMK_TAP_DANCE(iiii, bindings = <&kp I>, <&icirc>, <&idiaer>; tapping-term-ms = <TAPDANCE_3_TERM>; )
+// ZMK_TAP_DANCE(iiii, bindings = <&kp I>, <&icirc>, <&idiaer>; tapping-term-ms = <TAPDANCE_3_TERM>; )
 
-ZMK_TAP_DANCE(nnnn, bindings = <&mt L_NAV N>, <&kp NTILDE>; tapping-term-ms = <TAPDANCE_2_TERM>; )
-ZMK_TAP_DANCE(ssss, bindings = <&mt STAR S>, <&kp S_SRP>; tapping-term-ms = <TAPDANCE_2_TERM>; )
+// ZMK_TAP_DANCE(nnnn, bindings = <&mt L_NAV N>, <&kp NTILDE>; tapping-term-ms = <TAPDANCE_3_TERM>; )
+// ZMK_TAP_DANCE(ssss, bindings = <&mt STAR S>, <&kp S_SRP>; tapping-term-ms = <TAPDANCE_2_TERM>; )
 
-// Base letter combos
+// Base letter combost
 // etinoars lcpduh fmgbvyw xkjzq
 //          2:hducgb -1-1:yk 2-1:pq   3:mlfw    1--1:vx  1-1-:jz 1-2:  4:
 // etaonris hdlfcm u gypwb vkjxzq : Zim cryptography
@@ -343,17 +343,17 @@ ZMK_COMBO(combo_reflash, &bootloader, T1 B4 B3 B2 B1)
   base {
     display-name = "Base";
     bindings = <
-//       &lt L_NUMB R  &kp I   &kp T         &lt L_SYM1 A
-      &lt L_NUMB R  &iiii   &kp T         &aaaa
-      &nnnn         &oouu   &ssss    &eeee
-//       &lt L_NAV N   &kp O   &mt STAR S    &mt L_SYM2 E
+      &lt L_NUMB R  &lt L_SCT I   &kp T         &lt L_SYM1 A
+      &lt L_NAV N   &kp O         &mt STAR S    &mt L_SYM2 E
+//       &lt L_NUMB R  &iiii   &kp T         &aaaa
+//       &nnnn         &oouu   &ssss    &eeee
     >;
   };
   symbols1 {
     display-name = "SYM1";
     bindings = <
       &mt RBRC LBRC    &mt RBKT LBKT   &mt RPAR LPAR   &mo L_SYM1
-     &none   &none  &none &none
+      &none   &none  &none &none
     >;
   };
   symbols2 {
@@ -391,6 +391,14 @@ ZMK_COMBO(combo_reflash, &bootloader, T1 B4 B3 B2 B1)
     bindings = <
       &kp F1   &kp F2    &kp F3    &kp F4
       &kp F9   &kp F10   &kp F11   &kp F12
+    >;
+  };
+  
+  shortcuts {
+    display-name = "SHRCT";
+    bindings = <
+      &none   &mo L_SCT    &mt LC(LS(V)) LS(INS)    &mt LS(DEL) LC(INS)
+      &none   &none        &kp LC(Y)                &mt LC(LS(Z)) LC(Z)
     >;
   };
   
