@@ -208,30 +208,30 @@ ZMK_COMBO(combo_equals, &mt TILDE EQUAL,    T3 T2   , L_SYM1)
 //          2:hducgb -1-1:yk 2-1:pq   3:mlfw    1--1:vx  1-1-:jz 1-2:  4:
 // etaonris hdlfcm u gypwb vkjxzq : Zim cryptography
 // etaoinsh rdlucm f wypvbg kqjxz : Linotype 
-ZMK_COMBO(combo_b,  &kp B      , T4 T3      , L_BASE)
+ZMK_COMBO(combo_b,  &mt AMPS  B, T4 T3      , L_BASE)
 ZMK_COMBO(combo_c,  &mt C_CDL C,    T3 T2   , L_BASE)
-ZMK_COMBO(combo_d,  &kp D      ,       T2 T1, L_BASE)
-ZMK_COMBO(combo_h,  &kp H      ,       B2 B1, L_BASE)
+ZMK_COMBO(combo_d,  &mt DLLR  D,       T2 T1, L_BASE)
+ZMK_COMBO(combo_h,  &mt HASH  H,       B2 B1, L_BASE)
 ZMK_COMBO(combo_u,  &mt UNDER U,    B3 B2   , L_BASE)
 ZMK_COMBO(combo_g,  &kp G      , B4 B3      , L_BASE)
 
-ZMK_COMBO(combo_k,  &kp K,    T3    T1, L_BASE)
-ZMK_COMBO(combo_y,  &kp Y,    B3    B1, L_BASE)
-ZMK_COMBO(combo_j,  &kp J, T4    T2   , L_BASE)
-ZMK_COMBO(combo_z,  &kp Z, B4    B2   , L_BASE)
+ZMK_COMBO(combo_k,  &kp       K,    T3    T1, L_BASE)
+ZMK_COMBO(combo_y,  &kp       Y,    B3    B1, L_BASE)
+ZMK_COMBO(combo_j,  &kp       J, T4    T2   , L_BASE)
+ZMK_COMBO(combo_z,  &kp       Z, B4    B2   , L_BASE)
 
 
 ZMK_COMBO(combo_v,  &mt DEAD_DIAERESIS  V, T4       T1, L_BASE)
 ZMK_COMBO(combo_x,  &mt DEAD_CIRCUMFLEX X, B4       B1, L_BASE)
 
-ZMK_COMBO(combo_p,  &kp P, T4 T3    T1, L_BASE)
-ZMK_COMBO(combo_q,  &kp Q, B4 B3    B1, L_BASE)
+ZMK_COMBO(combo_p,  &mt PIPE  P, T4 T3    T1, L_BASE)
+ZMK_COMBO(combo_q,  &kp PRCNT Q, B4 B3    B1, L_BASE)
 
 ZMK_COMBO(combo_l,  &mt PLUS  L,    T3 T2 T1, L_BASE)
 ZMK_COMBO(combo_m,  &mt MINUS M,    B3 B2 B1, L_BASE)
 
 ZMK_COMBO(combo_f,  &toglay_key L_FUNC F, T4 T3 T2   , L_BASE)
-ZMK_COMBO(combo_w,  &kp W, B4 B3 B2   , L_BASE)
+ZMK_COMBO(combo_w,  &mt AT             W, B4 B3 B2   , L_BASE)
 
 ZMK_COMBO(combo_space, &kp SPACE, B4 B3 B2 B1, L_BASE)
 // ZMK_COMBO(combo_space, &mt UNDERSCORE SPACE, B4 B3 B2 B1, L_BASE)
@@ -311,8 +311,8 @@ ZMK_COMBO(combo_reflash, &bootloader, T1 B4 B3 B2 B1)
   base {
     display-name = "Base";
     bindings = <
-      &lt L_NUMB R  &kp I  &kp T        &lt L_SYM1 A
-      &lt L_NAV N  &kp O  &mt S_SRP S   &kp E
+      &lt L_NUMB R  &kp I   &kp T         &lt L_SYM1 A
+      &lt L_NAV N   &kp O   &mt STAR S    &mt L_SYM2 E
     >;
   };
   symbols1 {
@@ -356,31 +356,11 @@ ZMK_COMBO(combo_reflash, &bootloader, T1 B4 B3 B2 B1)
       &kp F1   &kp F2    &kp F3    &kp F4
       &kp F9   &kp F10   &kp F11   &kp F12
     >;
-  };ije
+  };
   
-  
-//   big_ardux_symbol { 
-//     display-name = "Sym2";
-//     bindings = <
-//       &kp CARET &kp LBRC &kp RBRC &kp HASH  &kp GRAVE
-//       &kp AMPS  &kp LPAR &kp RPAR &kp DLLR  &kp BSLH
-//       &kp ASTRK &kp LBKT &kp RBKT &kp PRCNT &kp PIPE
-//       BIG_BETWEEN_ROW_THREE_THUMBS
-//       &none     &kp SEMI &none
-//     >;
-//   };
-//   big_ardux_function {
-//     display-name = "Func";
-//     bindings = <
-//       &kp F4  &kp F3  &kp F2  &kp F1  &none
-//       &kp F8  &kp F7  &kp F6  &kp F5  &none
-//       &kp F12 &kp F11 &kp F10 &kp F9 &none
-//       BIG_BETWEEN_ROW_THREE_THUMBS
-//       &none   &none   &none
-//     >;
-//   };
-}; };
 
+}; };
+  
 
   
 
