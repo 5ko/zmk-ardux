@@ -225,7 +225,7 @@ ZMK_COMBO(combo_v,  &mt DEAD_DIAERESIS  V, T4       T1, L_BASE)
 ZMK_COMBO(combo_x,  &mt DEAD_CIRCUMFLEX X, B4       B1, L_BASE)
 
 ZMK_COMBO(combo_p,  &mt PIPE  P, T4 T3    T1, L_BASE)
-ZMK_COMBO(combo_q,  &kp PRCNT Q, B4 B3    B1, L_BASE)
+ZMK_COMBO(combo_q,  &mt PRCNT Q, B4 B3    B1, L_BASE)
 
 ZMK_COMBO(combo_l,  &mt PLUS  L,    T3 T2 T1, L_BASE)
 ZMK_COMBO(combo_m,  &mt MINUS M,    B3 B2 B1, L_BASE)
