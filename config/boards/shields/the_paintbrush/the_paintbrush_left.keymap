@@ -39,7 +39,7 @@
 #define EACUTE RA(E)
 #define NTILDE RA(N)
 #define S_SRP RA(S)
-#define OELIG RA(K)
+#define OELIG RA(X)
 #define AELIG RA(Z)
 #define EURO  RA(5)
 #define GBP   RA(DOLLAR)
@@ -160,11 +160,10 @@ ZMK_COMBO(num_7, &kp N7       ,    T2 T1, L_NUMB)
 ZMK_COMBO(num_8, &kp N8       , T3 T2   , L_NUMB)
 ZMK_COMBO(num_0, &mt DEGREE N0, B3 B2   , L_NUMB)
 ZMK_COMBO(num_9, &kp N9       ,    B2 B1, L_NUMB)
-// ZMK_COMBO(num_???, &kp ?, T3 T1, L_NUMB)
+ZMK_COMBO(num_euro, &kp EURO  , T3    T1, L_NUMB)
 // ZMK_COMBO(num_???, &kp ?, B3 B1, L_NUMB)
 // ZMK_COMBO(num_???, &kp ?, T3 T2 T1, L_NUMB)
 // ZMK_COMBO(num_???, &kp ?, B3 B2 B1, L_NUMB)
-
 
 
 // Combos QUICK NAV layer
@@ -300,8 +299,8 @@ ZMK_COMBO(combo_reflash, &bootloader, T1 B4 B3 B2 B1)
 
 
 
-// TODO: RALT,  EURO, Either DEAD_TILDE or N-tilde, Numerosign
-// Most used keyboard shortcuts Alt+Tab, Alt+Shift+Tab, Ctrl+(C|X|V|Z),
+// TODO: RALT, Either DEAD_TILDE or N-tilde, Numerosign
+// Most used keyboard shortcuts Alt+Tab, Alt+Shift+Tab
 // PrintScr,Ins
 // Mouse
 // Display
@@ -345,8 +344,6 @@ ZMK_COMBO(combo_reflash, &bootloader, T1 B4 B3 B2 B1)
     bindings = <
       &lt L_NUMB R  &lt L_SCT I   &kp T         &lt L_SYM1 A
       &lt L_NAV N   &kp O         &mt STAR S    &mt L_SYM2 E
-//       &lt L_NUMB R  &iiii   &kp T         &aaaa
-//       &nnnn         &oouu   &ssss    &eeee
     >;
   };
   symbols1 {
@@ -359,20 +356,18 @@ ZMK_COMBO(combo_reflash, &bootloader, T1 B4 B3 B2 B1)
   symbols2 {
     display-name = "SYM2";
     bindings = <
-      &kp K_CUT    &kp K_COPY    &kp K_PASTE     &none
-      &kp C_AC_CUT &kp C_AC_COPY &kp C_AC_PASTE  &mo L_SYM2
-//       &none   &none   &none   &none
-//       &none   &none   &none   &mo L_SYM2
+      &none   &none   &kp KP_DOT     &none
+      &none   &none   &kp KP_COMMA   &mo L_SYM2
     >;
   };
   numbers {
     display-name = "NUM";
     bindings = <
-      &mo L_NUMB   &mt STAR  N3   &mt SUP2 N2    &mt DOT   N1
-      &none        &mt SLASH N6   &mt MINUS N5   &mt COMMA N4
+      &mo L_NUMB   &mt STAR  N3   &mt SUP2 N2    &mt KP_DOT N1
+      &none        &mt SLASH N6   &mt STAR N5    &mt COMMA N4
     >;
   };
-  quicknav {     
+  quicknav {
     display-name = "NAV";
     bindings = <                      
       &none       &none         &mt K_MUTE K_VOL_DN   &kp K_VOL_UP
@@ -397,13 +392,17 @@ ZMK_COMBO(combo_reflash, &bootloader, T1 B4 B3 B2 B1)
   shortcuts {
     display-name = "SHRCT";
     bindings = <
-      &none   &mo L_SCT    &mt LC(LS(V)) LS(INS)    &mt LS(DEL) LC(INS)
-      &none   &none        &kp LC(Y)                &mt LC(LS(Z)) LC(Z)
+      &none   &mo L_SCT  &mt LC(LS(V)) LS(INS)  &mt LS(DEL) LC(INS)
+      &none   &none      &mt LC(LS(S)) LC(S)    &mt LC(LS(Z)) LC(Z)
     >;
   };
   
 
 }; };
   
+//     key <AB08> { [     comma,       less,      ccedilla,         Ccedilla ] };
+//     key <AB01> { [	   z,          Z,            ae,               AE ] };
+//    key <AB02> { [        x, X,           oe,           OE              ] };
+//     key <BKSL> { [ backslash,        bar,       notsign,        brokenbar ] };
 
 
