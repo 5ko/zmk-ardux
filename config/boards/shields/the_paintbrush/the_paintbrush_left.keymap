@@ -36,6 +36,7 @@
 #define DEAD_CIRCUMFLEX RA(N6)
 #define DEGREE RA(COLON)
 #define C_CDL RA(COMMA)
+#define EACUTE RA(E)
 #define S_SRP RA(S)
 #define OELIG RA(K)
 #define AELIG RA(Z)
@@ -86,6 +87,9 @@
 #define COMBO_TERM 175
 #define NAV_TAP_TERM 300
 #define TAPDANCE_TERM 400
+#define TAPDANCE_2_TERM 300
+#define TAPDANCE_3_TERM 400
+#define TAPDANCE_4_TERM 500
 #define HOLDTAP_TERM 200
 #define HOLDTAP_LAYER_TERM 300
 #define TIMEOUT_STICKY_LEADER_KEY  5000
@@ -204,8 +208,9 @@ ZMK_COMBO(combo_equals, &mt TILDE EQUAL,    T3 T2   , L_SYM1)
 
 
 
+ZMK_MACRO(egrave, bindings = <&kp DEAD_GRAVE &kp E>; wait-ms = <50>; tap-ms = <5>; )
 
-
+ZMK_TAP_DANCE(eeee, bindings = <&mt L_SYM2 E>, <&kp EACUTE>, <&egrave>; tapping-term-ms = <TAPDANCE_3_TERM>; )
 
 // Base letter combos
 // etinoars lcpduh fmgbvyw xkjzq
@@ -217,7 +222,7 @@ ZMK_COMBO(combo_c,  &mt C_CDL C,    T3 T2   , L_BASE)
 ZMK_COMBO(combo_d,  &mt DLLR  D,       T2 T1, L_BASE)
 ZMK_COMBO(combo_h,  &mt HASH  H,       B2 B1, L_BASE)
 ZMK_COMBO(combo_u,  &mt UNDER U,    B3 B2   , L_BASE)
-ZMK_COMBO(combo_g,  &kp G      , B4 B3      , L_BASE)
+ZMK_COMBO(combo_g,  &mt GBP   G, B4 B3      , L_BASE)
 
 ZMK_COMBO(combo_k,  &mt AELIG K,    T3    T1, L_BASE)
 ZMK_COMBO(combo_y,  &mt OELIG Y,    B3    B1, L_BASE)
@@ -278,13 +283,16 @@ ZMK_COMBO(combo_reflash, &bootloader, T1 B4 B3 B2 B1)
 
 
 
-// TODO: RALT GBP EURO 
+// TODO: RALT  EURO 
 // Most used keyboard shortcuts Alt+Tab, Alt+Shift+Tab, Ctrl+(C|X|V|Z),
 // PrintScr,Ins
 // Mouse
 // Display
 // MAYBE? ( ) = { } [ ] > < ~  on SYM1
 
+// EMPTY: L_SYM1 B4 B3 B2
+//        L_SYM2 *
+//        L_NAV T3
 
 
 
@@ -318,7 +326,8 @@ ZMK_COMBO(combo_reflash, &bootloader, T1 B4 B3 B2 B1)
     display-name = "Base";
     bindings = <
       &lt L_NUMB R  &kp I   &kp T         &lt L_SYM1 A
-      &lt L_NAV N   &kp O   &mt STAR S    &mt L_SYM2 E
+      &lt L_NAV N   &kp O   &mt STAR S    &eeee
+//       &lt L_NAV N   &kp O   &mt STAR S    &mt L_SYM2 E
     >;
   };
   symbols1 {
