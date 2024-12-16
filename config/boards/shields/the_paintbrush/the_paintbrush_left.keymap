@@ -29,13 +29,13 @@
 // French characters and accents from layout
 // "English (US, intl., with AltGr dead keys)":
 #define SUP2 RA(N2)
-// #define DEAD_GRAVE RA(GRAVE)
-// #define DEAD_TILDE RA(TILDE)
-// #define DEAD_ACUTE RA(SQT)
-// #define DEAD_DIAERESIS RA(DQT)
-// #define DEAD_CIRCUMFLEX RA(N6)
-// #define DEGREE RA(COLON)
-// #define F_DCDL RA(PERCENT)
+#define DEAD_GRAVE RA(GRAVE)
+#define DEAD_TILDE RA(TILDE)
+#define DEAD_ACUTE RA(SQT)
+#define DEAD_DIAERESIS RA(DQT)
+#define DEAD_CIRCUMFLEX RA(N6)
+#define DEGREE RA(COLON)
+#define F_DCDL RA(PERCENT)
 
 
 // ARTS RITA Row
@@ -145,10 +145,10 @@
 
 
 // Combos NUM layer
-ZMK_COMBO(num_7, &kp N7,    T2 T1, L_NUMB)
-ZMK_COMBO(num_8, &kp N8, T3 T2   , L_NUMB)
-ZMK_COMBO(num_0, &kp N0, B3 B2   , L_NUMB)
-ZMK_COMBO(num_9, &kp N9,    B2 B1, L_NUMB)
+ZMK_COMBO(num_7, &kp N7       ,    T2 T1, L_NUMB)
+ZMK_COMBO(num_8, &kp N8       , T3 T2   , L_NUMB)
+ZMK_COMBO(num_0, &mt DEGREE N0, B3 B2   , L_NUMB)
+ZMK_COMBO(num_9, &kp N9       ,    B2 B1, L_NUMB)
 // ZMK_COMBO(num_???, &kp ?, T3 T1, L_NUMB)
 // ZMK_COMBO(num_???, &kp ?, B3 B1, L_NUMB)
 // ZMK_COMBO(num_???, &kp ?, T3 T2 T1, L_NUMB)
@@ -174,10 +174,13 @@ ZMK_COMBO(media_play, &kp K_PLAY_PAUSE, T3 T2 T1, L_QNAV)
 // ZMK_COMBO(qnav_redo,  &kp LC(LS(Z)),  B3 B2 B1, L_QNAV)
 
 // combos Functions layer
-ZMK_COMBO(func_9,  &kp F9,  T2 T1, L_FUNC)
-ZMK_COMBO(func_10, &kp F10, T4 T3, L_FUNC)
-ZMK_COMBO(func_11, &kp F11, B2 B1, L_FUNC)
-ZMK_COMBO(func_12, &kp F12, B4 B3, L_FUNC)
+ZMK_COMBO(func_5, &kp F5,    T3 T2   , L_FUNC) // 5=2+3
+ZMK_COMBO(func_E, &kp F5, T4       T1, L_FUNC) // 5=1+4
+ZMK_COMBO(func_6, &kp F6,    T3    T1, L_FUNC) // 6=2+4
+ZMK_COMBO(func_G, &kp F6, T4 T3 T2   , L_FUNC) // 6=1+2+3
+ZMK_COMBO(func_7, &kp F7,       T2 T1, L_FUNC) // 7=3+4
+ZMK_COMBO(func_H, &kp F7, T4 T3    T1, L_FUNC) // 7=1+2+4
+ZMK_COMBO(func_8, &kp F8, T4    T2 T1, L_FUNC) // 8=4+3+1
 ZMK_COMBO(cancel_func,      &to L_BASE, B4 T3      , L_FUNC)
 // ZMK_COMBO(cancel_func_2,    &to L_BASE, T4 T3 T2   , L_FUNC)
 ZMK_COMBO(cancel_func_3,    &to L_BASE, T4 B4, L_FUNC)
@@ -220,8 +223,8 @@ ZMK_COMBO(combo_j,  &kp J, T4    T2   , L_BASE)
 ZMK_COMBO(combo_z,  &kp Z, B4    B2   , L_BASE)
 
 
-ZMK_COMBO(combo_v,  &kp V, T4       T1, L_BASE)
-ZMK_COMBO(combo_x,  &kp X, B4       B1, L_BASE)
+ZMK_COMBO(combo_v,  &mt DEAD_DIAERESIS  V, T4       T1, L_BASE)
+ZMK_COMBO(combo_x,  &mt DEAD_CIRCUMFLEX X, B4       B1, L_BASE)
 
 ZMK_COMBO(combo_p,  &kp P, T4 T3    T1, L_BASE)
 ZMK_COMBO(combo_q,  &kp Q, B4 B3    B1, L_BASE)
@@ -315,7 +318,7 @@ ZMK_COMBO(reflash, &bootloader, T1 B4 B3 B2 B1)
   numbers {
     display-name = "NUM";
     bindings = <
-      &mo L_NUMB   &mt STAR  N3   &mt PLUS  N2   &mt DOT   N1
+      &mo L_NUMB   &mt STAR  N3   &mt SUP2 N2    &mt DOT   N1
       &none        &mt SLASH N6   &mt MINUS N5   &mt COMMA N4
     >;
   };
@@ -337,8 +340,8 @@ ZMK_COMBO(reflash, &bootloader, T1 B4 B3 B2 B1)
   func {
     display-name = "FUNC";
     bindings = <
-      &kp F4   &kp F3   &kp F2   &kp F1
-      &kp F8   &kp F7   &kp F6   &kp F5
+      &kp F1   &kp F2    &kp F3    &kp F4
+      &kp F9   &kp F10   &kp F11   &kp F12
     >;
   };
   
