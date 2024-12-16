@@ -219,8 +219,6 @@ ZMK_COMBO(combo_h,  &mt HASH  H,       B2 B1, L_BASE)
 ZMK_COMBO(combo_u,  &mt UNDER U,    B3 B2   , L_BASE)
 ZMK_COMBO(combo_g,  &kp G      , B4 B3      , L_BASE)
 
-// ZMK_COMBO(combo_k,  &kp K,    T3    T1, L_BASE)
-// ZMK_COMBO(combo_y,  &kp Y,    B3    B1, L_BASE)
 ZMK_COMBO(combo_k,  &mt AELIG K,    T3    T1, L_BASE)
 ZMK_COMBO(combo_y,  &mt OELIG Y,    B3    B1, L_BASE)
 ZMK_COMBO(combo_j,  &kp       J, T4    T2   , L_BASE)
@@ -333,10 +331,10 @@ ZMK_COMBO(combo_reflash, &bootloader, T1 B4 B3 B2 B1)
   symbols2 {
     display-name = "SYM2";
     bindings = <
-//       K_CUT    K_COPY    K_PASTE     &none
-//       C_AC_CUT C_AC_COPY C_AC_PASTE  &mo L_SYM2
-      &none   &none   &none   &none
-      &none   &none   &none   &mo L_SYM2
+      &kp K_CUT    &kp K_COPY    &kp K_PASTE     &none
+      &kp C_AC_CUT &kp C_AC_COPY &kp C_AC_PASTE  &mo L_SYM2
+//       &none   &none   &none   &none
+//       &none   &none   &none   &mo L_SYM2
     >;
   };
   numbers {
