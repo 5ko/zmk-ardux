@@ -37,6 +37,7 @@
 #define DEGREE RA(COLON)
 #define C_CDL RA(COMMA)
 #define EACUTE RA(E)
+#define NTILDE RA(N)
 #define S_SRP RA(S)
 #define OELIG RA(K)
 #define AELIG RA(Z)
@@ -207,10 +208,26 @@ ZMK_COMBO(combo_equals, &mt TILDE EQUAL,    T3 T2   , L_SYM1)
 
 
 
-
 ZMK_MACRO(egrave, bindings = <&kp DEAD_GRAVE &kp E>; wait-ms = <50>; tap-ms = <5>; )
+ZMK_MACRO(agrave, bindings = <&kp DEAD_GRAVE &kp A>; wait-ms = <50>; tap-ms = <5>; )
+ZMK_MACRO(ugrave, bindings = <&kp DEAD_GRAVE &kp U>; wait-ms = <50>; tap-ms = <5>; )
+ZMK_MACRO(ecirc , bindings = <&kp DEAD_CIRCUMFLEX &kp E>; wait-ms = <50>; tap-ms = <5>; )
+ZMK_MACRO(acirc , bindings = <&kp DEAD_CIRCUMFLEX &kp A>; wait-ms = <50>; tap-ms = <5>; )
+ZMK_MACRO(icirc , bindings = <&kp DEAD_CIRCUMFLEX &kp I>; wait-ms = <50>; tap-ms = <5>; )
+ZMK_MACRO(ocirc , bindings = <&kp DEAD_CIRCUMFLEX &kp O>; wait-ms = <50>; tap-ms = <5>; )
+ZMK_MACRO(ucirc , bindings = <&kp DEAD_CIRCUMFLEX &kp U>; wait-ms = <50>; tap-ms = <5>; )
+ZMK_MACRO(idiaer , bindings = <&kp DEAD_DIAERESIS &kp I>; wait-ms = <50>; tap-ms = <5>; )
 
-ZMK_TAP_DANCE(eeee, bindings = <&mt L_SYM2 E>, <&kp EACUTE>, <&egrave>; tapping-term-ms = <TAPDANCE_3_TERM>; )
+
+ZMK_TAP_DANCE(eeee, bindings = <&mt L_SYM2 E>, <&kp EACUTE>, <&egrave>, <&ecirc>; tapping-term-ms = <TAPDANCE_4_TERM>; )
+ZMK_TAP_DANCE(aaaa, bindings = <&mt L_SYM1 A>, <&agrave>, <&acirc>; tapping-term-ms = <TAPDANCE_3_TERM>; )
+
+ZMK_TAP_DANCE(oouu, bindings = <&kp O>, <&ocirc>, <&ucirc>, <&ugrave>; tapping-term-ms = <TAPDANCE_4_TERM>; )
+
+ZMK_TAP_DANCE(iiii, bindings = <&kp I>, <&icirc>, <&idiaer>; tapping-term-ms = <TAPDANCE_3_TERM>; )
+
+ZMK_TAP_DANCE(nnnn, bindings = <&mt L_NAV N>, <&kp NTILDE>; tapping-term-ms = <TAPDANCE_2_TERM>; )
+ZMK_TAP_DANCE(ssss, bindings = <&mt STAR S>, <&kp S_SRP>; tapping-term-ms = <TAPDANCE_2_TERM>; )
 
 // Base letter combos
 // etinoars lcpduh fmgbvyw xkjzq
@@ -283,11 +300,12 @@ ZMK_COMBO(combo_reflash, &bootloader, T1 B4 B3 B2 B1)
 
 
 
-// TODO: RALT  EURO 
+// TODO: RALT,  EURO, Either DEAD_TILDE or N-tilde, Numerosign
 // Most used keyboard shortcuts Alt+Tab, Alt+Shift+Tab, Ctrl+(C|X|V|Z),
 // PrintScr,Ins
 // Mouse
 // Display
+// Bulgarian (new phonetic) check rare characters
 // MAYBE? ( ) = { } [ ] > < ~  on SYM1
 
 // EMPTY: L_SYM1 B4 B3 B2
@@ -325,8 +343,9 @@ ZMK_COMBO(combo_reflash, &bootloader, T1 B4 B3 B2 B1)
   base {
     display-name = "Base";
     bindings = <
-      &lt L_NUMB R  &kp I   &kp T         &lt L_SYM1 A
-      &lt L_NAV N   &kp O   &mt STAR S    &eeee
+//       &lt L_NUMB R  &kp I   &kp T         &lt L_SYM1 A
+      &lt L_NUMB R  &iiii   &kp T         &aaaa
+      &nnnn         &oouu   &ssss    &eeee
 //       &lt L_NAV N   &kp O   &mt STAR S    &mt L_SYM2 E
     >;
   };
