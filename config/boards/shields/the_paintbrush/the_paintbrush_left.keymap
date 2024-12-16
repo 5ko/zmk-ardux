@@ -43,7 +43,7 @@
 #define AELIG RA(Z)
 #define EURO  RA(5)
 #define GBP   RA(DOLLAR)
-#define NEXTLAYOUT LA(LSHFT)
+#define NEXTLAYOUT GLOBE LA(LSHFT)
 
 
 
@@ -159,7 +159,7 @@ ZMK_COMBO(num_7, &kp N7       ,    T2 T1, L_NUMB)
 ZMK_COMBO(num_8, &kp N8       , T3 T2   , L_NUMB)
 ZMK_COMBO(num_0, &mt DEGREE N0, B3 B2   , L_NUMB)
 ZMK_COMBO(num_9, &kp N9       ,    B2 B1, L_NUMB)
-ZMK_COMBO(num_euro, &kp EURO  , T3    T1, L_NUMB)
+ZMK_COMBO(num_E, &kp EURO     , T3    T1, L_NUMB)
 // ZMK_COMBO(num_???, &kp ?, B3 B1, L_NUMB)
 // ZMK_COMBO(num_???, &kp ?, T3 T2 T1, L_NUMB)
 // ZMK_COMBO(num_???, &kp ?, B3 B2 B1, L_NUMB)
@@ -256,14 +256,15 @@ ZMK_COMBO(combo_tab,       &mt LS(TAB)  TAB , B4 T3 T2   )
 
 
 // Combos modifiers
-ZMK_COMBO(combo_ctrl,    &togkey_stikey LCTRL LCTRL,    T3 T2 B1)
-ZMK_COMBO(combo_shift,   &togkey_stikey LSHFT LSHFT,    T3    B1)
-ZMK_COMBO(combo_capsock, &kp CAPS,                   T4 T3    B1)
-ZMK_COMBO(combo_alt,     &togkey_stikey LALT   LALT,    T3 B2 B1)
-ZMK_COMBO(combo_altgr,   &togkey_stikey RALT   RALT, T4 T3 B2 B1)
-ZMK_COMBO(combo_gui,     &togkey_stikey LGUI   LGUI, T4 T3 B2 B1)
-ZMK_COMBO(combo_kblayout, &mt GLOBE NEXTLAYOUT     , B4 B3 T2 T1)
+ZMK_COMBO(combo_capsock,  &kp       CAPS, T4 T3    B1)
+ZMK_COMBO(combo_ctrl,     &sk      LCTRL,    T3 T2 B1)
+ZMK_COMBO(combo_shift,    &sk      LSHFT,    T3    B1)
+ZMK_COMBO(combo_alt,      &sk       LALT,    T3 B2 B1)
+ZMK_COMBO(combo_altgr,    &sk       RALT, T4 T3 B2 B1)
+ZMK_COMBO(combo_gui,      &sk       LGUI, T4 T3 B2 B1)
+ZMK_COMBO(combo_kblayout, &mt NEXTLAYOUT, B4 B3 T2 T1)
 
+// ZMK_COMBO(combo_alt,     &togkey_stikey LALT   LALT,    T3 B2 B1)
 
 
 // ZMK_COMBO(name, bindings, keypos, layers, timeout, prior_idle, extra)
@@ -272,33 +273,17 @@ ZMK_COMBO(combo_reflash, &bootloader, T1 B4 B3 B2 B1)
 
 
 
-// TODO: RALT, Either DEAD_TILDE or N-tilde, Numerosign
+// TODO: PrintScr,Ins
 // Most used keyboard shortcuts Alt+Tab, Alt+Shift+Tab
-// PrintScr,Ins
+// 
 // Mouse
 // Display
-// Bulgarian (new phonetic) check rare characters
 // MAYBE? ( ) = { } [ ] > < ~  on SYM1
 
 // EMPTY: L_SYM1 B4 B3 B2
 //        L_SYM2 *
 //        L_NAV T3
 
-
-
-// etinoars lcpduh fmgbvyw xkjzq
-// TODO: lc.pduhfm,()g=b:"-;vyw{}0x/k'1[]2&_jz\$q+53*4!|9>#68@%?7<^`~
-// TODO: list other stats from keylogger
-// modifiers: 
-
-// 
-// etinoars lcpduh fmgbvyw xkjzq
-//          2:hducgb -1-1:yk 2-1:pq        3:mlfw  1--1:vx  1-1-:jz 1-2:  4:
-// etaonris hdlfcm u gypwb vkjxzq : Zim cryptography
-// etaoinsh rdlucm f wypvbg kqjxz : Linotype 
-// etaoinsh rdlcum w fgypbv kjxqz : Lewand
-// 
-// 
 
 
 
