@@ -145,13 +145,14 @@
     #binding-cells = <1>;
     display-name = "Key Toggle On";
     toggle-mode = "on";
-  }
+  };
+  
   ku: behavior_keyup {
     compatible = "zmk,behavior-key-toggle";
     #binding-cells = <1>;
-    display-name = "Key Toggle On";
+    display-name = "Key Toggle Off";
     toggle-mode = "off";
-  }
+  };
   
   unmod: macro_release_mods {
     compatible = "zmk,behavior-macro";
