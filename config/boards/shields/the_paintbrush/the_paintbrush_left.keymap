@@ -81,6 +81,7 @@
 #define L_BT_S 5
 #define L_FUNC 6
 #define L_SCT  7
+#define L_MSE  8
 
 
 
@@ -225,6 +226,12 @@ ZMK_COMBO(bt_clear_current_profile, &bt BT_CLR, T3 T2 B3 B2, L_BT_S)
 // Combos SYM layer
 ZMK_COMBO(combo_ltgt,   &mt GT LT      , T4 T3      , L_SYM1)
 ZMK_COMBO(combo_equals, &mt TILDE EQUAL,    T3 T2   , L_SYM1)
+
+
+
+// Combos L_MSE layer
+ZMK_COMBO(combo_lay_mouse,   &tog L_MSE,    T3 B2 T1, L_MSE)
+
 
 
 
@@ -381,6 +388,15 @@ ZMK_COMBO(combo_reflash, &bootloader, T1 B4 B3 B2 B1)
     >;
   };
   
+  mouse {
+    display-name = "MOUSE";
+    bindings = <
+     &msc SCRL_UP    &mkp MB2       &mmv MOVE_UP   &mkp MB1
+     &msc SCRL_DOWN  &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT
+    >;
+  };
+  
+
 
 }; };
   
