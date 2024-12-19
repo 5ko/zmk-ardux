@@ -280,16 +280,16 @@ ZMK_COMBO(combo_tab,       &mt LS(TAB)  TAB , B4 T3 T2   )
 
 
 // Combos modifiers
-// ZMK_COMBO(combo_shift,    &kd      LSHFT,    T3    B1)
-// ZMK_COMBO(combo_capsock,  &kp       CAPS, T4 T3    B1)
-// ZMK_COMBO(combo_ctrl,     &kd      LCTRL,    T3 T2 B1)
+ZMK_COMBO(combo_shift,    &kd      LSHFT,    T3    B1)
+ZMK_COMBO(combo_capsock,  &kp      CAPS , T4 T3    B1)
+ZMK_COMBO(combo_ctrl,     &kd      LCTRL,    T3 T2 B1)
 
-// ZMK_COMBO(combo_alt,      &kd       LALT,    T3 B2 B1)
-// ZMK_COMBO(combo_altgr,    &kd       RALT, B4 T3 B2 B1)
+ZMK_COMBO(combo_alt,      &kd       LALT,    T3 B2 B1)
+ZMK_COMBO(combo_altgr,    &kd       RALT, B4 T3 B2 B1)
 
-// ZMK_COMBO(combo_gui,      &kd       LGUI, T4 T3 B2 B1)
+ZMK_COMBO(combo_gui,      &kd       LGUI, T4 T3 B2 B1)
 ZMK_COMBO(combo_kblayout, &kp NEXTLAYOUT, B4 B3 T2 T1)
-// ZMK_COMBO(combo_unmod,    &unmod,         T4 T3 T2 T1)
+ZMK_COMBO(combo_unmod,    &unmod,         T4 T3 T2 T1)
 
 // ZMK_COMBO(combo_alt,     &togkey_stikey LALT   LALT,    T3 B2 B1)
 
