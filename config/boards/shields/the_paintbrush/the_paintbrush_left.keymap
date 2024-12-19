@@ -140,21 +140,21 @@
     bindings = <&to>, <&kp>;
   };
   
-  kd: behavior_keydown {
-    compatible = "zmk,behavior-key-toggle";
-    #binding-cells = <1>;
-    display-name = "Key Toggle On";
-    toggle-mode = "on";
-    bindings = <&kt>;
-  };
-  
-  ku: behavior_keyup {
-    compatible = "zmk,behavior-key-toggle";
-    #binding-cells = <1>;
-    display-name = "Key Toggle Off";
-    toggle-mode = "off";
-    bindings = <&kt>;
-  };
+//   kd: behavior_keydown {
+//     compatible = "zmk,behavior-key-toggle";
+//     #binding-cells = <1>;
+//     display-name = "Key Toggle On";
+//     toggle-mode = "on";
+//     bindings = <&kt>;
+//   };
+//   
+//   ku: behavior_keyup {
+//     compatible = "zmk,behavior-key-toggle";
+//     #binding-cells = <1>;
+//     display-name = "Key Toggle Off";
+//     toggle-mode = "off";
+//     bindings = <&kt>;
+//   };
   
 //   unmod: macro_release_mods {
 //     compatible = "zmk,behavior-macro";
@@ -191,9 +191,9 @@ ZMK_COMBO(num_E, &kp EURO     , T3    T1, L_NUMB)
 
 
 // Combos QUICK NAV layer
-ZMK_COMBO(qnav_up, &kp UP,        B3 B2   , L_NAV)
-ZMK_COMBO(qnav_dn, &kp DOWN,         B2 B1, L_NAV)
-ZMK_COMBO(qnav_pgup, &kp PG_UP,   B3    B1, L_NAV)
+ZMK_COMBO(qnav_up,    &kp UP,     B3 B2   , L_NAV)
+ZMK_COMBO(qnav_dn,    &kp DOWN,      B2 B1, L_NAV)
+ZMK_COMBO(qnav_pgup,  &kp PG_UP,  B3    B1, L_NAV)
 ZMK_COMBO(qnav_pgdn,  &kp PG_DN,  B3 B2 B1, L_NAV)
 ZMK_TAP_DANCE(left_home, bindings = <&mt HOME LEFT>, <&kp LC(LEFT)>;  tapping-term-ms = <NAV_TAP_TERM>; )
 ZMK_TAP_DANCE(right_end, bindings = <&mt END RIGHT>, <&kp LC(RIGHT)>; tapping-term-ms = <NAV_TAP_TERM>; )
@@ -281,22 +281,22 @@ ZMK_COMBO(combo_tab,       &mt LS(TAB)  TAB , B4 T3 T2   )
 
 
 // Combos modifiers
-ZMK_COMBO(combo_shift,    &kd      LSHFT,    T3    B1)
-ZMK_COMBO(combo_capsock,  &kp       CAPS, T4 T3    B1)
-ZMK_COMBO(combo_ctrl,     &kd      LCTRL,    T3 T2 B1)
+// ZMK_COMBO(combo_shift,    &kd      LSHFT,    T3    B1)
+// ZMK_COMBO(combo_capsock,  &kp       CAPS, T4 T3    B1)
+// ZMK_COMBO(combo_ctrl,     &kd      LCTRL,    T3 T2 B1)
 
-ZMK_COMBO(combo_alt,      &kd       LALT,    T3 B2 B1)
-ZMK_COMBO(combo_altgr,    &kd       RALT, B4 T3 B2 B1)
+// ZMK_COMBO(combo_alt,      &kd       LALT,    T3 B2 B1)
+// ZMK_COMBO(combo_altgr,    &kd       RALT, B4 T3 B2 B1)
 
-ZMK_COMBO(combo_gui,      &kd       LGUI, T4 T3 B2 B1)
-ZMK_COMBO(combo_kblayout, &mt NEXTLAYOUT, B4 B3 T2 T1)
+// ZMK_COMBO(combo_gui,      &kd       LGUI, T4 T3 B2 B1)
+ZMK_COMBO(combo_kblayout, &kp NEXTLAYOUT, B4 B3 T2 T1)
 // ZMK_COMBO(combo_unmod,    &unmod,         T4 T3 T2 T1)
 
 // ZMK_COMBO(combo_alt,     &togkey_stikey LALT   LALT,    T3 B2 B1)
 
 
 // ZMK_COMBO(name, bindings, keypos, layers, timeout, prior_idle, extra)
-ZMK_COMBO(combo_reset, &sys_reset, 0 1 2 3 4 5 6 7)
+ZMK_COMBO(combo_reset,   &sys_reset,  0 1 2 3 4 5 6 7)
 ZMK_COMBO(combo_reflash, &bootloader, T1 B4 B3 B2 B1)
 
 
