@@ -154,14 +154,14 @@
     toggle-mode = "off";
   };
   
-  unmod: macro_release_mods {
-    compatible = "zmk,behavior-macro";
-    #binding-cells = <0>;
-    bindings
-      = <&to L_BASE>
-      , <&ku LSHFT &ku LCTRL &ku LALT &ku RALT &ku LGUI>
-      ;
-  };
+//   unmod: macro_release_mods {
+//     compatible = "zmk,behavior-macro";
+//     #binding-cells = <0>;
+//     bindings
+//       = <&to L_BASE>
+//       , <&ku LSHFT &ku LCTRL &ku LALT &ku RALT &ku LGUI>
+//       ;
+//   };
   
 }; };
 #define SK_TK(key) &togkey_stikey key key   // Macro to apply momentary-layer-on-hold/toggle-layer-on-tap to a specific layer
@@ -288,7 +288,7 @@ ZMK_COMBO(combo_altgr,    &kd       RALT, B4 T3 B2 B1)
 
 ZMK_COMBO(combo_gui,      &kd       LGUI, T4 T3 B2 B1)
 ZMK_COMBO(combo_kblayout, &mt NEXTLAYOUT, B4 B3 T2 T1)
-ZMK_COMBO(combo_unmod,    &unmod,         T4 T3 T2 T1)
+// ZMK_COMBO(combo_unmod,    &unmod,         T4 T3 T2 T1)
 
 // ZMK_COMBO(combo_alt,     &togkey_stikey LALT   LALT,    T3 B2 B1)
 
