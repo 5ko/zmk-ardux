@@ -156,14 +156,14 @@
   
   
   
-//   unmod: macro_release_mods {
-//     compatible = "zmk,behavior-macro";
-//     #binding-cells = <0>;
-//     bindings
-//       = <&to L_BASE>
-//       , <&ku LSHFT &ku LCTRL &ku LALT &ku RALT &ku LGUI>
-//       ;
-//   };
+  unmod: macro_release_mods {
+    compatible = "zmk,behavior-macro";
+    #binding-cells = <0>;
+    bindings
+      = <&to L_BASE>
+      , <&ku LSHFT &ku LCTRL &ku LALT &ku RALT &ku LGUI>
+      ;
+  };
   
 }; };
 #define SK_TK(key) &togkey_stikey key key   // Macro to apply momentary-layer-on-hold/toggle-layer-on-tap to a specific layer
