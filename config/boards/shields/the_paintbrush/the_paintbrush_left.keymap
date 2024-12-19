@@ -158,7 +158,9 @@
     compatible = "zmk,behavior-macro";
     #binding-cells = <0>;
     bindings
-      = <&ku LSHFT &ku LCTRL &ku LALT &ku RALT &ku LGUI &to L_BASE>;
+      = <&to L_BASE>
+      , <&ku LSHFT &ku LCTRL &ku LALT &ku RALT &ku LGUI>
+      ;
   };
   
 }; };
