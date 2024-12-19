@@ -140,21 +140,21 @@
     bindings = <&to>, <&kp>;
   };
   
-//   kd: behavior_keydown {
-//     compatible = "zmk,behavior-key-toggle";
-//     #binding-cells = <1>;
-//     display-name = "Key Toggle On";
-//     toggle-mode = "on";
+  kd: behavior_keydown {
+    compatible = "zmk,behavior-key-toggle";
+    #binding-cells = <1>;
+    display-name = "Key Toggle On";
+    toggle-mode = "on";
 //     bindings = <&kt>;
-//   };
-//   
-//   ku: behavior_keyup {
-//     compatible = "zmk,behavior-key-toggle";
-//     #binding-cells = <1>;
-//     display-name = "Key Toggle Off";
-//     toggle-mode = "off";
-//     bindings = <&kt>;
-//   };
+  };
+
+  ku: behavior_keyup {
+    compatible = "zmk,behavior-key-toggle";
+    #binding-cells = <1>;
+    display-name = "Key Toggle Off";
+    toggle-mode = "off";
+    bindings = <&kt>;
+  };
   
 //   unmod: macro_release_mods {
 //     compatible = "zmk,behavior-macro";
