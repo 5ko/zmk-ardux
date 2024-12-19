@@ -5,6 +5,8 @@
  * SPDX-License-Identifier: MIT
  */
 
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 1200  // default: 600
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 20    // default: 10
 
 
 #include <behaviors.dtsi>
@@ -43,7 +45,7 @@
 #define AELIG RA(Z)
 #define EURO  RA(5)
 #define GBP   RA(DOLLAR)
-#define NEXTLAYOUT GLOBE LA(LSHFT)
+#define NEXTLAYOUT &mt GLOBE LA(LSHFT)
 
 
 
@@ -287,15 +289,15 @@ ZMK_COMBO(combo_tab,       &mt LS(TAB)  TAB , B4 T3 T2   )
 
 
 // Combos modifiers
-ZMK_COMBO(combo_shift,    &kt      LSHFT,    T3    B1)
-ZMK_COMBO(combo_capsock,  &kp      CAPS , T4 T3    B1)
-ZMK_COMBO(combo_ctrl,     &kt      LCTRL,    T3 T2 B1)
+ZMK_COMBO(combo_shift,    &kt  LSHFT,    T3    B1)
+ZMK_COMBO(combo_capsock,  &kp  CAPS , T4 T3    B1)
+ZMK_COMBO(combo_ctrl,     &kt  LCTRL,    T3 T2 B1)
 
-ZMK_COMBO(combo_alt,      &kt       LALT,    T3 B2 B1)
-ZMK_COMBO(combo_altgr,    &kt       RALT, B4 T3 B2 B1)
+ZMK_COMBO(combo_alt,      &kt   LALT,    T3 B2 B1)
+ZMK_COMBO(combo_altgr,    &kt   RALT, B4 T3 B2 B1)
 
-ZMK_COMBO(combo_gui,      &kt       LGUI, T4 T3 B2 B1)
-ZMK_COMBO(combo_kblayout, &kp NEXTLAYOUT, B4 B3 T2 T1)
+ZMK_COMBO(combo_gui,      &kt   LGUI, T4 T3 B2 B1)
+ZMK_COMBO(combo_kblayout, NEXTLAYOUT, B4 B3 T2 T1)
 ZMK_COMBO(combo_unmod,    &unmod,         T4 T3 T2 T1)
 
 // ZMK_COMBO(combo_alt,     &togkey_stikey LALT   LALT,    T3 B2 B1)
