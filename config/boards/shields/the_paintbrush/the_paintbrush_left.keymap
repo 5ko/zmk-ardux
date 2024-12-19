@@ -230,7 +230,7 @@ ZMK_COMBO(combo_equals, &mt TILDE EQUAL,    T3 T2   , L_SYM1)
 
 
 // Combos L_MSE layer
-ZMK_COMBO(combo_lay_mouse,   &tog L_MSE,    T3 B2 T1, L_MSE)
+ZMK_COMBO(combo_lay_mouse,   &tog L_MSE,    T3 B2 T1)
 
 
 
