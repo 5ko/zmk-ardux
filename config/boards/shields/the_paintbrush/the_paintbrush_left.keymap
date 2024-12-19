@@ -5,8 +5,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-#define ZMK_POINTING_DEFAULT_MOVE_VAL 400  // default: 600
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 8    // default: 10
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 300  // default: 600
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 4    // default: 10
 
 
 #include <behaviors.dtsi>
@@ -232,9 +232,11 @@ ZMK_COMBO(combo_equals, &mt TILDE EQUAL,    T3 T2   , L_SYM1)
 
 
 // Combos L_MSE layer
-ZMK_COMBO(combo_lay_mouse, &tog L_MSE,    T3 B2 T1)
+ZMK_COMBO(lay_mouse, &tog L_MSE,    T3 B2 T1)
 
-ZMK_COMBO(combo_mb3,   &tog L_MSE,    T3    T1, L_MSE)
+ZMK_COMBO(combo_mb3,   &mkp MB3,    T3    T1, L_MSE)
+ZMK_COMBO(combo_mb3,   &mkp MB4,    T3 T2   , L_MSE)
+ZMK_COMBO(combo_mb3,   &mkp MB5,       T2 T1, L_MSE)
 
 
 
