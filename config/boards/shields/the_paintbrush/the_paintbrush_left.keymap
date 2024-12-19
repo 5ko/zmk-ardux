@@ -145,6 +145,7 @@
     #binding-cells = <1>;
     display-name = "Key Toggle On";
     toggle-mode = "on";
+    bindings = <&kt>;
   };
   
   ku: behavior_keyup {
@@ -152,6 +153,7 @@
     #binding-cells = <1>;
     display-name = "Key Toggle Off";
     toggle-mode = "off";
+    bindings = <&kt>;
   };
   
 //   unmod: macro_release_mods {
