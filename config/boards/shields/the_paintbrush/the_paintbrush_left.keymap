@@ -157,16 +157,26 @@
     toggle-mode = "off";
   };
   
+  lay_off: behavior_layer_off {
+    compatible = "zmk,behavior-toggle-layer";
+    #binding-cells = <1>;
+    display-name = "Toggle Layer On";
+    toggle-mode = "off";
+
+  }
+  
   
   
   unmod: macro_release_mods {
     compatible = "zmk,behavior-macro";
     #binding-cells = <0>;
     bindings
-      = <&to L_BASE>
+      = <&lay_off L_FUNC &lay_off L_MSE &lay_off L_BT_S>
       , <&ku LSHFT &ku LCTRL &ku LALT &ku RALT &ku LGUI>
       ;
   };
+  
+  
   
 }; };
 #define SK_TK(key) &togkey_stikey key key   // Macro to apply momentary-layer-on-hold/toggle-layer-on-tap to a specific layer
@@ -322,6 +332,7 @@ ZMK_COMBO(combo_reflash, &bootloader, T1 B4 B3 B2 B1)
 // EMPTY: L_SYM1 B4 B3 B2
 //        L_SYM2 *
 //        L_NAV T3
+
 
 
 
