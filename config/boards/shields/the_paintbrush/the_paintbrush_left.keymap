@@ -148,7 +148,7 @@
     compatible = "zmk,behavior-macro";
     #binding-cells = <0>;
     bindings
-      = <&lay_off L_FUNC &lay_off L_MSE &lay_off L_BT_S>
+      = <&lay_off L_FUN &lay_off L_MSE &lay_off L_BT_S>
       , <&ku LSHFT &ku LCTRL &ku LALT &ku RALT &ku LGUI>
       ;
   };
@@ -204,30 +204,18 @@ ZMK_TAP_DANCE(left_home, bindings = <&mt HOME LEFT>, <&kp LC(LEFT)>;  tapping-te
 ZMK_TAP_DANCE(right_end, bindings = <&mt END RIGHT>, <&kp LC(RIGHT)>; tapping-term-ms = <NAV_TAP_TERM>; )
 
 
-
-// ZMK_COMBO(media_next, &kp K_NEXT,          T2 T1, L_NAV)
-// ZMK_COMBO(media_prev, &kp K_PREV,       T3 T2   , L_NAV)
-// ZMK_COMBO(media_play, &kp K_PLAY_PAUSE, T3 T2 T1, L_NAV)
-
-
-// C_AC_UNDO/K_UNDO and K_REDO work in LibreOffice but not in Kate/Gedit/Firefox
+// Combos Media layer
+ZMK_COMBO(media_play, &kp K_PLAY_PAUSE, B3 B2 , L_MED)
 
 
 
 // Combos BLUETOOTH layer
-ZMK_COMBO(layer_bt_select, &sl L_BT_S, T1 B1 T4 B4) // ALL layers
-ZMK_COMBO(bt_clear_current_profile, &bt BT_CLR, T3 T2 B3 B2, L_BT_S)
-
-
-
-// Combos SYM layer
-ZMK_COMBO(combo_ltgt,   &mt GT LT      , T4 T3      , L_SYM)
-ZMK_COMBO(combo_equals, &mt TILDE EQUAL,    T3 T2   , L_SYM)
-
+ZMK_COMBO(layer_bt_select,          &sl L_BT_S, T1 B1             T4 B4) // ALL layers
+ZMK_COMBO(bt_clear_current_profile, &bt BT_CLR,       T3 T2 B3 B2      , L_BT_S)
 
 
 // Combos L_MSE layer
-ZMK_COMBO(lay_mouse, &tog L_MSE,    T3 B2 T1)
+ZMK_COMBO(lay_mouse, &tog L_MSE,    T3 B2 T1) // ALL layers
 
 ZMK_COMBO(combo_mb3,   &mkp MB3,    T3    T1, L_MSE)
 ZMK_COMBO(combo_mb4,   &mkp MB4,    T3 T2   , L_MSE)
@@ -249,7 +237,6 @@ ZMK_COMBO(combo_y,  &mt OELIG Y,    B3    B1, L_BASE)
 ZMK_COMBO(combo_j,  &kp       J, T4    T2   , L_BASE)
 ZMK_COMBO(combo_z,  &kp       Z, B4    B2   , L_BASE)
 
-
 ZMK_COMBO(combo_v,  &mt DEAD_DIAERESIS  V, T4       T1, L_BASE)
 ZMK_COMBO(combo_x,  &mt DEAD_CIRCUMFLEX X, B4       B1, L_BASE)
 
@@ -259,11 +246,11 @@ ZMK_COMBO(combo_q,  &mt PRCNT Q, B4 B3    B1, L_BASE)
 ZMK_COMBO(combo_l,  &mt PLUS  L,    T3 T2 T1, L_BASE)
 ZMK_COMBO(combo_m,  &mt MINUS M,    B3 B2 B1, L_BASE)
 
-ZMK_COMBO(combo_f,  &toglay_key L_FUNC F, T4 T3 T2   , L_BASE)
-ZMK_COMBO(combo_w,  &mt AT             W, B4 B3 B2   , L_BASE)
+ZMK_COMBO(combo_f,  &kp       F, T4 T3 T2   , L_BASE)
+ZMK_COMBO(combo_w,  &mt AT    W, B4 B3 B2   , L_BASE)
 
-ZMK_COMBO(combo_space, &kp SPACE, B4 B3 B2 B1, L_BASE)
-// ZMK_COMBO(combo_space, &mt UNDERSCORE SPACE, B4 B3 B2 B1, L_BASE)
+ZMK_COMBO(combo_sp, &kp   SPACE, B4 B3 B2 B1, L_BASE)
+
 
 // Base punctuation
 ZMK_COMBO(combo_slash,  &mt DEAD_ACUTE SLASH, B4       T1, L_BASE)
@@ -276,9 +263,9 @@ ZMK_COMBO(combo_exclq,  &mt QMARK EXCL      , B4 T4      , L_BASE)
 
 
 // GLOBAL Combos 
-ZMK_COMBO(combo_cancel_layers, &to L_BASE, B4 T3, L_FUNC ) //L_FRE add here other layers to cancel
-ZMK_COMBO(combo_escape,  &kp ESC, B4 T3     )
-ZMK_COMBO(combo_enter, &kp ENTER, T1 B1)
+// ZMK_COMBO(combo_cancel_layers, &to L_BASE, B4 T3, L_FUNC ) //L_FRE add here other layers to cancel
+ZMK_COMBO(combo_enter,   &kp ENTER,       T1 B1)
+ZMK_COMBO(combo_escape,  &kp ESC  , B4 T3      )
 
 ZMK_COMBO(combo_backspace, &mt LC(BSPC) BSPC,       T2 B1)
 ZMK_COMBO(combo_delete,    &mt LC(DEL)  DEL ,    B3 T2   )
@@ -307,11 +294,13 @@ ZMK_COMBO(combo_reset,   &sys_reset,  0 1 2 3 4 5 6 7)
 ZMK_COMBO(combo_reflash, &bootloader, T1 B4 B3 B2 B1)
 
 
-// TODO: PrintScr,Ins
+// TODO: Ins, hold-space, hold-enter, hold-t, hold-f
+//    HOLD: space, enter, escape. caps, LGUI, T, F, J, Z, *, YEN
+//    MEH key
 // Most used keyboard shortcuts Alt+Tab, Alt+Shift+Tab
 // 
 // Display
-// MAYBE? ( ) = { } [ ] > < ~  on SYM
+
 
 
 
@@ -360,8 +349,8 @@ ZMK_COMBO(combo_reflash, &bootloader, T1 B4 B3 B2 B1)
   media {
     display-name = "MED";
     bindings = <
-      &kp K_PLAY_PAUSE    &kp K_NEXT     &kp K_VOL_UP           &kp PRINTSCREEN
-      &none               &kp K_PREV     &mt K_MUTE K_VOL_DN    &mo L_MED
+      &none   &mt K_MUTE  K_VOL_DN    &mt K_MUTE  K_VOL_UP   &kp PRINTSCREEN
+      &none   &mt K_PP    K_PREV      &mt K_PP    K_NEXT     &mo L_MED
     >;
   };
   shortcuts {
