@@ -47,26 +47,45 @@
 
 
 // ARTS RITA Row
-#define T4 0
-#define T3 1
-#define T2 2
-#define T1 3
+INC_K(T4)
+INC_K(T3)
+INC_K(T2)
+INC_K(T1)
 // EYIO NOSE Row
-#define B4 4
-#define B3 5
-#define B2 6
-#define B1 7
+INC_K(B4)
+INC_K(B3)
+INC_K(B2)
+INC_K(B1)
 
+// #define T4 0
+// #define T3 1
+// #define T2 2
+// #define T1 3
+// // EYIO NOSE Row
+// #define B4 4
+// #define B3 5
+// #define B2 6
+// #define B1 7
 
-#define L_BASE 0
-#define L_NUM  1
-#define L_PAR  2
-#define L_NAV  3
-#define L_MED  4
-#define L_EDT  5
-#define L_FUN  6
-#define L_MSE  7
-#define L_BT_S 8
+INC_L(L_BASE)
+INC_L(L_NUM)
+INC_L(L_PAR)
+INC_L(L_NAV)
+INC_L(L_MED)
+INC_L(L_EDT)
+INC_L(L_FUN)
+INC_L(L_MSE)
+INC_L(L_BT_S)
+
+// #define L_BASE 0
+// #define L_NUM  1
+// #define L_PAR  2
+// #define L_NAV  3
+// #define L_MED  4
+// #define L_EDT  5
+// #define L_FUN  6
+// #define L_MSE  7
+// #define L_BT_S 8
 
 
 
