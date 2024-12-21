@@ -40,6 +40,11 @@
 #define YEN    RA(MINUS)
 
 
+#define CNT_L 0
+#define CNT_K 0
+#define INC_L(name) enum { name = CNT_L }; enum { CNT_L = CNT_L + 1 }
+#define INC_K(name) enum { name = CNT_K }; enum { CNT_K = CNT_K + 1 }
+
 
 // ARTS RITA Row
 #define T4 0
