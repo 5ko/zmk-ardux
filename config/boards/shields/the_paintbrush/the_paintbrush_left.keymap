@@ -53,15 +53,14 @@
 
 
 #define L_BASE 0
-#define L_SYM  1
-#define L_MED  2
-#define L_NUM  3
-#define L_NAV  4
-#define L_BT_S 5
-#define L_FUNC 6
-#define L_SCT  7
-#define L_MSE  8
-#define L_PAR  8
+#define L_NUM  1
+#define L_PAR  2
+#define L_NAV  3
+#define L_MED  4
+#define L_EDT  5
+#define L_FUN  6
+#define L_MSE  7
+#define L_BT_S 8
 
 
 
@@ -212,17 +211,7 @@ ZMK_TAP_DANCE(right_end, bindings = <&mt END RIGHT>, <&kp LC(RIGHT)>; tapping-te
 
 
 // C_AC_UNDO/K_UNDO and K_REDO work in LibreOffice but not in Kate/Gedit/Firefox
-// ZMK_COMBO(qnav_undo,  &kp LC(Z),      T3 T2 T1, L_NAV)
-// ZMK_COMBO(qnav_redo,  &kp LC(LS(Z)),  B3 B2 B1, L_NAV)
 
-// combos Functions layer
-ZMK_COMBO(func_5, &kp F5,    T3 T2   , L_FUNC) // 5=2+3
-ZMK_COMBO(func_E, &kp F5, T4       T1, L_FUNC) // 5=1+4
-ZMK_COMBO(func_6, &kp F6,    T3    T1, L_FUNC) // 6=2+4
-ZMK_COMBO(func_G, &kp F6, T4 T3 T2   , L_FUNC) // 6=1+2+3
-ZMK_COMBO(func_7, &kp F7,       T2 T1, L_FUNC) // 7=3+4
-ZMK_COMBO(func_H, &kp F7, T4 T3    T1, L_FUNC) // 7=1+2+4
-ZMK_COMBO(func_8, &kp F8, T4    T2 T1, L_FUNC) // 8=4+3+1
 
 
 // Combos BLUETOOTH layer
@@ -342,22 +331,8 @@ ZMK_COMBO(combo_reflash, &bootloader, T1 B4 B3 B2 B1)
   base {
     display-name = "Base";
     bindings = <
-      &lt L_NUM R   &lt L_SCT I   &kp      T   &lt L_SYM A
-      &lt L_NAV N   &kp O         &mt STAR S   &lt L_MED E
-    >;
-  };
-  symbols1 {
-    display-name = "SYM";
-    bindings = <
-      &mt RBRC LBRC    &mt RBKT LBKT   &mt RPAR LPAR   &mo L_SYM
-      &kp GBP          &kp EURO        &mt GBP EURO    &none
-    >;
-  };
-  media {
-    display-name = "MED";
-    bindings = <
-      &kp K_PLAY_PAUSE    &kp K_NEXT     &kp K_VOL_UP           &kp PRINTSCREEN
-      &none               &kp K_PREV     &mt K_MUTE K_VOL_DN    &mo L_MED
+      &lt L_NUM R   &lt L_EDT I   &kp      T   &lt L_FUN A
+      &lt L_NAV N   &lt L_PAR O   &mt STAR S   &lt L_MED E
     >;
   };
   numbers {
@@ -367,38 +342,44 @@ ZMK_COMBO(combo_reflash, &bootloader, T1 B4 B3 B2 B1)
       &none        &mt SLASH N6   &mt STAR N5    &mt COMMA N4
     >;
   };
+  parentheses {
+    display-name = "PAR";
+    bindings = <
+      &none             &none       &mt RBKT LBKT   &mt RPAR LPAR
+      &mt TILDE EQUAL   &mo L_PAR   &mt RBRC LBRC   &mt GT   LT  
+    >;
+  };
+  
   quicknav {
     display-name = "NAV";
     bindings = <                      
-//       &none       &none         &mt K_MUTE K_VOL_DN   &kp K_VOL_UP
-//       &mo L_NAV   &none         &left_home            &right_end
       &none       &mmv MOVE_UP     &mmv MOVE_LEFT   &mmv MOVE_RIGHT
       &mo L_NAV   &mmv MOVE_DOWN   &left_home       &right_end
     >;         
   };
-  bt {
-    display-name = "BT";
+  media {
+    display-name = "MED";
     bindings = <
-      &out OUT_BLE   &bt BT_SEL 2  &bt BT_SEL 1  &bt BT_SEL 0
-      &out OUT_USB   &bt BT_SEL 5  &bt BT_SEL 4  &bt BT_SEL 3
+      &kp K_PLAY_PAUSE    &kp K_NEXT     &kp K_VOL_UP           &kp PRINTSCREEN
+      &none               &kp K_PREV     &mt K_MUTE K_VOL_DN    &mo L_MED
     >;
   };
-  func {
-    display-name = "FUNC";
-    bindings = <
-      &kp F1   &kp F2    &kp F3    &kp F4
-      &kp F9   &kp F10   &kp F11   &kp F12
-    >;
-  };
-  
   shortcuts {
-    display-name = "SHRCT";
+    display-name = "EDT";
     bindings = <
-      &none   &mo L_SCT  &mt LC(LS(V)) LS(INS)  &mt LS(DEL) LC(INS)
+// C_AC_UNDO/K_UNDO and K_REDO work in LibreOffice but not in Kate/Gedit/Firefox
+      &none   &mo L_EDT  &mt LC(LS(V)) LS(INS)  &mt LS(DEL)   LC(INS)
       &none   &none      &mt LC(LS(S)) LC(S)    &mt LC(LS(Z)) LC(Z)
     >;
   };
   
+  functionkeys {
+    display-name = "FUN";
+    bindings = <
+      &mt F2 F1    &mt F4  F3    &mt F6  F5    &mo L_FUN
+      &mt F8 F7    &mt F10 F9    &mt F12 F11   &none
+    >;
+  };
   mouse { // 
     display-name = "MOUSE";
     bindings = <
@@ -407,22 +388,16 @@ ZMK_COMBO(combo_reflash, &bootloader, T1 B4 B3 B2 B1)
     >;
   };
   
-  parentheses {
-    display-name = "PAR";
+  bt {
+    display-name = "BT";
     bindings = <
-      &none              &none       &mt RBKT LBKT   &mt RPAR LPAR
-       &mt TILDE EQUAL   &mo L_PAR   &mt RBRC LBRC   &mt GT LT  
+      &out OUT_BLE   &bt BT_SEL 2  &bt BT_SEL 1  &bt BT_SEL 0
+      &out OUT_USB   &bt BT_SEL 5  &bt BT_SEL 4  &bt BT_SEL 3
     >;
   };
-  
   
 
 
 }; };
-  
-//     key <AB08> { [     comma,       less,      ccedilla,         Ccedilla ] };
-//     key <AB01> { [	   z,          Z,            ae,               AE ] };
-//    key <AB02> { [        x, X,           oe,           OE              ] };
-//     key <BKSL> { [ backslash,        bar,       notsign,        brokenbar ] };
 
 
