@@ -5,8 +5,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-#define ZMK_POINTING_DEFAULT_MOVE_VAL 300  // default: 600
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 4    // default: 10
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 600  // default: 600
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 6    // default: 10
 
 
 #include <behaviors.dtsi>
@@ -45,7 +45,7 @@
 #define AELIG RA(Z)
 #define EURO  RA(5)
 #define GBP   RA(DOLLAR)
-#define NEXTLAYOUT &mt GLOBE LA(LSHFT)
+#define YEN   RA(MINUS)
 
 
 
@@ -76,9 +76,9 @@
  * Do NOT change these and do NOT change the order of the layers as shown below
  *****************************************/
 #define L_BASE 0
-#define L_SYM1 1
-#define L_SYM2 2
-#define L_NUMB 3
+#define L_SYM  1
+#define L_MED  2
+#define L_NUM  3
 #define L_NAV  4
 #define L_BT_S 5
 #define L_FUNC 6
@@ -177,6 +177,16 @@
   };
   
   
+  nxkbly: macro_next_keyboard_layout {
+    compatible = "zmk,behavior-macro";
+    #binding-cells = <0>;
+    bindings
+      = <&kp GLOBE &kp LA(LSHFT)>
+      ;
+  };
+  
+  
+  
   
 }; };
 #define SK_TK(key) &togkey_stikey key key   // Macro to apply momentary-layer-on-hold/toggle-layer-on-tap to a specific layer
@@ -192,17 +202,22 @@
 
 
 // Combos NUM layer
-ZMK_COMBO(num_7, &kp N7       ,    T2 T1, L_NUMB)
-ZMK_COMBO(num_8, &kp N8       , T3 T2   , L_NUMB)
-ZMK_COMBO(num_0, &mt DEGREE N0, B3 B2   , L_NUMB)
-ZMK_COMBO(num_9, &kp N9       ,    B2 B1, L_NUMB)
-ZMK_COMBO(num_E, &kp EURO     , T3    T1, L_NUMB)
-// ZMK_COMBO(num_???, &kp ?, B3 B1, L_NUMB)
-// ZMK_COMBO(num_???, &kp ?, T3 T2 T1, L_NUMB)
-// ZMK_COMBO(num_???, &kp ?, B3 B2 B1, L_NUMB)
+ZMK_COMBO(num_7, &mt DOLLAR N7,    T2 T1, L_NUM)
+ZMK_COMBO(num_8, &kp N8       , T3 T2   , L_NUM)
+ZMK_COMBO(num_0, &mt DEGREE N0, B3 B2   , L_NUM)
+ZMK_COMBO(num_9, &kp N9       ,    B2 B1, L_NUM)
+ZMK_COMBO(num_E, &mt GBP  EURO, T3    T1, L_NUM)
+ZMK_COMBO(num_Y, &kp YEN      , B3    B1, L_NUM)
+// ZMK_COMBO(num_D, &kp      , T3 T2 T1, L_NUM)
+// ZMK_COMBO(num_???, &kp ?, B3 B1, L_NUM)
+// ZMK_COMBO(num_???, &kp ?, B3 B2 B1, L_NUM)
 
 
-// Combos QUICK NAV layer
+// Combos NAV+Mouse layer
+ZMK_COMBO(mouse_b1, &mkp MB1,    T2 T1, L_NAV)
+ZMK_COMBO(mouse_b2, &mkp MB2, T3 T2   , L_NAV)
+ZMK_COMBO(mouse_b3, &mkp MB3, T3 T2 T1, L_NAV)
+ZMK_COMBO(mouse_b3, &mkp MB4, T3    T1, L_NAV)
 ZMK_COMBO(qnav_up,    &kp UP,     B3 B2   , L_NAV)
 ZMK_COMBO(qnav_dn,    &kp DOWN,      B2 B1, L_NAV)
 ZMK_COMBO(qnav_pgup,  &kp PG_UP,  B3    B1, L_NAV)
@@ -210,9 +225,11 @@ ZMK_COMBO(qnav_pgdn,  &kp PG_DN,  B3 B2 B1, L_NAV)
 ZMK_TAP_DANCE(left_home, bindings = <&mt HOME LEFT>, <&kp LC(LEFT)>;  tapping-term-ms = <NAV_TAP_TERM>; )
 ZMK_TAP_DANCE(right_end, bindings = <&mt END RIGHT>, <&kp LC(RIGHT)>; tapping-term-ms = <NAV_TAP_TERM>; )
 
-ZMK_COMBO(media_next, &kp K_NEXT,          T2 T1, L_NAV)
-ZMK_COMBO(media_prev, &kp K_PREV,       T3 T2   , L_NAV)
-ZMK_COMBO(media_play, &kp K_PLAY_PAUSE, T3 T2 T1, L_NAV)
+
+
+// ZMK_COMBO(media_next, &kp K_NEXT,          T2 T1, L_NAV)
+// ZMK_COMBO(media_prev, &kp K_PREV,       T3 T2   , L_NAV)
+// ZMK_COMBO(media_play, &kp K_PLAY_PAUSE, T3 T2 T1, L_NAV)
 
 
 // C_AC_UNDO/K_UNDO and K_REDO work in LibreOffice but not in Kate/Gedit/Firefox
@@ -236,8 +253,8 @@ ZMK_COMBO(bt_clear_current_profile, &bt BT_CLR, T3 T2 B3 B2, L_BT_S)
 
 
 // Combos SYM layer
-ZMK_COMBO(combo_ltgt,   &mt GT LT      , T4 T3      , L_SYM1)
-ZMK_COMBO(combo_equals, &mt TILDE EQUAL,    T3 T2   , L_SYM1)
+ZMK_COMBO(combo_ltgt,   &mt GT LT      , T4 T3      , L_SYM)
+ZMK_COMBO(combo_equals, &mt TILDE EQUAL,    T3 T2   , L_SYM)
 
 
 
@@ -311,7 +328,7 @@ ZMK_COMBO(combo_alt,      &kt   LALT,    T3 B2 B1)
 ZMK_COMBO(combo_altgr,    &kt   RALT, B4 T3 B2 B1)
 
 ZMK_COMBO(combo_gui,      &kt   LGUI, T4 T3 B2 B1)
-ZMK_COMBO(combo_kblayout, NEXTLAYOUT, B4 B3 T2 T1)
+ZMK_COMBO(combo_kblayout, &nxkbly,    B4 B3 T2 T1)
 ZMK_COMBO(combo_unmod,    &unmod,     T4 T3 T2 T1)
 
 // ZMK_COMBO(combo_alt,     &togkey_stikey LALT   LALT,    T3 B2 B1)
@@ -325,13 +342,9 @@ ZMK_COMBO(combo_reflash, &bootloader, T1 B4 B3 B2 B1)
 // TODO: PrintScr,Ins
 // Most used keyboard shortcuts Alt+Tab, Alt+Shift+Tab
 // 
-// Mouse
 // Display
-// MAYBE? ( ) = { } [ ] > < ~  on SYM1
+// MAYBE? ( ) = { } [ ] > < ~  on SYM
 
-// EMPTY: L_SYM1 B4 B3 B2
-//        L_SYM2 *
-//        L_NAV T3
 
 
 
@@ -350,36 +363,38 @@ ZMK_COMBO(combo_reflash, &bootloader, T1 B4 B3 B2 B1)
   base {
     display-name = "Base";
     bindings = <
-      &lt L_NUMB R  &lt L_SCT I   &kp T         &lt L_SYM1 A
-      &lt L_NAV N   &kp O         &mt STAR S    &mt L_SYM2 E
+      &lt L_NUM R  &lt L_SCT I   &kp      T    &lt L_SYM A
+      &lt L_NAV  N  &kp O         &mt STAR S    &mt L_MED  E
     >;
   };
   symbols1 {
-    display-name = "SYM1";
+    display-name = "SYM";
     bindings = <
-      &mt RBRC LBRC    &mt RBKT LBKT   &mt RPAR LPAR   &mo L_SYM1
+      &mt RBRC LBRC    &mt RBKT LBKT   &mt RPAR LPAR   &mo L_SYM
       &none   &none  &none &none
     >;
   };
   symbols2 {
-    display-name = "SYM2";
+    display-name = "MED";
     bindings = <
-      &none   &none   &kp KP_DOT     &none
-      &none   &none   &kp KP_COMMA   &mo L_SYM2
+      &kp K_PLAY_PAUSE    &kp K_NEXT     &kp K_VOL_UP           &kp PRINTSCREEN
+      &none               &kp K_PREV     &mt K_MUTE K_VOL_DN    &mo L_MED
     >;
   };
   numbers {
     display-name = "NUM";
     bindings = <
-      &mo L_NUMB   &mt STAR  N3   &mt SUP2 N2    &mt KP_DOT N1
+      &mo L_NUM    &mt STAR  N3   &mt SUP2 N2    &mt KP_DOT N1
       &none        &mt SLASH N6   &mt STAR N5    &mt COMMA N4
     >;
   };
   quicknav {
     display-name = "NAV";
     bindings = <                      
-      &none       &none         &mt K_MUTE K_VOL_DN   &kp K_VOL_UP
-      &mo L_NAV   &kp LS(F10)   &left_home            &right_end
+//       &none       &none         &mt K_MUTE K_VOL_DN   &kp K_VOL_UP
+//       &mo L_NAV   &none         &left_home            &right_end
+      &none       &mmv MOVE_UP     &mmv MOVE_LEFT   &mmv MOVE_RIGHT
+      &mo L_NAV   &mmv MOVE_DOWN   &left_home       &right_end
     >;         
   };
   bt {
