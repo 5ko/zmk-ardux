@@ -373,7 +373,7 @@ ZMK_COMBO(combo_reflash, &bootloader, T1 B4 B3 B2 B1)
     display-name = "SYM";
     bindings = <
       &mt RBRC LBRC    &mt RBKT LBKT   &mt RPAR LPAR   &mo L_SYM
-      &none   &none  &none &none
+      &kp GBP          &kp EURO        &mt GBP EURO    &none
     >;
   };
   media {
