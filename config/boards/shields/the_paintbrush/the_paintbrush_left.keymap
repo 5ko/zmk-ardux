@@ -6,7 +6,7 @@
  */
 
 #define ZMK_POINTING_DEFAULT_MOVE_VAL 600  // default: 600
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 6    // default: 10
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 6    // default: 10 (currently unused)
 
 
 #include <behaviors.dtsi>
@@ -19,7 +19,7 @@
 #define HOST_OS 1
 #include "zmk-helpers/helper.h"
 
-// International characters and dead accents from XKB layout
+// International characters and dead accents from the XKB layout
 // "English (US, intl., with AltGr dead keys)":
 #define SUP2 RA(N2)
 // dead grave
@@ -39,53 +39,41 @@
 #define GBP    RA(DOLLAR)
 #define YEN    RA(MINUS)
 
+// edit shortcuts
+// C_AC_UNDO/K_UNDO and K_REDO work in LibreOffice 
+// but not in Kate/Gedit/Firefox
+#define CLIPCOPY   LC(INS)
+#define CLIPCUT    LS(DEL)
+#define CLIPPASTE  LS(INS)
+#define CLIPPASTE2 LC(LS(V))
+#define SAVE       LC(S)
+#define SAVEAS     LC(LS(S)) 
+#define UNDO       LC(Z)
+#define REDO       LC(LS(Z))
 
-#define CNT_L 0
-#define CNT_K 0
-#define INC_L(name) enum { name = CNT_L }; enum { CNT_L = CNT_L + 1 }
-#define INC_K(name) enum { name = CNT_K }; enum { CNT_K = CNT_K + 1 }
 
+// Top row RI TA
+#define T4 0
+#define T3 1
+#define T2 2
+#define T1 3
+// Bottom row NO SE 
+#define B4 4
+#define B3 5
+#define B2 6
+#define B1 7
 
-// ARTS RITA Row
-INC_K(T4)
-INC_K(T3)
-INC_K(T2)
-INC_K(T1)
-// EYIO NOSE Row
-INC_K(B4)
-INC_K(B3)
-INC_K(B2)
-INC_K(B1)
-
-// #define T4 0
-// #define T3 1
-// #define T2 2
-// #define T1 3
-// // EYIO NOSE Row
-// #define B4 4
-// #define B3 5
-// #define B2 6
-// #define B1 7
-
-INC_L(L_BASE)
-INC_L(L_NUM)
-INC_L(L_PAR)
-INC_L(L_NAV)
-INC_L(L_MED)
-INC_L(L_EDT)
-INC_L(L_FUN)
-INC_L(L_MSE)
-INC_L(L_BT_S)
-
-// #define L_BASE 0
-// #define L_NUM  1
-// #define L_PAR  2
-// #define L_NAV  3
-// #define L_MED  4
-// #define L_EDT  5
-// #define L_FUN  6
-// #define L_MSE  7
-// #define L_BT_S 8
+// The layers need to be numbered in the order they are below,
+// starting from zero.
+#define L_BASE 0
+#define L_NUM  1
+#define L_PAR  2
+#define L_NAV  3
+#define L_MED  4
+#define L_EDT  5
+#define L_FUN  6
+#define L_MSE  7
+#define L_BT_S 8
 
 
 
@@ -329,13 +317,6 @@ ZMK_COMBO(combo_reflash, &bootloader, T1 B4 B3 B2 B1)
 // Display
 
 
-
-
-/*****************************************
- * Standard ARDUX layer definitions
- * !!!!!!!!!! FOR LEFT HANDED USE !!!!!!!!!!
- *****************************************/
-
 / { keymap { compatible = "zmk,keymap";
   base {
     display-name = "Base";
@@ -376,9 +357,8 @@ ZMK_COMBO(combo_reflash, &bootloader, T1 B4 B3 B2 B1)
   shortcuts {
     display-name = "EDT";
     bindings = <
-// C_AC_UNDO/K_UNDO and K_REDO work in LibreOffice but not in Kate/Gedit/Firefox
-      &none   &mo L_EDT  &mt LC(LS(V)) LS(INS)  &mt LS(DEL)   LC(INS)
-      &none   &none      &mt LC(LS(S)) LC(S)    &mt LC(LS(Z)) LC(Z)
+      &none   &mo L_EDT  &mt CLIPPASTE2 CLIPPASTE  &mt CLIPCUT CLIPCOPY
+      &none   &none      &mt SAVEAS     SAVE       &mt REDO    UNDO
     >;
   };
   
@@ -389,7 +369,7 @@ ZMK_COMBO(combo_reflash, &bootloader, T1 B4 B3 B2 B1)
       &mt F8 F7    &mt F10 F9    &mt F12 F11   &none
     >;
   };
-  mouse { // 
+  mouse { 
     display-name = "MOUSE";
     bindings = <
      &msc SCRL_UP    &mkp MB2       &mmv MOVE_UP   &mkp MB1
@@ -404,8 +384,6 @@ ZMK_COMBO(combo_reflash, &bootloader, T1 B4 B3 B2 B1)
       &out OUT_USB   &bt BT_SEL 5  &bt BT_SEL 4  &bt BT_SEL 3
     >;
   };
-  
-
 
 }; };
 
