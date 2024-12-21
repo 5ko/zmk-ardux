@@ -18,17 +18,8 @@
 // HOST_OS: Linux=1, MacOS=2
 #define HOST_OS 1
 #include "zmk-helpers/helper.h"
-// Unicode on Ubuntu seems to work in Firefox, LibreOffice, Terminator, 
-// but not in Kate/KWrite or GEdit. Will implement accents with dead keys.
-// #include "zmk-helpers/unicode-chars/currency.dtsi"
-// #include "zmk-helpers/unicode-chars/french.dtsi"
-// #include "zmk-helpers/unicode-chars/greek.dtsi"
-// #include "zmk-helpers/unicode-chars/russian.dtsi"
 
-// #include "the_paintbrush_left.overlay"
-
-
-// French characters and accents from layout
+// International characters and dead accents from XKB layout
 // "English (US, intl., with AltGr dead keys)":
 #define SUP2 RA(N2)
 #define DEAD_GRAVE RA(GRAVE)
@@ -37,15 +28,15 @@
 #define DEAD_DIAERESIS RA(DQT)
 #define DEAD_CIRCUMFLEX RA(N6)
 #define DEGREE RA(COLON)
-#define C_CDL RA(COMMA)
+#define C_CDL  RA(COMMA)
 #define EACUTE RA(E)
 #define NTILDE RA(N)
-#define S_SRP RA(S)
-#define OELIG RA(X)
-#define AELIG RA(Z)
-#define EURO  RA(N5)
-#define GBP   RA(DOLLAR)
-#define YEN   RA(MINUS)
+#define S_SRP  RA(S)
+#define OELIG  RA(X)
+#define AELIG  RA(Z)
+#define EURO   RA(N5)
+#define GBP    RA(DOLLAR)
+#define YEN    RA(MINUS)
 
 
 
@@ -60,21 +51,7 @@
 #define B2 6
 #define B1 7
 
-// seno
-// rita 
-// soar
-// inet 
-// 
-// webdev stuff:
-// rate
-// soni
 
-
-  
-/*****************************************
- * Layer IDs used by the ARDUX keymap
- * Do NOT change these and do NOT change the order of the layers as shown below
- *****************************************/
 #define L_BASE 0
 #define L_SYM  1
 #define L_MED  2
@@ -84,6 +61,7 @@
 #define L_FUNC 6
 #define L_SCT  7
 #define L_MSE  8
+#define L_PAR  8
 
 
 
@@ -205,7 +183,7 @@
 ZMK_COMBO(num_7, &mt DOLLAR N7,    T2 T1, L_NUM)
 ZMK_COMBO(num_8, &kp N8       , T3 T2   , L_NUM)
 ZMK_COMBO(num_0, &mt DEGREE N0, B3 B2   , L_NUM)
-ZMK_COMBO(num_9, &kp N9       ,    B2 B1, L_NUM)
+ZMK_COMBO(num_9, &mt HASH   N9,    B2 B1, L_NUM)
 ZMK_COMBO(num_E, &mt GBP  EURO, T3    T1, L_NUM)
 ZMK_COMBO(num_Y, &kp YEN      , B3    B1, L_NUM)
 // ZMK_COMBO(num_D, &kp      , T3 T2 T1, L_NUM)
@@ -385,7 +363,7 @@ ZMK_COMBO(combo_reflash, &bootloader, T1 B4 B3 B2 B1)
   numbers {
     display-name = "NUM";
     bindings = <
-      &mo L_NUM    &mt STAR  N3   &mt SUP2 N2    &mt KP_DOT N1
+      &mo L_NUM    &mt STAR  N3   &mt SUP2 N2    &mt DOT   N1
       &none        &mt SLASH N6   &mt STAR N5    &mt COMMA N4
     >;
   };
@@ -428,6 +406,15 @@ ZMK_COMBO(combo_reflash, &bootloader, T1 B4 B3 B2 B1)
      &msc SCRL_DOWN  &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT
     >;
   };
+  
+  parentheses {
+    display-name = "PAR";
+    bindings = <
+      &none              &none       &mt RBKT LBKT   &mt RPAR LPAR
+       &mt TILDE EQUAL   &mo L_PAR   &mt RBRC LBRC   &mt GT LT  
+    >;
+  };
+  
   
 
 
