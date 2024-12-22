@@ -85,7 +85,7 @@
 #define TAPDANCE_2_TERM 300
 #define TAPDANCE_3_TERM 400
 #define TAPDANCE_4_TERM 500
-#define HOLDTAP_TERM 400
+#define HOLDTAP_TERM 250
 #define HOLDTAP_LAYER_TERM 400
 #define TIMEOUT_STICKY_LEADER_KEY  5000
 
@@ -97,6 +97,9 @@
 };
 &mt {
   tapping-term-ms = <HOLDTAP_TERM>;
+};
+&lt {
+  tapping-term-ms = <HOLDTAP_LAYER_TERM>;
 };
 
 / { behaviors {
@@ -154,9 +157,7 @@
     toggle-mode = "off";
 
   };
-  
-  
-  
+    
   unmod: macro_release_mods {
     compatible = "zmk,behavior-macro";
     #binding-cells = <0>;
@@ -173,6 +174,19 @@
     bindings
       = <&kp GLOBE &kp LA(LSHFT)>
       ;
+  };
+  
+  
+  test: macro_test {
+    compatible = "zmk,behavior-macro";
+    #binding-cells = <0>;
+    wait-ms = <10>;
+    bindings = 
+      <&kp F &kp A &kp S &kp T>
+    , <&macro_wait_time 500>
+    , <&kp S &kp L &kp O &kp W>
+    ;
+    
   };
   
   
@@ -204,14 +218,14 @@ ZMK_COMBO(num_Y, &kp YEN      , B3    B1, L_NUM)
 
 
 // Combos NAV+Mouse layer
-ZMK_COMBO(mouse_b1,   &mkp MB1 ,    T2 T1, L_NAV)
-ZMK_COMBO(mouse_b2,   &mkp MB2 , T3 T2   , L_NAV)
-ZMK_COMBO(mouse_b3,   &mkp MB3 , T3 T2 T1, L_NAV)
-ZMK_COMBO(mouse_b3,   &mkp MB4 , T3    T1, L_NAV)
-ZMK_COMBO(qnav_up,    &kp UP   , B3 B2   , L_NAV)
-ZMK_COMBO(qnav_dn,    &kp DOWN ,    B2 B1, L_NAV)
-ZMK_COMBO(qnav_pgup,  &kp PG_UP, B3    B1, L_NAV)
-ZMK_COMBO(qnav_pgdn,  &kp PG_DN, B3 B2 B1, L_NAV)
+ZMK_COMBO(mouse_b1,  &mkp MB1 ,    T2 T1, L_NAV)
+ZMK_COMBO(mouse_b2,  &mkp MB2 , T3 T2   , L_NAV)
+ZMK_COMBO(mouse_b3,  &mkp MB3 , T3 T2 T1, L_NAV)
+ZMK_COMBO(mouse_b4,  &mkp MB4 , T3    T1, L_NAV)
+ZMK_COMBO(nav_up,    &kp UP   , B3 B2   , L_NAV)
+ZMK_COMBO(nav_dn,    &kp DOWN ,    B2 B1, L_NAV)
+ZMK_COMBO(nav_pgup,  &kp PG_UP, B3    B1, L_NAV)
+ZMK_COMBO(nav_pgdn,  &kp PG_DN, B3 B2 B1, L_NAV)
 
 ZMK_TAP_DANCE(left_home, bindings = <&mt HOME LEFT>, <&kp LC(LEFT)>;  tapping-term-ms = <NAV_TAP_TERM>; )
 ZMK_TAP_DANCE(right_end, bindings = <&mt END RIGHT>, <&kp LC(RIGHT)>; tapping-term-ms = <NAV_TAP_TERM>; )
@@ -228,8 +242,7 @@ ZMK_COMBO(bt_clear_current_profile, &bt BT_CLR,       T3 T2 B3 B2      , L_BT_S)
 
 
 // Combos L_MSE layer
-ZMK_COMBO(lay_mouse, &tog L_MSE,    T3 B2 T1) // ALL layers
-
+ZMK_COMBO(lay_mouse, &tog L_MSE,    T3 B2 T1, L_BASE L_MSE)
 ZMK_COMBO(combo_mb3,   &mkp MB3,    T3    T1, L_MSE)
 ZMK_COMBO(combo_mb4,   &mkp MB4,    T3 T2   , L_MSE)
 ZMK_COMBO(combo_mb5,   &mkp MB5,       T2 T1, L_MSE)
@@ -278,9 +291,7 @@ ZMK_COMBO(combo_exclq,  &mt QMARK EXCL , B4 T4      , L_BASE)
 
 
 // GLOBAL Combos 
-// ZMK_COMBO(combo_cancel_layers, &to L_BASE, B4 T3, L_FUNC ) //L_FRE add here other layers to cancel
-ZMK_COMBO(combo_enter,   &kp ENTER,       T1 B1)
-ZMK_COMBO(combo_escape,  &kp ESC  , B4 T3      )
+ZMK_COMBO(combo_enter,     &kp ENTER        ,       T1 B1)
 
 ZMK_COMBO(combo_backspace, &mt LC(BSPC) BSPC,       T2 B1)
 ZMK_COMBO(combo_delete,    &mt LC(DEL)  DEL ,    B3 T2   )
@@ -299,6 +310,8 @@ ZMK_COMBO(combo_altgr,    &sk   RALT, B4 T3 B2 B1)
 
 ZMK_COMBO(combo_gui,      &sk   LGUI, T4 T3 B2 B1)
 ZMK_COMBO(combo_kblayout, &nxkbly,    B4 B3 T2 T1)
+
+// FIXME: should this be enabled?
 ZMK_COMBO(combo_unmod,    &unmod,     T4 T3 T2 T1)
 
 // ZMK_COMBO(combo_alt,     &togkey_stikey LALT   LALT,    T3 B2 B1)
@@ -306,11 +319,11 @@ ZMK_COMBO(combo_unmod,    &unmod,     T4 T3 T2 T1)
 
 // ZMK_COMBO(name, bindings, keypos, layers, timeout, prior_idle, extra)
 ZMK_COMBO(combo_reset,   &sys_reset,  0 1 2 3 4 5 6 7)
-ZMK_COMBO(combo_reflash, &bootloader, T1 B4 B3 B2 B1)
+ZMK_COMBO(combo_reflash, &bootloader, B4 B3 B2 B1 T1)
 
 
 // TODO: Ins, hold-space, hold-enter, hold-t, hold-f
-//    HOLD: space, enter, escape. caps, LGUI, T, F, J, Z, *, YEN
+//    HOLD: space, enter, escape. unmod, caps, LGUI, T, F, J, Z, *, YEN
 //    MEH key
 // Most used keyboard shortcuts Alt+Tab, Alt+Shift+Tab
 // 
@@ -350,7 +363,7 @@ ZMK_COMBO(combo_reflash, &bootloader, T1 B4 B3 B2 B1)
   media {
     display-name = "MED";
     bindings = <
-      &none   &mt K_MUTE  K_VOL_DN    &mt K_MUTE  K_VOL_UP   &kp PRINTSCREEN
+      &test   &mt K_MUTE  K_VOL_DN    &mt K_MUTE  K_VOL_UP   &kp PRINTSCREEN
       &none   &mt K_PP    K_PREV      &mt K_PP    K_NEXT     &mo L_MED
     >;
   };
