@@ -218,8 +218,8 @@ ZMK_COMBO(num_Y, &kp YEN      , B3    B1, L_NUM)
 // Combos NAV+Mouse layer
 ZMK_COMBO(mouse_b1,  &mkp MB1 ,    T2 T1, L_NAV)
 ZMK_COMBO(mouse_b2,  &mkp MB2 , T3 T2   , L_NAV)
-ZMK_COMBO(mouse_b3,  &mkp MB3 , T3 T2 T1, L_NAV)
-ZMK_COMBO(mouse_b4,  &mkp MB4 , T3    T1, L_NAV)
+ZMK_COMBO(mouse_b3,  &mkp MB3 , T3 T2 T1, L_NAV L_MSE)
+ZMK_COMBO(mouse_b4,  &mkp MB4 , T3    T1, L_NAV L_MSE)
 ZMK_COMBO(nav_up,    &kp UP   , B3 B2   , L_NAV)
 ZMK_COMBO(nav_dn,    &kp DOWN ,    B2 B1, L_NAV)
 ZMK_COMBO(nav_pgup,  &kp PG_UP, B3    B1, L_NAV)
@@ -247,7 +247,7 @@ ZMK_COMBO(combo_mb5,   &mkp MB5,       T2 T1, L_MSE)
 
 
 // Combos L_FUN layer
-ZMK_COMBO(combo_w,  &reib, B4 B3 B2   , L_FUN)
+ZMK_COMBO(combo_reib,  &reib, B4 B3 B2   , L_FUN)
 
 
 // Base letter combos
