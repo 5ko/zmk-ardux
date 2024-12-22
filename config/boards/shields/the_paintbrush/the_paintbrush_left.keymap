@@ -177,21 +177,19 @@
   };
   
   
-  test: macro_test {
+  reib: macro_reib {
     compatible = "zmk,behavior-macro";
     #binding-cells = <0>;
-    wait-ms = <10>;
+    wait-ms = <2500>;
     bindings = 
-      <&kp F &kp A &kp S &kp T>
-    , <&macro_wait_time 500>
-    , <&kp S &kp L &kp O &kp W>
+      // ALT 
+        <&macro_press &kp LSHFT>
+      , <&macro_tap &kp SYSREQ &kp R &kp E &kp I &kp B>
+      , <&macro_release &kp LSHFT>
     ;
     
   };
-  
-  
-  
-  
+
 }; };
 #define SK_TK(key) &togkey_stikey key key   // Macro to apply momentary-layer-on-hold/toggle-layer-on-tap to a specific layer
 
@@ -232,7 +230,7 @@ ZMK_TAP_DANCE(right_end, bindings = <&mt END RIGHT>, <&kp LC(RIGHT)>; tapping-te
 
 
 // Combos Media layer
-ZMK_COMBO(media_play, &kp K_PLAY_PAUSE, B3 B2 , L_MED)
+// ZMK_COMBO(media_play, &kp K_PLAY_PAUSE, B3 B2 , L_MED)
 
 
 
@@ -248,6 +246,8 @@ ZMK_COMBO(combo_mb4,   &mkp MB4,    T3 T2   , L_MSE)
 ZMK_COMBO(combo_mb5,   &mkp MB5,       T2 T1, L_MSE)
 
 
+// Combos L_FUN layer
+ZMK_COMBO(combo_w,  &reib, B4 B3 B2   , L_FUN)
 
 
 // Base letter combos
@@ -281,12 +281,12 @@ ZMK_COMBO(combo_sp, &kp   SPACE, B4 B3 B2 B1, L_BASE)
 
 
 // Base punctuation
-ZMK_COMBO(combo_slash,  &mt D_ACU SLASH, B4       T1, L_BASE)
-ZMK_COMBO(combo_backs,  &mt D_GRV BSLH , T4       B1, L_BASE)
-ZMK_COMBO(combo_comma,  &mt DOT COMMA  ,       B2 T1, L_BASE)
-ZMK_COMBO(combo_colon,  &mt COLON SEMI ,    B2 T2   , L_BASE)
-ZMK_COMBO(combo_quote,  &mt DQT SQT    ,    B3 T3   , L_BASE)
-ZMK_COMBO(combo_exclq,  &mt QMARK EXCL , B4 T4      , L_BASE)
+ZMK_COMBO(combo_slash, &mt D_ACU SLASH, B4       T1, L_BASE)
+ZMK_COMBO(combo_backs, &mt D_GRV BSLH , T4       B1, L_BASE)
+ZMK_COMBO(combo_comma, &mt DOT COMMA  ,       B2 T1, L_BASE)
+ZMK_COMBO(combo_colon, &mt COLON SEMI ,    B2 T2   , L_BASE)
+ZMK_COMBO(combo_quote, &mt DQT SQT    ,    B3 T3   , L_BASE)
+ZMK_COMBO(combo_exclq, &mt QMARK EXCL , B4 T4      , L_BASE)
 
 
 
@@ -358,20 +358,23 @@ ZMK_COMBO(combo_reflash, &bootloader, B4 B3 B2 B1 T1)
     bindings = <                      
       &none       &mmv MOVE_UP     &mmv MOVE_LEFT   &mmv MOVE_RIGHT
       &mo L_NAV   &mmv MOVE_DOWN   &left_home       &right_end
-    >;         
+    >;
   };
   media {
     display-name = "MED";
     bindings = <
-      &test   &mt K_MUTE  K_VOL_DN    &mt K_MUTE  K_VOL_UP   &kp PRINTSCREEN
-      &none   &mt K_PP    K_PREV      &mt K_PP    K_NEXT     &mo L_MED
+//     &none   &mt K_MUTE  K_VOL_DN    &mt K_MUTE  K_VOL_UP   &kp PRINTSCREEN
+//     &none   &mt K_PP    K_PREV      &mt K_PP    K_NEXT     &mo L_MED
+  
+      &kp K_PP    &kp K_PREV    &kp K_NEXT     &kp PRINTSCREEN
+      &kp K_MUTE  &kp K_VOL_DN  &kp K_VOL_UP   &mo L_MED
     >;
   };
   shortcuts {
     display-name = "EDT";
     bindings = <
-      &none   &mo L_EDT  &mt CLIPPASTE2 CLIPPASTE  &mt CLIPCUT CLIPCOPY
-      &none   &none      &mt SAVEAS     SAVE       &mt REDO    UNDO
+      &none  &mo L_EDT  &mt CLIPPASTE2 CLIPPASTE  &mt CLIPCUT CLIPCOPY
+      &none  &none      &mt SAVEAS     SAVE       &mt REDO    UNDO
     >;
   };
   
