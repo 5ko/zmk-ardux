@@ -127,10 +127,10 @@
   };
   ht_shift: behavior_my_shift {
     compatible = "zmk,behavior-hold-tap";
-    #binding-cells = <0>;
+    #binding-cells = <2>;
     flavor = "hold-preferred";
     tapping-term-ms = <HOLDTAP_TERM>;
-    bindings = <&shift_on>, <&sk LSHFT>;
+    bindings = <&shift_on>, <&sk>;
   };
   
   caps_tog: behavior_caps_tog {
@@ -317,7 +317,7 @@ ZMK_COMBO(combo_tab,       &mt LS(TAB)  TAB , B4 T3 T2   )
 
 // Combos modifiers
 ZMK_COMBO(combo_shift1,   &shift_off,    T3    B1, L_H_S)
-// ZMK_COMBO(combo_shift,    &ht_shift ,    T3    B1)
+ZMK_COMBO(combo_shift,    &ht_shift 0 LSHFT,    T3    B1)
 
 
 
