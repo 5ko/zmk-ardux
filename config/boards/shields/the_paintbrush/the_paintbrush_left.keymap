@@ -125,13 +125,13 @@
     #binding-cells = <0>;
     bindings = <&lay_off L_H_S>, <&ku LSHFT> ;
   };
-//   ht_shift: behavior_my_shift {
-//     compatible = "zmk,behavior-hold-tap";
-//     #binding-cells = <0>;
-//     flavor = "hold-preferred";
-//     tapping-term-ms = <HOLDTAP_TERM>;
-//     bindings = <&shift_on>, <&sk LSHFT>;
-//   };
+  ht_shift: behavior_my_shift {
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <0>;
+    flavor = "hold-preferred";
+    tapping-term-ms = <HOLDTAP_TERM>;
+    bindings = <&shift_on>, <&sk LSHFT>;
+  };
   
   caps_tog: behavior_caps_tog {
     compatible = "zmk,behavior-hold-tap";
