@@ -114,18 +114,16 @@
     bindings = <&sk>, <&kt>;
   };
   
-  
-  
   shift_on: macro_myshift_on {
     compatible = "zmk,behavior-macro";
     #binding-cells = <0>;
     bindings = <&lay_on L_H_S>, <&kd LSHFT> ;
-  }
+  };
   shift_off: macro_myshift_off {
     compatible = "zmk,behavior-macro";
     #binding-cells = <0>;
     bindings = <&lay_off L_H_S>, <&ku LSHFT> ;
-  }
+  };
   ht_shift: behavior_my_shift {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <0>;
