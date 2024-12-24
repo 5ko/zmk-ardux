@@ -314,40 +314,40 @@ ZMK_COMBO(combo_reib,  &reib, B4 B3 B2   , L_FUN)
 // Base letter combos
 ZMK_TAP_DANCE(star_sharp, bindings = <&mt STAR S>, <&kp S_SRP>;  tapping-term-ms = <TAPDANCE_2_TERM>; )
 
-ZMK_COMBO(combo_b,  &mt AMPS  B, T4 T3      , L_BASE)
-ZMK_COMBO(combo_c,  &mt C_CDL C,    T3 T2   , L_BASE)
-ZMK_COMBO(combo_d,  &mt DLLR  D,       T2 T1, L_BASE)
-ZMK_COMBO(combo_h,  &mt HASH  H,       B2 B1, L_BASE)
-ZMK_COMBO(combo_u,  &mt UNDER U,    B3 B2   , L_BASE)
-ZMK_COMBO(combo_g,  &mt GBP   G, B4 B3      , L_BASE)
+ZMK_COMBO(combo_b,  &mt AMPS  B, T4 T3      , L_BASE L_H_A L_H_C L_H_S)
+ZMK_COMBO(combo_c,  &mt C_CDL C,    T3 T2   , L_BASE L_H_A L_H_C L_H_S)
+ZMK_COMBO(combo_d,  &mt DLLR  D,       T2 T1, L_BASE L_H_A L_H_C L_H_S)
+ZMK_COMBO(combo_h,  &mt HASH  H,       B2 B1, L_BASE L_H_A L_H_C L_H_S)
+ZMK_COMBO(combo_u,  &mt UNDER U,    B3 B2   , L_BASE L_H_A L_H_C L_H_S)
+ZMK_COMBO(combo_g,  &mt GBP   G, B4 B3      , L_BASE L_H_A L_H_C L_H_S)
 
-ZMK_COMBO(combo_k,  &mt AELIG K,    T3    T1, L_BASE)
-ZMK_COMBO(combo_y,  &mt OELIG Y,    B3    B1, L_BASE)
-ZMK_COMBO(combo_j,  &kp       J, T4    T2   , L_BASE)
-ZMK_COMBO(combo_z,  &kp       Z, B4    B2   , L_BASE)
+ZMK_COMBO(combo_k,  &mt AELIG K,    T3    T1, L_BASE L_H_A L_H_C L_H_S)
+ZMK_COMBO(combo_y,  &mt OELIG Y,    B3    B1, L_BASE L_H_A L_H_C L_H_S)
+ZMK_COMBO(combo_j,  &kp       J, T4    T2   , L_BASE L_H_A L_H_C L_H_S)
+ZMK_COMBO(combo_z,  &kp       Z, B4    B2   , L_BASE L_H_A L_H_C L_H_S)
 
-ZMK_COMBO(combo_v,  &mt D_DRS V, T4       T1, L_BASE)
-ZMK_COMBO(combo_x,  &mt D_CRC X, B4       B1, L_BASE)
+ZMK_COMBO(combo_v,  &mt D_DRS V, T4       T1, L_BASE L_H_A L_H_C L_H_S)
+ZMK_COMBO(combo_x,  &mt D_CRC X, B4       B1, L_BASE L_H_A L_H_C L_H_S)
 
-ZMK_COMBO(combo_p,  &mt PIPE  P, T4 T3    T1, L_BASE)
-ZMK_COMBO(combo_q,  &mt PRCNT Q, B4 B3    B1, L_BASE)
+ZMK_COMBO(combo_p,  &mt PIPE  P, T4 T3    T1, L_BASE L_H_A L_H_C L_H_S)
+ZMK_COMBO(combo_q,  &mt PRCNT Q, B4 B3    B1, L_BASE L_H_A L_H_C L_H_S)
 
-ZMK_COMBO(combo_l,  &mt PLUS  L,    T3 T2 T1, L_BASE)
-ZMK_COMBO(combo_m,  &mt MINUS M,    B3 B2 B1, L_BASE)
+ZMK_COMBO(combo_l,  &mt PLUS  L,    T3 T2 T1, L_BASE L_H_A L_H_C L_H_S)
+ZMK_COMBO(combo_m,  &mt MINUS M,    B3 B2 B1, L_BASE L_H_A L_H_C L_H_S)
 
-ZMK_COMBO(combo_f,  &kp       F, T4 T3 T2   , L_BASE)
-ZMK_COMBO(combo_w,  &mt AT    W, B4 B3 B2   , L_BASE)
+ZMK_COMBO(combo_f,  &kp       F, T4 T3 T2   , L_BASE L_H_A L_H_C L_H_S)
+ZMK_COMBO(combo_w,  &mt AT    W, B4 B3 B2   , L_BASE L_H_A L_H_C L_H_S)
 
-ZMK_COMBO(combo_sp, &kp   SPACE, B4 B3 B2 B1, L_BASE)
+ZMK_COMBO(combo_sp, &kp   SPACE, B4 B3 B2 B1, L_BASE L_H_A L_H_C L_H_S)
 
 
 // Base punctuation
-ZMK_COMBO(combo_slash, &mt D_ACU SLASH, B4       T1, L_BASE)
-ZMK_COMBO(combo_backs, &mt D_GRV BSLH , T4       B1, L_BASE)
-ZMK_COMBO(combo_comma, &mt DOT COMMA  ,       B2 T1, L_BASE)
-ZMK_COMBO(combo_colon, &mt COLON SEMI ,    B2 T2   , L_BASE)
-ZMK_COMBO(combo_quote, &mt DQT SQT    ,    B3 T3   , L_BASE)
-ZMK_COMBO(combo_exclq, &mt QMARK EXCL , B4 T4      , L_BASE)
+ZMK_COMBO(combo_slash, &mt D_ACU SLASH, B4       T1, L_BASE L_H_A L_H_C L_H_S)
+ZMK_COMBO(combo_backs, &mt D_GRV BSLH , T4       B1, L_BASE L_H_A L_H_C L_H_S)
+ZMK_COMBO(combo_comma, &mt DOT COMMA  ,       B2 T1, L_BASE L_H_A L_H_C L_H_S)
+ZMK_COMBO(combo_colon, &mt COLON SEMI ,    B2 T2   , L_BASE L_H_A L_H_C L_H_S)
+ZMK_COMBO(combo_quote, &mt DQT SQT    ,    B3 T3   , L_BASE L_H_A L_H_C L_H_S)
+ZMK_COMBO(combo_exclq, &mt QMARK EXCL , B4 T4      , L_BASE L_H_A L_H_C L_H_S)
 
 
 
@@ -406,7 +406,7 @@ ZMK_COMBO(combo_reflash, &bootloader, B4 B3 B2 B1 T1)
       &lt L_NAV N   &lt L_PAR O   &star_sharp   &lt L_MED E
     >;
   };
-  numbers {
+  numbers { FfffFeTIRITTITIRcTt
     display-name = "NUM";
     bindings = <
       &mo L_NUM    &mt STAR  N3   &mt SUP2 N2    &mt DOT   N1
