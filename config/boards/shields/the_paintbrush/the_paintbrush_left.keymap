@@ -74,6 +74,9 @@
 #define L_FUN  6
 #define L_MSE  7
 #define L_BT_S 8
+#define L_H_A  9
+#define L_H_S 10
+#define L_H_C 11
 
 
 
@@ -111,21 +114,32 @@
     bindings = <&sk>, <&kt>;
   };
   
+  
+  
+  shift_on: macro_myshift_on {
+    compatible = "zmk,behavior-macro";
+    #binding-cells = <0>;
+    bindings = <&lay_on L_H_S>, <&kd LSHFT> ;
+  }
+  shift_off: macro_myshift_off {
+    compatible = "zmk,behavior-macro";
+    #binding-cells = <0>;
+    bindings = <&lay_off L_H_S>, <&ku LSHFT> ;
+  }
+  ht_shift: behavior_my_shift {
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <0>;
+    flavor = "hold-preferred";
+    tapping-term-ms = <HOLDTAP_TERM>;
+    bindings = <&my_shift_on>, <&sk LSHFT>;
+  };
+  
   caps_tog: behavior_caps_tog {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
     flavor = "hold-preferred";
     tapping-term-ms = <HOLDTAP_TERM>;
     bindings = <&caps_word>, <&kp>;
-  };
-  
-  release_all: release_all {
-    compatible = "zmk,behavior-macro";
-    #binding-cells = <0>;
-    bindings
-      = <&macro_release &kp LSHFT &kp LCTRL &kp LALT &kp LGUI>
-      , <&to L_BASE>
-      ;
   };
   
   toglay_key: behavior_toglay_key {
@@ -153,8 +167,15 @@
   lay_off: behavior_layer_off {
     compatible = "zmk,behavior-toggle-layer";
     #binding-cells = <1>;
-    display-name = "Toggle Layer On";
+    display-name = "Toggle Layer Off";
     toggle-mode = "off";
+
+  };
+  lay_on: behavior_layer_om {
+    compatible = "zmk,behavior-toggle-layer";
+    #binding-cells = <1>;
+    display-name = "Toggle Layer On";
+    toggle-mode = "on";
 
   };
     
@@ -167,13 +188,11 @@
       ;
   };
   
-  
+  // should work both on Ubuntu and MacOSX
   nxkbly: macro_next_keyboard_layout {
     compatible = "zmk,behavior-macro";
     #binding-cells = <0>;
-    bindings
-      = <&kp GLOBE &kp LA(LSHFT)>
-      ;
+    bindings = <&kp GLOBE &kp LA(LSHFT)> ;
   };
   
   
@@ -182,9 +201,9 @@
     #binding-cells = <0>;
     wait-ms = <2500>;
     bindings = 
-      // ALT 
+      // ALT REIB REIB &kp SYSREQ
         <&macro_press &kp LSHFT>
-      , <&macro_tap &kp SYSREQ &kp R &kp E &kp I &kp B>
+      , <&macro_tap &kp R &kp E &kp I &kp B>
       , <&macro_release &kp LSHFT>
     ;
     
@@ -195,9 +214,6 @@
 
 
 
-
-// Does this work? 
-// ZMK_COMBO(release_mods, &release_all, T1 B1)
 
 // Tap dance is difficult with fingers 3 & 4, better use mod-taps
 
@@ -301,7 +317,12 @@ ZMK_COMBO(combo_tab,       &mt LS(TAB)  TAB , B4 T3 T2   )
 
 
 // Combos modifiers
-ZMK_COMBO(combo_shift,    &kt  LSHFT,    T3    B1)
+ZMK_COMBO(combo_shift1,   &shift_off,    T3    B1, L_H_S)
+ZMK_COMBO(combo_shift,    &ht_shift ,    T3    B1)
+
+
+
+
 ZMK_COMBO(combo_capsock,  &kp  CAPS , T4 T3    B1)
 ZMK_COMBO(combo_ctrl,     &kt  LCTRL,    T3 T2 B1)
 
@@ -348,8 +369,8 @@ ZMK_COMBO(combo_reflash, &bootloader, B4 B3 B2 B1 T1)
   parentheses {
     display-name = "PAR";
     bindings = <
-      &none             &none       &mt RBKT LBKT   &mt RPAR LPAR
-      &mt TILDE EQUAL   &mo L_PAR   &mt RBRC LBRC   &mt GT   LT  
+      &none             &none       &mt RBRC LBRC   &mt RPAR LPAR
+      &mt TILDE EQUAL   &mo L_PAR   &mt GT   LT     &mt RBKT LBKT
     >;
   };
   
@@ -398,6 +419,25 @@ ZMK_COMBO(combo_reflash, &bootloader, B4 B3 B2 B1 T1)
     bindings = <
       &out OUT_BLE   &bt BT_SEL 2  &bt BT_SEL 1  &bt BT_SEL 0
       &out OUT_USB   &bt BT_SEL 5  &bt BT_SEL 4  &bt BT_SEL 3
+    >;
+  };
+  
+  hold_alt {
+    bindings = <
+      &trans   &trans  &trans  &trans
+      &trans   &trans  &trans  &trans
+    >;
+  };
+  hold_shift {
+    bindings = <
+      &trans   &trans  &trans  &trans
+      &trans   &trans  &trans  &trans
+    >;
+  };
+  hold_ctrl {
+    bindings = <
+      &trans   &trans  &trans  &trans
+      &trans   &trans  &trans  &trans
     >;
   };
 
