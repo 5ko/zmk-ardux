@@ -94,6 +94,7 @@
 
 &sk {
   release-after-ms = <TIMEOUT_STICKY_LEADER_KEY>;
+  quick-release;
 };
 &sl { 
   release-after-ms = <TIMEOUT_STICKY_LEADER_KEY>;
@@ -129,7 +130,7 @@
     #binding-cells = <0>;
     flavor = "hold-preferred";
     tapping-term-ms = <HOLDTAP_TERM>;
-    bindings = <&my_shift_on>, <&sk LSHFT>;
+    bindings = <&shift_on>, <&sk LSHFT>;
   };
   
   caps_tog: behavior_caps_tog {
