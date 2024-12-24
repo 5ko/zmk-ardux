@@ -228,7 +228,7 @@
     compatible = "zmk,behavior-macro";
     #binding-cells = <0>;
     bindings
-      = <&lay_off L_FUN &lay_off L_MSE &lay_off L_BT_S>
+      = <&lay_off L_FUN &lay_off L_MSE &lay_off L_BT_S &lay_off L_H_S &lay_off L_H_C &lay_off L_H_A>
       , <&ku LSHFT &ku LCTRL &ku LALT &ku RALT &ku LGUI>
       ;
   };
@@ -406,7 +406,7 @@ ZMK_COMBO(combo_reflash, &bootloader, B4 B3 B2 B1 T1)
       &lt L_NAV N   &lt L_PAR O   &star_sharp   &lt L_MED E
     >;
   };
-  numbers { FfffFeTIRITTITIRcTt
+  numbers {
     display-name = "NUM";
     bindings = <
       &mo L_NUM    &mt STAR  N3   &mt SUP2 N2    &mt DOT   N1
