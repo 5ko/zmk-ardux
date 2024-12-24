@@ -115,23 +115,69 @@
     bindings = <&sk>, <&kt>;
   };
   
-  shift_on: macro_myshift_on {
+  
+  
+  
+  shift_on: macro_shift_on {
     compatible = "zmk,behavior-macro";
     #binding-cells = <0>;
     bindings = <&lay_on L_H_S>, <&kd LSHFT> ;
   };
-  shift_off: macro_myshift_off {
+  shift_off: macro_shift_off {
     compatible = "zmk,behavior-macro";
     #binding-cells = <0>;
     bindings = <&lay_off L_H_S>, <&ku LSHFT> ;
   };
-  ht_shift: behavior_my_shift {
+  ht_shift: behavior_shift {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
     flavor = "hold-preferred";
     tapping-term-ms = <HOLDTAP_TERM>;
     bindings = <&shift_on>, <&sk>;
   };
+  
+  
+  
+  
+  alt_on: macro_alt_on {
+    compatible = "zmk,behavior-macro";
+    #binding-cells = <0>;
+    bindings = <&lay_on L_H_A>, <&kd LALT> ;
+  };
+  alt_off: macro_alt_off {
+    compatible = "zmk,behavior-macro";
+    #binding-cells = <0>;
+    bindings = <&lay_off L_H_A>, <&ku LALT> ;
+  };
+  ht_alt: behavior_alt {
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    flavor = "hold-preferred";
+    tapping-term-ms = <HOLDTAP_TERM>;
+    bindings = <&alt_on>, <&sk>;
+  };
+  
+  
+  ctrl_on: macro_ctrl_on {
+    compatible = "zmk,behavior-macro";
+    #binding-cells = <0>;
+    bindings = <&lay_on L_H_C>, <&kd LCTRL> ;
+  };
+  ctrl_off: macro_ctrl_off {
+    compatible = "zmk,behavior-macro";
+    #binding-cells = <0>;
+    bindings = <&lay_off L_H_C>, <&ku LCTRL> ;
+  };
+  ht_ctrl: behavior_ctrl {
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    flavor = "hold-preferred";
+    tapping-term-ms = <HOLDTAP_TERM>;
+    bindings = <&ctrl_on>, <&sk>;
+  };
+  
+  
+  
   
   caps_tog: behavior_caps_tog {
     compatible = "zmk,behavior-hold-tap";
@@ -316,16 +362,18 @@ ZMK_COMBO(combo_tab,       &mt LS(TAB)  TAB , B4 T3 T2   )
 
 
 // Combos modifiers
-ZMK_COMBO(combo_shift1,   &shift_off,    T3    B1, L_H_S)
-ZMK_COMBO(combo_shift,    &ht_shift 0 LSHFT,    T3    B1)
+ZMK_COMBO(combo_shift1, &shift_off,           T3    B1, L_H_S)
+ZMK_COMBO(combo_shift,  &ht_shift 0 LSHFT,    T3    B1)
 
+ZMK_COMBO(combo_ctrl1,  &ctrl_off,            T3 T2 B1, L_H_C)
+ZMK_COMBO(combo_ctrl,   &ht_ctrl 0 LCTRL,     T3 T2 B1)
 
+ZMK_COMBO(combo_alt1,   &alt_off,             T3 B2 B1, L_H_A)
+ZMK_COMBO(combo_alt,    &ht_alt 0 LALT,       T3 B2 B1)
 
 
 ZMK_COMBO(combo_capsock,  &kp  CAPS , T4 T3    B1)
-ZMK_COMBO(combo_ctrl,     &kt  LCTRL,    T3 T2 B1)
 
-ZMK_COMBO(combo_alt,      &kt   LALT,    T3 B2 B1)
 ZMK_COMBO(combo_altgr,    &sk   RALT, B4 T3 B2 B1)
 
 ZMK_COMBO(combo_gui,      &sk   LGUI, T4 T3 B2 B1)
