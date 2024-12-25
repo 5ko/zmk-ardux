@@ -233,7 +233,7 @@
     compatible = "zmk,behavior-macro";
     #binding-cells = <0>;
     bindings = <&kp H &kp T &kp T &kp P &kp S &kp COLON &kp SLASH &kp SLASH &kp W &kp W &kp W &kp DOT >;
-  }
+  };
   
   reib: macro_reib {
     compatible = "zmk,behavior-macro";
