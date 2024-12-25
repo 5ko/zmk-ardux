@@ -134,6 +134,18 @@
   
   
   
+  tap2: macro_tap_2 {
+    compatible = "zmk,behavior-macro-two-param";
+    wait-ms = <40>;
+    tap-ms = <40>;
+    #binding-cells = <2>;
+    bindings
+      = <&macro_param_1to1>
+      , <&macro_tap &kp MACRO_PLACEHOLDER>
+      , <&macro_param_2to1>
+      , <&macro_tap &kp MACRO_PLACEHOLDER>
+      ;
+  };
   
   
   caps_tog: behavior_caps_tog {
@@ -295,6 +307,15 @@ ZMK_COMBO(combo_m,  &mt MINUS M,    B3 B2 B1, L_LEFT)
 ZMK_COMBO(combo_f,  &kp       F, T4 T3 T2   , L_LEFT)
 ZMK_COMBO(combo_w,  &mt AT    W, B4 B3 B2   , L_LEFT)
 
+// Common bigrams, with letters on the same finger, or require combos
+ZMK_COMBO(combo_st,  &tap2 S T,       B3 T2   , L_LEFT)
+ZMK_COMBO(combo_th,  &tap2 T H,       T2 B2 B1, L_LEFT)
+ZMK_COMBO(combo_ed,  &tap2 E D,       T2 T1 B1, L_LEFT)
+ZMK_COMBO(combo_nd,  &tap2 N D, B4    T2 T1, L_LEFT)
+ZMK_COMBO(combo_he,  &tap2 H E,    B2 T1 B1, L_LEFT)
+
+
+
 ZMK_COMBO(combo_sp, &mt ENTER SPACE, B4 B3 B2 B1, L_LEFT)
 
 
@@ -337,12 +358,6 @@ ZMK_COMBO(combo_shift,  &kp_kt CAPS LSHFT,     T3    B1, L_LEFT)
 // Hold for NEXTLAYOUT (Alt+Shift), tap for sticky LSHFT (one-shot)
 ZMK_COMBO(combo_shift1, &nx_sk 0    LSHFT,     B3    T1, L_LEFT)
 
-// ZMK_COMBO(combo_capsock,  &kp  CAPS , T4 T3    B1, L_LEFT)
-// 
-// ZMK_COMBO(combo_altgr,    &sk   RALT, B4 T3 B2 B1, L_LEFT)
-// 
-// ZMK_COMBO(combo_gui,      &sk   LGUI, T4 T3 B2 B1, L_LEFT)
-// ZMK_COMBO(combo_kblayout, &nxkbly,    B4 B3 T2 T1, L_LEFT)
 
 // FIXME: should this be enabled? Could be on Hold+ESC
 ZMK_COMBO(combo_unmod,    &unmod,     T4 T3 T2 T1, L_LEFT)
@@ -359,7 +374,7 @@ ZMK_COMBO(combo_reflash, &bootloader, B4 B3 B2 B1 T1)
 //    HOLD: escape, unmod, T, F, J, Z, YEN
 //    MEH key
 // Most used keyboard shortcuts Alt+Tab, Alt+Shift+Tab
-// the most common letter pairs as "+TH +HE AN RE ER IN ON AT +ND ?ST ES EN +OF TE +ED OR TI HI AS TO"
+// the most common letter pairs as " AN RE ER IN ON AT ES EN +OF TE OR TI +HI AS TO"
 // Display
 
 
