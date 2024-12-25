@@ -234,6 +234,11 @@
     #binding-cells = <0>;
     bindings = <&kp H &kp T &kp T &kp P &kp S &kp COLON &kp SLASH &kp SLASH &kp W &kp W &kp W &kp DOT >;
   };
+  ing: macro_ing {
+    compatible = "zmk,behavior-macro";
+    #binding-cells = <0>;
+    bindings = <&kp I &kp N &kp G>;
+  };
   
   reib: macro_reib {
     compatible = "zmk,behavior-macro";
@@ -333,11 +338,12 @@ ZMK_COMBO(combo_f,  &kp       F, T4 T3 T2   , L_LEFT)
 ZMK_COMBO(combo_w,  &mt AT    W, B4 B3 B2   , L_LEFT)
 
 // Common bigrams, with letters on the same finger, or require combos
-ZMK_COMBO(combo_st,  &tap2 S T,       B3 T2   , L_LEFT)
-ZMK_COMBO(combo_th,  &https_th 0 0,   T2 B2 B1, L_LEFT)
-ZMK_COMBO(combo_ed,  &tap2 E D,       T2 T1 B1, L_LEFT)
-ZMK_COMBO(combo_nd,  &tap2 N D, B4    T2 T1, L_LEFT)
-ZMK_COMBO(combo_he,  &tap2 H E,    B2 T1 B1, L_LEFT)
+ZMK_COMBO(combo_st,  &tap2 S T,        B3 T2   , L_LEFT)
+ZMK_COMBO(combo_th,  &https_th 0 0,    T2 B2 B1, L_LEFT)
+ZMK_COMBO(combo_ed,  &tap2 E D ,       T2 T1 B1, L_LEFT)
+ZMK_COMBO(combo_nd,  &tap2 N D , B4    T2 T1   , L_LEFT)
+ZMK_COMBO(combo_he,  &tap2 H E ,    B2 T1 B1   , L_LEFT)
+ZMK_COMBO(combo_ing, &ing      , B4 T3 B3      , L_LEFT)
 
 
 
