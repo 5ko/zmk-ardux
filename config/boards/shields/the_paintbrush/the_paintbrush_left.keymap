@@ -134,6 +134,7 @@
   
   
   
+  
   tap2: macro_tap_2 {
     compatible = "zmk,behavior-macro-two-param";
     wait-ms = <40>;
@@ -209,6 +210,30 @@
     bindings = <&kp GLOBE &kp LA(LSHFT)> ;
   };
   
+  
+  
+  tap_th: macro_tap_th {
+    compatible = "zmk,behavior-macro";
+    wait-ms = <40>;
+    tap-ms = <40>;
+    #binding-cells = <0>;
+    bindings
+      = <&kp T kp H>
+      ;
+  };
+  // nxkbly, sk LSHFT
+  https_th: behavior_https_th {
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    flavor = "hold-preferred";
+    tapping-term-ms = <HOLDTAP_TERM>;
+    bindings = <&https>, <&tap_th>;
+  };
+  https: macro_https {
+    compatible = "zmk,behavior-macro";
+    #binding-cells = <0>;
+    bindings = <&kp H &kp T &kp T &kp P &kp S &kp COLON &kp SLASH &kp SLASH &kp W &kp W &kp W &kp DOT >;
+  }
   
   reib: macro_reib {
     compatible = "zmk,behavior-macro";
@@ -309,7 +334,7 @@ ZMK_COMBO(combo_w,  &mt AT    W, B4 B3 B2   , L_LEFT)
 
 // Common bigrams, with letters on the same finger, or require combos
 ZMK_COMBO(combo_st,  &tap2 S T,       B3 T2   , L_LEFT)
-ZMK_COMBO(combo_th,  &tap2 T H,       T2 B2 B1, L_LEFT)
+ZMK_COMBO(combo_th,  &https_th 0 0,   T2 B2 B1, L_LEFT)
 ZMK_COMBO(combo_ed,  &tap2 E D,       T2 T1 B1, L_LEFT)
 ZMK_COMBO(combo_nd,  &tap2 N D, B4    T2 T1, L_LEFT)
 ZMK_COMBO(combo_he,  &tap2 H E,    B2 T1 B1, L_LEFT)
@@ -329,7 +354,6 @@ ZMK_COMBO(combo_exclq, &mt QMARK EXCL , B4 T4      , L_LEFT)
 
 
 // GLOBAL Combos 
-// ZMK_COMBO(combo_enter,     &kp ENTER        ,       T1 B1)
 
 ZMK_COMBO(combo_backspace, &mt LC(BSPC) BSPC,       T2 B1, L_LEFT)
 ZMK_COMBO(combo_delete,    &mt LC(DEL)  DEL ,       B2 T1, L_LEFT)
@@ -338,16 +362,6 @@ ZMK_COMBO(combo_tab,       &mt LS(TAB)  TAB , B4 T3 T2   , L_LEFT)
 
 
 
-// Combos modifiers
-// ZMK_COMBO(combo_shift1, &shift_off,           T3    B1, L_H_S)
-// ZMK_COMBO(combo_shift,  &ht_shift 0 LSHFT,    T3    B1)
-// 
-// ZMK_COMBO(combo_ctrl1,  &ctrl_off,            T3 T2 B1, L_H_C)
-// ZMK_COMBO(combo_ctrl,   &ht_ctrl 0 LCTRL,     T3 T2 B1)
-
-// 
-// ZMK_COMBO(combo_alt1,   &alt_off,             T3 B2 B1, L_H_A)
-// ZMK_COMBO(combo_alt,    &ht_alt 0 LALT,       T3 B2 B1)
 
 // Hold for sticky RALT (one shot), tap to toggle LALT
 ZMK_COMBO(combo_alt,    &sk_tk RALT LALT,      T3 B2 B1, L_LEFT)
@@ -362,8 +376,6 @@ ZMK_COMBO(combo_shift1, &nx_sk 0    LSHFT,     B3    T1, L_LEFT)
 // FIXME: should this be enabled? Could be on Hold+ESC
 ZMK_COMBO(combo_unmod,    &unmod,     T4 T3 T2 T1, L_LEFT)
 
-// ZMK_COMBO(combo_alt,     &togkey_stikey LALT   LALT,    T3 B2 B1)
-
 
 // ZMK_COMBO(name, bindings, keypos, layers, timeout, prior_idle, extra)
 ZMK_COMBO(combo_reset,   &sys_reset,  0 1 2 3 4 5 6 7)
@@ -375,7 +387,7 @@ ZMK_COMBO(combo_reflash, &bootloader, B4 B3 B2 B1 T1)
 //    MEH key
 // Most used keyboard shortcuts Alt+Tab, Alt+Shift+Tab
 // the most common letter pairs as " AN RE ER IN ON AT ES EN +OF TE OR TI +HI AS TO"
-// Display
+// 
 
 
 / { keymap { compatible = "zmk,keymap";
