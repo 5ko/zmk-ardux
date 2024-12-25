@@ -301,18 +301,17 @@ ZMK_COMBO(combo_sp, &mt ENTER SPACE, B4 B3 B2 B1, L_LEFT)
 // Base punctuation
 ZMK_COMBO(combo_slash, &mt D_ACU SLASH, B4       T1, L_LEFT)
 ZMK_COMBO(combo_backs, &mt D_GRV BSLH , T4       B1, L_LEFT)
-ZMK_COMBO(combo_comma, &mt DOT COMMA  ,       B2 T1, L_LEFT)
-ZMK_COMBO(combo_colon, &mt COLON SEMI ,    B2 T2   , L_LEFT)
+ZMK_COMBO(combo_comma, &mt DOT COMMA  ,       T2 B2, L_LEFT)
+ZMK_COMBO(combo_colon, &mt COLON SEMI ,       T1 B1, L_LEFT)
 ZMK_COMBO(combo_quote, &mt DQT SQT    ,    B3 T3   , L_LEFT)
 ZMK_COMBO(combo_exclq, &mt QMARK EXCL , B4 T4      , L_LEFT)
-
 
 
 // GLOBAL Combos 
 // ZMK_COMBO(combo_enter,     &kp ENTER        ,       T1 B1)
 
 ZMK_COMBO(combo_backspace, &mt LC(BSPC) BSPC,       T2 B1, L_LEFT)
-ZMK_COMBO(combo_delete,    &mt LC(DEL)  DEL ,    B3 T2   , L_LEFT)
+ZMK_COMBO(combo_delete,    &mt LC(DEL)  DEL ,       B2 T1, L_LEFT)
 ZMK_COMBO(combo_escape,    &kp ESC          , B4 T3      , L_LEFT)
 ZMK_COMBO(combo_tab,       &mt LS(TAB)  TAB , B4 T3 T2   , L_LEFT)
 
@@ -345,7 +344,7 @@ ZMK_COMBO(combo_shift1, &nx_sk 0    LSHFT,     B3    T1, L_LEFT)
 // ZMK_COMBO(combo_gui,      &sk   LGUI, T4 T3 B2 B1, L_LEFT)
 // ZMK_COMBO(combo_kblayout, &nxkbly,    B4 B3 T2 T1, L_LEFT)
 
-// FIXME: should this be enabled?
+// FIXME: should this be enabled? Could be on Hold+ESC
 ZMK_COMBO(combo_unmod,    &unmod,     T4 T3 T2 T1, L_LEFT)
 
 // ZMK_COMBO(combo_alt,     &togkey_stikey LALT   LALT,    T3 B2 B1)
