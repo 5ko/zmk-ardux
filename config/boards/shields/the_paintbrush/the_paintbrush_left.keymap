@@ -50,6 +50,8 @@
 #define SAVEAS     LC(LS(S)) 
 #define UNDO       LC(Z)
 #define REDO       LC(LS(Z))
+#define TODO       &none
+#define MAYBE      &none
 
 
 // Top row RI TA
@@ -198,7 +200,7 @@
     compatible = "zmk,behavior-macro";
     #binding-cells = <0>;
     bindings
-      = <&lay_off L_FUN &lay_off L_MSE &lay_off L_BT_S &lay_off L_H_S &lay_off L_H_C &lay_off L_H_A>
+      = <&lay_off L_MSE &lay_off L_BT_S>
       , <&ku LSHFT &ku LCTRL &ku LALT &ku RALT &ku LGUI>
       ;
   };
@@ -291,11 +293,11 @@ ZMK_COMBO(num_Y, &kp YEN      , B3    B1, L_NUM)
 // ZMK_COMBO(num_???, &kp ?, B3 B2 B1, L_NUM)
 
 
-// Combos NAV+Mouse layer
-ZMK_COMBO(mouse_b1,  &mkp MB1 ,    T2 T1, L_NAV)
-ZMK_COMBO(mouse_b2,  &mkp MB2 , T3 T2   , L_NAV)
-ZMK_COMBO(mouse_b3,  &mkp MB3 , T3 T2 T1, L_NAV L_MSE)
-ZMK_COMBO(mouse_b4,  &mkp MB4 , T3    T1, L_NAV L_MSE)
+// Combos NAV+Media layer
+ZMK_COMBO(media_next, &kp K_NEXT,    T2 T1, L_NAV)
+ZMK_COMBO(media_prev, &kp K_PREV, T3 T2   , L_NAV)
+ZMK_COMBO(media_play, &kp K_PP  , T3 T2 T1, L_NAV)
+
 ZMK_COMBO(nav_up,    &kp UP   , B3 B2   , L_NAV)
 ZMK_COMBO(nav_dn,    &kp DOWN ,    B2 B1, L_NAV)
 ZMK_COMBO(nav_pgup,  &kp PG_UP, B3    B1, L_NAV)
@@ -309,6 +311,9 @@ ZMK_TAP_DANCE(right_end, bindings = <&mt END RIGHT>, <&kp LC(RIGHT)>; tapping-te
 // ZMK_COMBO(media_play, &kp K_PLAY_PAUSE, B3 B2 , L_MED)
 
 
+// Combos Mouse layer
+ZMK_COMBO(mouse_b3,  &mkp MB3 , T3 T2 T1, L_MSE)
+ZMK_COMBO(mouse_b4,  &mkp MB4 , T3    T1, L_MSE)
 
 // Combos BLUETOOTH layer
 ZMK_COMBO(layer_bt_select,          &sl L_BT_S, T1 B1             T4 B4) // ALL layers
@@ -324,6 +329,9 @@ ZMK_COMBO(combo_mb5,   &mkp MB5,       T2 T1, L_MSE)
 
 // Combos L_FUN layer
 ZMK_COMBO(combo_reib,  &reib, B4 B3 B2   , L_FUN)
+
+// Combos L_PAR layer
+ZMK_COMBO(combo_eq, &mt TILDE EQUAL, T2 T1, L_PAR)
 
 
 // Base letter combos
@@ -361,7 +369,7 @@ ZMK_COMBO(combo_he,   &tap2 H E,    B2 T1 B1   , L_LEFT)
 ZMK_COMBO(combo_tion, &tion    , B4 B3 T2      , L_LEFT)
 
 ZMK_COMBO(combo_th,  &https_th 0 0,    T2 B2 B1, L_LEFT)
-ZMK_COMBO(combo_ing,  &ion_ing 0 0, B4 T3 B3      , L_LEFT)
+ZMK_COMBO(combo_ing, &ion_ing  0 0, B4 T3 B3   , L_LEFT)
 
 
 
@@ -379,26 +387,26 @@ ZMK_COMBO(combo_exclq, &mt QMARK EXCL , B4 T4      , L_LEFT)
 
 // GLOBAL Combos 
 
-ZMK_COMBO(combo_backspace, &mt LC(BSPC) BSPC,       T2 B1, L_LEFT)
-ZMK_COMBO(combo_delete,    &mt LC(DEL)  DEL ,       B2 T1, L_LEFT)
-ZMK_COMBO(combo_escape,    &kp ESC          , B4 T3      , L_LEFT)
-ZMK_COMBO(combo_tab,       &mt LS(TAB)  TAB , B4 T3 T2   , L_LEFT)
+ZMK_COMBO(combo_backspace, &mt LC(BSPC) BSPC,       T2 B1, L_LEFT L_MSE)
+ZMK_COMBO(combo_delete,    &mt LC(DEL)  DEL ,       B2 T1, L_LEFT L_MSE)
+ZMK_COMBO(combo_escape,    &kp ESC          , B4 T3      , L_LEFT L_MSE)
+ZMK_COMBO(combo_tab,       &mt LS(TAB)  TAB , B4 T3 T2   , L_LEFT L_MSE)
 
 
 
 
 // Hold for sticky RALT (one shot), tap to toggle LALT
-ZMK_COMBO(combo_alt,    &sk_tk RALT LALT,      T3 B2 B1, L_LEFT)
+ZMK_COMBO(combo_alt,    &sk_tk RALT LALT,      T3 B2 B1, L_LEFT L_MSE)
 // Hold for sticky LGUI (one shot), tap to toggle LCTRL
-ZMK_COMBO(combo_ctrl,   &sk_tk LGUI LCTRL,     T3 T2 B1, L_LEFT)
+ZMK_COMBO(combo_ctrl,   &sk_tk LGUI LCTRL,     T3 T2 B1, L_LEFT L_MSE)
 // Hold for CAPS, tap to toggle LSHFT
-ZMK_COMBO(combo_shift,  &kp_kt CAPS LSHFT,     T3    B1, L_LEFT)
+ZMK_COMBO(combo_shift,  &kp_kt CAPS LSHFT,     T3    B1, L_LEFT L_MSE)
 // Hold for NEXTLAYOUT (Alt+Shift), tap for sticky LSHFT (one-shot)
-ZMK_COMBO(combo_shift1, &nx_sk 0    LSHFT,     B3    T1, L_LEFT)
+ZMK_COMBO(combo_shift1, &nx_sk 0    LSHFT,     B3    T1, L_LEFT L_MSE)
 
 
 // FIXME: should this be enabled? Could be on Hold+ESC
-ZMK_COMBO(combo_unmod,    &unmod,     T4 T3 T2 T1, L_LEFT)
+ZMK_COMBO(combo_unmod,    &unmod,     T4 T3 T2 T1, L_LEFT L_MSE L_BT_S)
 
 
 // ZMK_COMBO(name, bindings, keypos, layers, timeout, prior_idle, extra)
@@ -406,19 +414,19 @@ ZMK_COMBO(combo_reset,   &sys_reset,  0 1 2 3 4 5 6 7)
 ZMK_COMBO(combo_reflash, &bootloader, B4 B3 B2 B1 T1)
 
 
-// TODO: Ins, hold-space, hold-enter, hold-t, hold-f
+// TODO: 
 //    HOLD: escape, unmod, T, F, J, Z, YEN
 //    MEH key
-// Most used keyboard shortcuts Alt+Tab, Alt+Shift+Tab
+// Most used keyboard shortcuts Alt+Tab
 // the most common letter pairs as " AN RE ER IN ON AT ES EN +OF TE OR TI +HI AS TO"
-// 
+// Unused combos that are relatively easy
 
 
 / { keymap { compatible = "zmk,keymap";
   left {
     display-name = "LEFT";
     bindings = <
-      &lt L_NUM R   &lt L_EDT I   &kp      T    &lt L_FUN A
+      &lt L_NUM R   &lt L_EDT I   &kp       T   &lt L_FUN A
       &lt L_NAV N   &lt L_PAR O   &star_sharp   &lt L_MED E
     >;
   };
@@ -432,30 +440,30 @@ ZMK_COMBO(combo_reflash, &bootloader, B4 B3 B2 B1 T1)
   parentheses {
     display-name = "PAR";
     bindings = <
-      &none             &none       &mt RBRC LBRC   &mt RPAR LPAR
-      &mt TILDE EQUAL   &mo L_PAR   &mt GT   LT     &mt RBKT LBKT
+      TODO   MAYBE       &mt RBRC LBRC   &mt RPAR LPAR
+      TODO   &mo L_PAR   &mt GT   LT     &mt RBKT LBKT
     >;
   };
   
-  quicknav {
+  medianav {
     display-name = "NAV";
     bindings = <                      
-      &none       &mmv MOVE_UP     &mmv MOVE_LEFT   &mmv MOVE_RIGHT
-      &mo L_NAV   &mmv MOVE_DOWN   &left_home       &right_end
+      &kp PRINTSCREEN  TODO  &mt K_MUTE K_VOL_DN  &kp K_VOL_UP 
+      &mo L_NAV        TODO  &left_home           &right_end
     >;
   };
   media {
-    display-name = "MED";
+    display-name = "MED"; // TODO
     bindings = <
-      &kp K_PP    &kp K_PREV    &kp K_NEXT     &kp PRINTSCREEN
-      &kp K_MUTE  &kp K_VOL_DN  &kp K_VOL_UP   &mo L_MED
+      TODO  TODO  TODO  MAYBE 
+      TODO  TODO  TODO  &mo L_MED
     >;
   };
-  shortcuts {
+  editing {
     display-name = "EDT";
     bindings = <
-      &none  &mo L_EDT  &mt CLIPPASTE2 CLIPPASTE  &mt CLIPCUT CLIPCOPY
-      &none  &none      &mt SAVEAS     SAVE       &mt REDO    UNDO
+      &kp INS  &mo L_EDT  &mt CLIPPASTE2 CLIPPASTE  &mt CLIPCUT CLIPCOPY
+      TODO     &none      &mt SAVEAS     SAVE       &mt REDO    UNDO
     >;
   };
   
@@ -474,7 +482,7 @@ ZMK_COMBO(combo_reflash, &bootloader, B4 B3 B2 B1 T1)
     >;
   };
   
-  bt {
+  bluetooth {
     display-name = "BT";
     bindings = <
       &out OUT_BLE   &bt BT_SEL 2  &bt BT_SEL 1  &bt BT_SEL 0
