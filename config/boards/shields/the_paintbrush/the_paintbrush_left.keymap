@@ -292,29 +292,22 @@ ZMK_COMBO(num_Y, &kp YEN      , B3    B1, L_NUM)
 // Combos NAV+Media layer
 ZMK_COMBO(mute_play, &mt K_PP K_MUTE,    T2 T1, L_NAV)
 
-ZMK_COMBO(nav_up,    &kp UP   , B3 B2   , L_NAV)
-ZMK_COMBO(nav_dn,    &kp DOWN ,    B2 B1, L_NAV)
-ZMK_COMBO(nav_pgup,  &kp PG_UP, B3    B1, L_NAV)
-ZMK_COMBO(nav_pgdn,  &kp PG_DN, B3 B2 B1, L_NAV)
+// ZMK_COMBO(nav_up,    &kp UP   , B3 B2   , L_NAV)
+// ZMK_COMBO(nav_dn,    &kp DOWN ,    B2 B1, L_NAV)
+ZMK_COMBO(nav_pgup,  &kp PG_UP, T3 T2, L_NAV)
+ZMK_COMBO(nav_pgdn,  &kp PG_DN, B3 B2, L_NAV)
 
 ZMK_TAP_DANCE(left_home, bindings = <&mt HOME LEFT>, <&kp LC(LEFT)>;  tapping-term-ms = <NAV_TAP_TERM>; )
 ZMK_TAP_DANCE(right_end, bindings = <&mt END RIGHT>, <&kp LC(RIGHT)>; tapping-term-ms = <NAV_TAP_TERM>; )
 
 
-// Combos Media layer
-// ZMK_COMBO(media_play, &kp K_PLAY_PAUSE, B3 B2 , L_MED)
-
-
-// Combos Mouse layer
-ZMK_COMBO(mouse_b3,  &mkp MB3 , T3 T2 T1, L_MSE)
-ZMK_COMBO(mouse_b4,  &mkp MB4 , T3    T1, L_MSE)
 
 // Combos BLUETOOTH layer
 ZMK_COMBO(layer_bt_select,          &sl L_BLE, T1 B1             T4 B4) // ALL layers
 ZMK_COMBO(bt_clear_current_profile, &bt BT_CLR,       T3 B3 T2 B2      , L_BLE)
 
 
-// Combos L_MSE layer
+// Combos L_MSE  Mouse layer
 ZMK_COMBO(lay_mouse, &tog L_MSE,    T3 B2 T1, L_LEFT L_MSE)
 ZMK_COMBO(combo_mb3,   &mkp MB3,    T3    T1, L_MSE)
 ZMK_COMBO(combo_mb4,   &mkp MB4,    T3 T2   , L_MSE)
@@ -443,8 +436,8 @@ ZMK_COMBO(combo_reflash, &bootloader, B4 B3 B2 B1 T1)
   medianav {
     display-name = "L_NAV";
     bindings = <                      
-      &kp PRINTSCREEN  TODO  &mt K_PREV K_VOL_DN  &mt K_NEXT K_VOL_UP 
-      &mo L_NAV        TODO  &left_home           &right_end
+      &kp PRINTSCREEN  &kp UP    &left_home           &right_end
+      &mo L_NAV        &kp DOWN  &mt K_PREV K_VOL_DN  &mt K_NEXT K_VOL_UP 
     >;
   };
   media {
