@@ -290,9 +290,9 @@ ZMK_COMBO(num_Y, &kp YEN      , B3    B1, L_NUM)
 
 
 // Combos NAV+Media layer
-ZMK_COMBO(nav_pgup,  &kp PG_UP      , T3 T2   , L_NAV)
-ZMK_COMBO(nav_pgdn,  &kp PG_DN      , B3 B2   , L_NAV)
-ZMK_COMBO(mute_play, &mt K_PP K_MUTE,    B2 B1, L_NAV)
+ZMK_COMBO(nav_pgup,  &mt LC(HOME) PG_UP, T3 T2   , L_NAV)
+ZMK_COMBO(nav_pgdn,  &mt LC(END)  PG_DN, B3 B2   , L_NAV)
+ZMK_COMBO(mute_play, &mt K_PP K_MUTE   ,    B2 B1, L_NAV)
 
 
 ZMK_TAP_DANCE(left_home, bindings = <&mt HOME LEFT>, <&kp LC(LEFT)>;  tapping-term-ms = <NAV_TAP_TERM>; )
@@ -356,16 +356,14 @@ ZMK_COMBO(combo_tion, &tion    , B4 B3 T2      , L_LEFT)
 ZMK_COMBO(combo_th,  &https_th 0 0,    T2 B2 B1, L_LEFT)
 ZMK_COMBO(combo_ing, &ion_ing  0 0, B4 T3 B3   , L_LEFT)
 
-
-
 ZMK_COMBO(combo_sp, &mt ENTER SPACE, B4 B3 B2 B1, L_LEFT)
 
 
 // Base punctuation
 ZMK_COMBO(combo_slash, &mt D_ACU SLASH, B4       T1, L_LEFT)
 ZMK_COMBO(combo_backs, &mt D_GRV BSLH , T4       B1, L_LEFT)
-ZMK_COMBO(combo_comma, &mt DOT COMMA  ,       T1 B1, L_LEFT)
-ZMK_COMBO(combo_colon, &mt COLON SEMI ,       T2 B2, L_LEFT)
+ZMK_COMBO(combo_comma, &mt DOT COMMA  ,       T1 B1, L_LEFT L_NUM)
+ZMK_COMBO(combo_colon, &mt COLON SEMI ,       T2 B2, L_LEFT L_NUM)
 ZMK_COMBO(combo_quote, &mt DQT SQT    ,    B3 T3   , L_LEFT)
 ZMK_COMBO(combo_exclq, &mt QMARK EXCL , B4 T4      , L_LEFT)
 
@@ -406,6 +404,20 @@ ZMK_COMBO(combo_reflash, &bootloader, B4 B3 B2 B1 T1)
 // the most common letter pairs as " AN RE ER IN ON AT ES EN +OF TE OR TI +HI AS TO"
 // 
 // Unused combos that are relatively easy
+// 
+// T3 B2, B3 B2 T1, B3 T2 B1, 
+// 
+// Pinky+Ring: T4 T3 B2, T4 T3 B2 B1, T4 T3 T2 B1,
+//             B4 B3 T2, B4 B3 T1, B4 B3 B2 T1
+// 
+// Pinky T4, maybe: T4 B3, T4 B2, T4 B2 B1, T4 B3 B2 B1
+// Pinky B4, maybe: B4 T3 T2 T1, B4 T3 T2 B1
+// 
+// T4 B3 B2 T1, B4 T3 T2 T1
+// 
+// Change layout from LEFT to RIGHT hand
+// T4 T3 B4 B3, T2 T1 B2 B1
+
 
 
 / { keymap { compatible = "zmk,keymap";
