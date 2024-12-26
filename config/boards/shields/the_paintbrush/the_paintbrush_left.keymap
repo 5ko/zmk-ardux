@@ -75,11 +75,7 @@
 #define L_EDT  5
 #define L_FUN  6
 #define L_MSE  7
-#define L_BT_S 8
-#define L_H_A  9
-#define L_H_S 10
-#define L_H_C 11
-
+#define L_BLE  8
 
 
 // Delay for combo
@@ -200,7 +196,7 @@
     compatible = "zmk,behavior-macro";
     #binding-cells = <0>;
     bindings
-      = <&lay_off L_MSE &lay_off L_BT_S>
+      = <&lay_off L_MSE &lay_off L_BLE>
       , <&ku LSHFT &ku LCTRL &ku LALT &ku RALT &ku LGUI>
       ;
   };
@@ -219,9 +215,7 @@
     wait-ms = <40>;
     tap-ms = <40>;
     #binding-cells = <0>;
-    bindings
-      = <&kp T &kp H>
-      ;
+    bindings = <&kp T &kp H> ;
   };
   https: macro_https {
     compatible = "zmk,behavior-macro";
@@ -235,6 +229,7 @@
     tapping-term-ms = <HOLDTAP_TERM>;
     bindings = <&https>, <&tap_th>;
   };
+  
   ing: macro_ing {
     compatible = "zmk,behavior-macro";
     #binding-cells = <0>;
@@ -252,6 +247,7 @@
     tapping-term-ms = <HOLDTAP_TERM>;
     bindings = <&ion>, <&ing>;
   };
+  
   tion: macro_tion {
     compatible = "zmk,behavior-macro";
     #binding-cells = <0>;
@@ -272,7 +268,7 @@
   };
 
 }; };
-#define SK_TK(key) &togkey_stikey key key   // Macro to apply momentary-layer-on-hold/toggle-layer-on-tap to a specific layer
+// #define SK_TK(key) &togkey_stikey key key   // Macro to apply momentary-layer-on-hold/toggle-layer-on-tap to a specific layer
 
 
 
@@ -294,9 +290,7 @@ ZMK_COMBO(num_Y, &kp YEN      , B3    B1, L_NUM)
 
 
 // Combos NAV+Media layer
-ZMK_COMBO(media_next, &kp K_NEXT,    T2 T1, L_NAV)
-ZMK_COMBO(media_prev, &kp K_PREV, T3 T2   , L_NAV)
-ZMK_COMBO(media_play, &kp K_PP  , T3 T2 T1, L_NAV)
+ZMK_COMBO(mute_play, &mt K_PP K_MUTE,    T2 T1, L_NAV)
 
 ZMK_COMBO(nav_up,    &kp UP   , B3 B2   , L_NAV)
 ZMK_COMBO(nav_dn,    &kp DOWN ,    B2 B1, L_NAV)
@@ -316,8 +310,8 @@ ZMK_COMBO(mouse_b3,  &mkp MB3 , T3 T2 T1, L_MSE)
 ZMK_COMBO(mouse_b4,  &mkp MB4 , T3    T1, L_MSE)
 
 // Combos BLUETOOTH layer
-ZMK_COMBO(layer_bt_select,          &sl L_BT_S, T1 B1             T4 B4) // ALL layers
-ZMK_COMBO(bt_clear_current_profile, &bt BT_CLR,       T3 B3 T2 B2      , L_BT_S)
+ZMK_COMBO(layer_bt_select,          &sl L_BLE, T1 B1             T4 B4) // ALL layers
+ZMK_COMBO(bt_clear_current_profile, &bt BT_CLR,       T3 B3 T2 B2      , L_BLE)
 
 
 // Combos L_MSE layer
@@ -406,7 +400,7 @@ ZMK_COMBO(combo_shift1, &nx_sk 0    LSHFT,     B3    T1, L_LEFT L_MSE)
 
 
 // FIXME: should this be enabled? Could be on Hold+ESC
-ZMK_COMBO(combo_unmod,    &unmod,     T4 T3 T2 T1, L_LEFT L_MSE L_BT_S)
+ZMK_COMBO(combo_unmod,    &unmod,     T4 T3 T2 T1, L_LEFT L_MSE L_BLE)
 
 
 // ZMK_COMBO(name, bindings, keypos, layers, timeout, prior_idle, extra)
@@ -414,11 +408,12 @@ ZMK_COMBO(combo_reset,   &sys_reset,  0 1 2 3 4 5 6 7)
 ZMK_COMBO(combo_reflash, &bootloader, B4 B3 B2 B1 T1)
 
 
-// TODO: 
+// TODO: see keymap for TODO and MAYBE
 //    HOLD: escape, unmod, T, F, J, Z, YEN
 //    MEH key
 // Most used keyboard shortcuts Alt+Tab
 // the most common letter pairs as " AN RE ER IN ON AT ES EN +OF TE OR TI +HI AS TO"
+// 
 // Unused combos that are relatively easy
 
 
@@ -431,14 +426,14 @@ ZMK_COMBO(combo_reflash, &bootloader, B4 B3 B2 B1 T1)
     >;
   };
   numbers {
-    display-name = "NUM";
+    display-name = "L_NUM";
     bindings = <
       &mo L_NUM    &mt STAR  N3   &mt SUP2 N2    &mt DOT   N1
       &none        &mt SLASH N6   &mt STAR N5    &mt COMMA N4
     >;
   };
   parentheses {
-    display-name = "PAR";
+    display-name = "L_PAR";
     bindings = <
       TODO   MAYBE       &mt RBRC LBRC   &mt RPAR LPAR
       TODO   &mo L_PAR   &mt GT   LT     &mt RBKT LBKT
@@ -446,21 +441,21 @@ ZMK_COMBO(combo_reflash, &bootloader, B4 B3 B2 B1 T1)
   };
   
   medianav {
-    display-name = "NAV";
+    display-name = "L_NAV";
     bindings = <                      
-      &kp PRINTSCREEN  TODO  &mt K_MUTE K_VOL_DN  &kp K_VOL_UP 
+      &kp PRINTSCREEN  TODO  &mt K_PREV K_VOL_DN  &mt K_NEXT K_VOL_UP 
       &mo L_NAV        TODO  &left_home           &right_end
     >;
   };
   media {
-    display-name = "MED"; // TODO
+    display-name = "L_MED"; // TODO
     bindings = <
       TODO  TODO  TODO  MAYBE 
       TODO  TODO  TODO  &mo L_MED
     >;
   };
   editing {
-    display-name = "EDT";
+    display-name = "L_EDT";
     bindings = <
       &kp INS  &mo L_EDT  &mt CLIPPASTE2 CLIPPASTE  &mt CLIPCUT CLIPCOPY
       TODO     &none      &mt SAVEAS     SAVE       &mt REDO    UNDO
@@ -468,14 +463,14 @@ ZMK_COMBO(combo_reflash, &bootloader, B4 B3 B2 B1 T1)
   };
   
   functionkeys {
-    display-name = "FUN";
+    display-name = "L_FUN";
     bindings = <
       &mt F2 F1    &mt F4  F3    &mt F6  F5    &mo L_FUN
       &mt F8 F7    &mt F10 F9    &mt F12 F11   &none
     >;
   };
   mouse { 
-    display-name = "MOUSE";
+    display-name = "L_MOUSE";
     bindings = <
      &msc SCRL_UP    &mkp MB2       &mmv MOVE_UP   &mkp MB1
      &msc SCRL_DOWN  &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT
@@ -483,7 +478,7 @@ ZMK_COMBO(combo_reflash, &bootloader, B4 B3 B2 B1 T1)
   };
   
   bluetooth {
-    display-name = "BT";
+    display-name = "L_BLE";
     bindings = <
       &out OUT_BLE   &bt BT_SEL 2  &bt BT_SEL 1  &bt BT_SEL 0
       &out OUT_USB   &bt BT_SEL 5  &bt BT_SEL 4  &bt BT_SEL 3
