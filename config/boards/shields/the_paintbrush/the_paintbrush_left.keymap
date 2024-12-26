@@ -379,8 +379,8 @@ ZMK_COMBO(combo_sp, &mt ENTER SPACE, B4 B3 B2 B1, L_LEFT)
 // Base punctuation
 ZMK_COMBO(combo_slash, &mt D_ACU SLASH, B4       T1, L_LEFT)
 ZMK_COMBO(combo_backs, &mt D_GRV BSLH , T4       B1, L_LEFT)
-ZMK_COMBO(combo_comma, &mt DOT COMMA  ,       T2 B2, L_LEFT)
-ZMK_COMBO(combo_colon, &mt COLON SEMI ,       T1 B1, L_LEFT)
+ZMK_COMBO(combo_comma, &mt DOT COMMA  ,       T1 B1, L_LEFT)
+ZMK_COMBO(combo_colon, &mt COLON SEMI ,       T2 B2, L_LEFT)
 ZMK_COMBO(combo_quote, &mt DQT SQT    ,    B3 T3   , L_LEFT)
 ZMK_COMBO(combo_exclq, &mt QMARK EXCL , B4 T4      , L_LEFT)
 
