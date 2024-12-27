@@ -403,8 +403,8 @@
 // Combos NUM layer
 ZMK_COMBO(num_7, &mt DOLLAR N7,    T2 T1, L_NUM)
 ZMK_COMBO(num_8, &kp N8       , T3 T2   , L_NUM)
-// ZMK_COMBO(num_0, &mt DEGREE N0, B4 B3   , L_NUM)
-ZMK_COMBO(num_9, &mt HASH   N9,    B3 B2, L_NUM)
+ZMK_COMBO(num_9, &mt HASH   N9,    B2 B1, L_NUM)
+ZMK_COMBO(num_0, &mt DEGREE N0, B3 B2   , L_NUM)
 ZMK_COMBO(num_E, &mt GBP  EURO, T3    T1, L_NUM)
 ZMK_COMBO(num_Y, &kp YEN      , B3    B1, L_NUM)
 // can do combos x4-x3-x2 
@@ -487,7 +487,7 @@ ZMK_COMBO(combo_sp, &mt ENTER SPACE, B4 B3 B2 B1, L_BASE L_NUM)
 // ZMK_COMBO(combo_he,  &tap2 H E,    B2 T1 B1   , L_BASE)
 // ZMK_COMBO(combo_tion, &tion   , B4 B3 T2      , L_BASE)
 // ZMK_COMBO(combo_th,  &the_th  0 0,    T2 B2 B1, L_BASE)
-// ZMK_COMBO(combo_ing, &ion_ing 0 0, B4 T3 B3   ,L_BASE)
+// ZMK_COMBO(combo_ing, &ion_ing 0 0, B4 T3 B3   , L_BASE)
 
 
 
@@ -556,14 +556,14 @@ ZMK_COMBO(combo_reflash, &bootloader, B4 B3 B2 B1 T1, L_BASE)
     // tap-dance doesn't work with layer-hold
     // unless we use non-momentary layers?
     bindings = <
-      &lt L_ACC R   &lt L_EDT I   &kp       T   &mt AT    A
+      &lt L_ACC R   &lt L_EDT I   &lk L_NUM T   &mt AT    A
       &lt L_NAV N   &lt L_PAR O   &star_sharp   &lk L_NUM E
     >;
   };
   numbers {
     display-name = "L_NUM";
     bindings = <
-      &lay_off L_NUM  &mt STAR  N3   &mt SUP2 N2    &mt DOT   N1
+      &lay_off L_NUM  &lt L_EDT N3   &mt SUP2 N2    &mt DOT   N1
       &lt L_NAV   N0  &mt SLASH N6   &mt STAR N5    &mt COMMA N4
     >;
   };
