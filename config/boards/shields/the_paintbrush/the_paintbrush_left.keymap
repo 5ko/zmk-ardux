@@ -48,8 +48,8 @@
 #define CLIPPASTE2 LC(LS(V))
 #define SAVE       LC(S)
 #define SAVEAS     LC(LS(S)) 
-#define UNDO       LC(Z)
-#define REDO       LC(LS(Z))
+#define U_UNDO     LC(Z)
+#define U_REDO     LC(LS(Z))
 #define TODO       &none
 #define MAYBE      &none
 
@@ -329,9 +329,9 @@ ZMK_COMBO(combo_eq, &mt TILDE EQUAL, T2 T1, L_PAR)
 
 
 // Base letter combos
-ZMK_TAP_DANCE(td_S, bindings = <&mt STAR S>, <&kp S_SRP>;  tapping-term-ms = <TAPDANCE_2_TERM>; )
-ZMK_TAP_DANCE(td_E, bindings = <&lt L_NUM E>, <&tap2 D_ACU E>, <&tap2 D_GRV E>;  tapping-term-ms = <TAPDANCE_3_TERM>; )
-ZMK_TAP_DANCE(td_A, bindings = <&lt L_FUN A>, <&tap2 D_GRV A>, <&tap2 D_GRV U>;  tapping-term-ms = <TAPDANCE_3_TERM>; )
+ZMK_TAP_DANCE(star_sharp, bindings = <&mt STAR S>, <&kp S_SRP>;  tapping-term-ms = <TAPDANCE_2_TERM>; )
+// ZMK_TAP_DANCE(td_E, bindings = <&lt L_NUM E>, <&tap2 D_ACU E>, <&tap2 D_GRV E>;  tapping-term-ms = <TAPDANCE_3_TERM>; )
+// ZMK_TAP_DANCE(td_A, bindings = <&lt L_FUN A>, <&tap2 D_GRV A>, <&tap2 D_GRV U>;  tapping-term-ms = <TAPDANCE_3_TERM>; )
 
 ZMK_COMBO(combo_b,  &mt AMPS  B, T4 T3      , L_LEFT)
 ZMK_COMBO(combo_c,  &mt C_CDL C,    T3 T2   , L_LEFT)
@@ -473,7 +473,7 @@ ZMK_COMBO(combo_reflash, &bootloader, B4 B3 B2 B1 T1)
     display-name = "L_EDT";
     bindings = <
       &kp INS  &mo L_EDT  &mt CLIPPASTE2 CLIPPASTE  &mt CLIPCUT CLIPCOPY
-      TODO     &none      &mt SAVEAS     SAVE       &mt REDO    UNDO
+      TODO     &none      &mt SAVEAS     SAVE       &mt U_REDO  U_UNDO
     >;
   };
   
