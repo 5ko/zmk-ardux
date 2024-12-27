@@ -287,12 +287,12 @@
     compatible = "zmk,behavior-macro";
     #binding-cells = <0>;
     bindings = <&kp D_GRV &kp A>;
-  }
+  };
   a_circ: macro_a_circ {
     compatible = "zmk,behavior-macro";
     #binding-cells = <0>;
     bindings = <&kp D_CRC &kp A>;
-  }
+  };
     
   a_grave_circ: behavior_a_grave_circ {
     compatible = "zmk,behavior-hold-tap";
