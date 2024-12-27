@@ -80,6 +80,7 @@
 #define L_MSE  7
 #define L_BLE  8
 
+#define ALL_LEFT L_BASE L_MSE L_BLE L_NUM L_FUN
 
 // Delay for combo
 #undef COMBO_TERM
@@ -87,7 +88,7 @@
 
 #define NAV_TAP_TERM 300
 #define TAPDANCE_2_TERM 200
-#define TAPDANCE_3_TERM 300
+#define TAPDANCE_3_TERM 350
 #define HOLDTAP_TERM 250
 #define HOLDTAP_LAYER_TERM 300
 #define TIMEOUT_STICKY_LEADER_KEY  5000
@@ -519,12 +520,12 @@ ZMK_COMBO(combo_shift1, &nx_sk 0    LSHFT  ,   B3    T1, L_BASE L_MSE L_NUM L_FU
 
 
 // FIXME: should this be enabled? Could be on Hold+ESC
-ZMK_COMBO(combo_unmod,    &unmod,     T4 T3 T2 T1, L_BASE L_MSE L_BLE L_NUM L_FUN)
+ZMK_COMBO(combo_unmod,    &unmod,     T4 T3 T2 T1)
 
 
 // ZMK_COMBO(name, bindings, keypos, layers, timeout, prior_idle, extra)
 ZMK_COMBO(combo_reset,   &sys_reset,  0 1 2 3 4 5 6 7)
-ZMK_COMBO(combo_reflash, &bootloader, B4 B3 B2 B1 T1, L_BASE)
+ZMK_COMBO(combo_reflash, &bootloader, B4 B3 B2 B1 T1, ALL_LEFT)
 
 
 // TODO: keymap for see keys marked TODO and MAYBE 
