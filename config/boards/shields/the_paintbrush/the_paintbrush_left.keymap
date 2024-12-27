@@ -86,8 +86,8 @@
 #define COMBO_TERM 175
 
 #define NAV_TAP_TERM 300
-#define TAPDANCE_2_TERM 300
-#define TAPDANCE_3_TERM 450
+#define TAPDANCE_2_TERM 200
+#define TAPDANCE_3_TERM 300
 #define HOLDTAP_TERM 250
 #define HOLDTAP_LAYER_TERM 400
 #define TIMEOUT_STICKY_LEADER_KEY  5000
@@ -448,7 +448,7 @@ ZMK_COMBO(combo_edier, &tap2 D_DRS E, B2 B1, L_ACC)
 
 // Base letter combos
 ZMK_TAP_DANCE(star_sharp, bindings = <&mt STAR S>, <&kp S_SRP>;  tapping-term-ms = <TAPDANCE_2_TERM>; )
-// ZMK_TAP_DANCE(td_E, bindings = <&lt L_NUM E>, <&tap2 D_ACU E>, <&tap2 D_GRV E>;  tapping-term-ms = <TAPDANCE_3_TERM>; )
+ZMK_TAP_DANCE(td_E, bindings = <&lk L_NUM E>, <&tap2 D_ACU E>, <&tap2 D_GRV E>;  tapping-term-ms = <TAPDANCE_3_TERM>; )
 ZMK_TAP_DANCE(td_A, bindings = <&mt AT A>, <&tap2 D_GRV A>, <&tap2 D_GRV U>;  tapping-term-ms = <TAPDANCE_3_TERM>; )
 
 ZMK_COMBO(combo_b,  &mt AMPS  B, T4 T3      , L_BASE)
@@ -557,7 +557,7 @@ ZMK_COMBO(combo_reflash, &bootloader, B4 B3 B2 B1 T1, L_BASE)
     // unless we use non-momentary layers?
     bindings = <
       &lt L_ACC R   &lt L_EDT I   &lk L_NUM T   &td_A
-      &lt L_NAV N   &lt L_PAR O   &star_sharp   &lk L_NUM E
+      &lt L_NAV N   &lt L_PAR O   &star_sharp   &td_E
     >;
   };
   numbers {
