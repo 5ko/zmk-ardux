@@ -257,20 +257,84 @@
     bindings = <&ion>, <&ing>;
   };
   
+  e_acute: macro_e_acute {
+    compatible = "zmk,behavior-macro";
+    #binding-cells = <0>;
+    bindings = <&kp D_ACU &kp E>;
+  }
+  e_grave: macro_e_grave {
+    compatible = "zmk,behavior-macro";
+    #binding-cells = <0>;
+    bindings = <&kp D_GRV &kp E>;
+  }
+  e_circ: macro_e_circ {
+    compatible = "zmk,behavior-macro";
+    #binding-cells = <0>;
+    bindings = <&kp D_CRC &kp E>;
+  }
+  e_dier: macro_e_dier {
+    compatible = "zmk,behavior-macro";
+    #binding-cells = <0>;
+    bindings = <&kp D_DRS &kp E>;
+  }
+  
+  a_grave: macro_a_grave {
+    compatible = "zmk,behavior-macro";
+    #binding-cells = <0>;
+    bindings = <&kp D_GRV &kp A>;
+  }
+  a_circ: macro_a_circ {
+    compatible = "zmk,behavior-macro";
+    #binding-cells = <0>;
+    bindings = <&kp D_CRC &kp A>;
+  }
+  
+  u_grave: macro_u_grave {
+    compatible = "zmk,behavior-macro";
+    #binding-cells = <0>;
+    bindings = <&kp D_GRV &kp U>;
+  }
+  u_circ: macro_u_circ {
+    compatible = "zmk,behavior-macro";
+    #binding-cells = <0>;
+    bindings = <&kp D_CRC &kp U>;
+  }
+  
+  i_circ: macro_i_circ {
+    compatible = "zmk,behavior-macro";
+    #binding-cells = <0>;
+    bindings = <&kp D_CRC &kp I>;
+  }
+  i_dier: macro_i_dier {
+    compatible = "zmk,behavior-macro";
+    #binding-cells = <0>;
+    bindings = <&kp D_DRS &kp I>;
+  }
+  o_circ: macro_o_circ {
+    compatible = "zmk,behavior-macro";
+    #binding-cells = <0>;
+    bindings = <&kp D_CRC &kp O>;
+  }
+  u_dier: macro_u_dier {
+    compatible = "zmk,behavior-macro";
+    #binding-cells = <0>;
+    bindings = <&kp D_DRS &kp U>;
+  }
+  
   
   e_acute_circ: behavior_e_acute_circ {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
     flavor = "hold-preferred";
     tapping-term-ms = <HOLDTAP_TERM>;
-    bindings = <&tap2 D_CRC E>, <&tap2 D_CRC E>;
+    bindings = <&e_circ>, <&e_acute>;
   };
   e_grave_dier: behavior_e_grave_dier{
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
     flavor = "hold-preferred";
     tapping-term-ms = <HOLDTAP_TERM>;
-    bindings = <&tap2 D_DRS E>, <&tap2 D_GRV E>;
+    bindings = <&e_dier>, <&e_grave>;
   };
   
   a_grave_circ: behavior_a_grave_circ {
@@ -278,7 +342,7 @@
     #binding-cells = <2>;
     flavor = "hold-preferred";
     tapping-term-ms = <HOLDTAP_TERM>;
-    bindings = <&tap2 D_CRC A>, <&tap2 D_GRV A>;
+    bindings = <&a_circ>, <&a_grave>;
   };
   
   u_grave_circ: behavior_u_grave_circ {
@@ -286,7 +350,23 @@
     #binding-cells = <2>;
     flavor = "hold-preferred";
     tapping-term-ms = <HOLDTAP_TERM>;
-    bindings = <&tap2 D_CRC U>, <&tap2 D_GRV U>;
+    bindings = <&u_circ>, <&u_grave>;
+  };
+  
+  i_circ_dier: behavior_i_circ_dier {
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    flavor = "hold-preferred";
+    tapping-term-ms = <HOLDTAP_TERM>;
+    bindings = <&i_dier>, <&i_circ>;
+  };
+  
+  o_circ_u_dier: behavior_o_circ_u_dier {
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    flavor = "hold-preferred";
+    tapping-term-ms = <HOLDTAP_TERM>;
+    bindings = <&u_dier>, <&o_circ>;
   };
   
   tion: macro_tion {
@@ -495,8 +575,8 @@ ZMK_COMBO(combo_reflash, &bootloader, B4 B3 B2 B1 T1)
   media { // Frequency in French: é è à; after Z: ê ç ô â î û ù ï ü ë
     display-name = "L_ACC"; // TODO
     bindings = <
-      &mo L_ACC  TODO  &u_grave_circ 0 0   &a_grave_circ 0 0
-      &none      TODO  &e_grave_dier 0 0   &e_acute_circ 0 0
+      &mo L_ACC  &i_circ_dier 0 0    &u_grave_circ 0 0   &a_grave_circ 0 0
+      &none      &o_circ_u_dier 0 0  &e_grave_dier 0 0   &e_acute_circ 0 0
     >;
   };
   editing {
