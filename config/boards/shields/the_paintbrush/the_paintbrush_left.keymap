@@ -263,14 +263,14 @@
     #binding-cells = <2>;
     flavor = "hold-preferred";
     tapping-term-ms = <HOLDTAP_TERM>;
-    bindings = <&tap2 D_CRC E>, <&&tap2 D_CRC E>;
+    bindings = <&tap2 D_CRC E>, <&tap2 D_CRC E>;
   };
   e_grave_dier: behavior_e_grave_dier{
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
     flavor = "hold-preferred";
     tapping-term-ms = <HOLDTAP_TERM>;
-    bindings = <&tap2 D_DRS E>, <&&tap2 D_GRV E>;
+    bindings = <&tap2 D_DRS E>, <&tap2 D_GRV E>;
   };
   
   a_grave_circ: behavior_a_grave_circ {
@@ -278,7 +278,7 @@
     #binding-cells = <2>;
     flavor = "hold-preferred";
     tapping-term-ms = <HOLDTAP_TERM>;
-    bindings = <&tap2 D_CRC A>, <&&tap2 D_GRV A>;
+    bindings = <&tap2 D_CRC A>, <&tap2 D_GRV A>;
   };
   
   u_grave_circ: behavior_u_grave_circ {
@@ -286,7 +286,7 @@
     #binding-cells = <2>;
     flavor = "hold-preferred";
     tapping-term-ms = <HOLDTAP_TERM>;
-    bindings = <&tap2 D_CRC U>, <&&tap2 D_GRV U>;
+    bindings = <&tap2 D_CRC U>, <&tap2 D_GRV U>;
   };
   
   tion: macro_tion {
