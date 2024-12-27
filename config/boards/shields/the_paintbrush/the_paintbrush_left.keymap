@@ -468,7 +468,7 @@ ZMK_TAP_DANCE(td_O,  tapping-term-ms = <TAPDANCE_3_TERM>;
   bindings = <&lt L_PAR O>, <&tap2 D_CRC O>;)
 
 ZMK_TAP_DANCE(td_T,  tapping-term-ms = <TAPDANCE_3_TERM>;
-  bindings = <&lk L_NUM T>, <&tap2 D_CRC U>, <&tap2 D_GRV U>;)
+  bindings = <&lk L_NUM T>, <&tap2 D_GRV U>, <&tap2 D_CRC U>;)
 
 ZMK_COMBO(combo_b,  &mt AMPS  B, T4 T3      , L_BASE)
 
