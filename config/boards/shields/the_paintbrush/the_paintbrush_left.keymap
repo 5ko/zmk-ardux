@@ -448,7 +448,7 @@ ZMK_COMBO(combo_edier, &tap2 D_DRS E, B2 B1, L_ACC)
 
 
 // Base letter combos ê ç ô â î û ù ï ü ë
-ZMK_TAP_DANCE(star_sharp, bindings = <&mt STAR S>, <&kp S_SRP>;  tapping-term-ms = <TAPDANCE_2_TERM>; )
+ZMK_TAP_DANCE(star_sharp, bindings = <&mt STAR S>, <&kp S_SRP>;  tapping-term-ms = <TAPDANCE_3_TERM>; )
 ZMK_TAP_DANCE(td_E, bindings = <&lk L_NUM E>, <&tap2 D_ACU E>, <&tap2 D_GRV E>, <&tap2 D_CRC E>, <&tap2 D_DRS E>;  tapping-term-ms = <TAPDANCE_3_TERM>; )
 ZMK_TAP_DANCE(td_A,  tapping-term-ms = <TAPDANCE_3_TERM>;
   bindings = <&mt AT A>, <&tap2 D_GRV A>, <&tap2 D_CRC A>, <&tap2 D_CRC U>, <&tap2 D_GRV U>;  )
