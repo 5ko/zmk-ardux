@@ -437,12 +437,12 @@ ZMK_COMBO(combo_mb5,   &mkp MB5,       T2 T1, L_MSE)
 // ZMK_COMBO(combo_reib,  &reib, B4 B3 B2   , L_FUN)
 
 // Combos L_PAR layer
-// ZMK_COMBO(combo_eq, &mt TILDE EQUAL, T2 T1, L_PAR)
+ZMK_COMBO(combo_eq, &mt TILDE EQUAL, T2 T1, L_PAR)
 
 
 // Combos accented layer
-ZMK_COMBO(combo_ae, &mt LS(AELIG) AELIG, T2 T1, L_ACC)
-ZMK_COMBO(combo_oe, &mt LS(OELIG) OELIG, B2 B1, L_ACC)
+ZMK_COMBO(combo_edier, &tap2 D_DRS E, B2 B1, L_ACC)
+// ZMK_COMBO(combo_oe, &mt LS(OELIG) OELIG, B2 B1, L_ACC)
 
 
 
@@ -570,8 +570,8 @@ ZMK_COMBO(combo_reflash, &bootloader, B4 B3 B2 B1 T1, L_BASE)
   parentheses {
     display-name = "L_PAR";
     bindings = <
-      TODO   MAYBE       &mt RBRC LBRC   &mt RPAR LPAR
-      TODO   &mo L_PAR   &mt GT   LT     &mt RBKT LBKT
+      TODO               MAYBE       &mt RBRC LBRC   &mt RPAR LPAR
+      &mt TILDE EQUAL    &mo L_PAR   &mt GT   LT     &mt RBKT LBKT
     >;
   };
   
