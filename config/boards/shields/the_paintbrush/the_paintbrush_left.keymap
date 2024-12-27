@@ -495,8 +495,8 @@ ZMK_COMBO(combo_reflash, &bootloader, B4 B3 B2 B1 T1)
   media { // Frequency in French: é è à; after Z: ê ç ô â î û ù ï ü ë
     display-name = "L_ACC"; // TODO
     bindings = <
-      &mo L_ACC  TODO  &u_grave_circ &a_grave_circ
-      &none      TODO  &e_grave_dier &e_acute_circ
+      &mo L_ACC  TODO  &u_grave_circ 0 0   &a_grave_circ 0 0
+      &none      TODO  &e_grave_dier 0 0   &e_acute_circ 0 0
     >;
   };
   editing {
