@@ -564,7 +564,7 @@ ZMK_COMBO(combo_reflash, &bootloader, B4 B3 B2 B1 T1, ALL_LEFT)
     // unless we use non-momentary layers?
     bindings = <
       &lt L_ACC R   &lt L_EDT I   &lk L_NUM T   &td_A
-      &lt L_NAV N   &lt L_PAR O   &star_sharp   &td_E
+      &td_N         &lt L_PAR O   &star_sharp   &td_E
     >;
   };
   numbers {
