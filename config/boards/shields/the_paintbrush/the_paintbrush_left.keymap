@@ -30,6 +30,9 @@
 #define D_DRS RA(DQT)
 // dead circumflex
 #define D_CRC RA(N6)
+// dead tilde
+#define D_TLD RA(TILDE)
+
 #define DEGREE RA(COLON)
 #define C_CDL  RA(COMMA)
 #define S_SRP  RA(S)
@@ -67,7 +70,7 @@
 
 // The layers need to be numbered in the order they are below,
 // starting from zero.
-#define L_LEFT 0
+#define L_BASE 0
 #define L_NUM  1
 #define L_PAR  2
 #define L_NAV  3
@@ -157,12 +160,12 @@
     bindings = <&caps_word>, <&kp>;
   };
   
-  toglay_key: behavior_toglay_key {
+  lk: behavior_layon_key {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
     flavor = "hold-preferred";
     tapping-term-ms = <HOLDTAP_LAYER_TERM>;
-    bindings = <&to>, <&kp>;
+    bindings = <&lay_on>, <&kp>;
   };
   
   kd: behavior_keydown {
@@ -402,8 +405,8 @@ ZMK_COMBO(num_7, &mt DOLLAR N7,    T3 T2, L_NUM)
 ZMK_COMBO(num_8, &kp N8       , T4 T3   , L_NUM)
 ZMK_COMBO(num_0, &mt DEGREE N0, B4 B3   , L_NUM)
 ZMK_COMBO(num_9, &mt HASH   N9,    B3 B2, L_NUM)
-ZMK_COMBO(num_E, &mt GBP  EURO, T4    T2, L_NUM)
-ZMK_COMBO(num_Y, &kp YEN      , B4    B2, L_NUM)
+ZMK_COMBO(num_E, &mt GBP  EURO, T4 T3 T2, L_NUM)
+ZMK_COMBO(num_Y, &kp YEN      , B4 B3 B2, L_NUM)
 // can do combos x4-x3-x2 
 
 
@@ -424,7 +427,7 @@ ZMK_COMBO(bt_clear_current_profile, &bt BT_CLR,       T3 B3 T2 B2      , L_BLE)
 
 
 // Combos L_MSE  Mouse layer
-ZMK_COMBO(lay_mouse, &tog L_MSE,    T3 B2 T1, L_LEFT L_MSE)
+ZMK_COMBO(lay_mouse, &tog L_MSE,    T3 B2 T1, L_BASE L_MSE)
 ZMK_COMBO(combo_mb3,   &mkp MB3,    T3    T1, L_MSE)
 ZMK_COMBO(combo_mb4,   &mkp MB4,    T3 T2   , L_MSE)
 ZMK_COMBO(combo_mb5,   &mkp MB5,       T2 T1, L_MSE)
@@ -434,7 +437,13 @@ ZMK_COMBO(combo_mb5,   &mkp MB5,       T2 T1, L_MSE)
 // ZMK_COMBO(combo_reib,  &reib, B4 B3 B2   , L_FUN)
 
 // Combos L_PAR layer
-ZMK_COMBO(combo_eq, &mt TILDE EQUAL, T2 T1, L_PAR)
+// ZMK_COMBO(combo_eq, &mt TILDE EQUAL, T2 T1, L_PAR)
+
+
+// Combos accented layer
+ZMK_COMBO(combo_ae, &mt LS(AELIG) AELIG, T2 T1, L_ACC)
+ZMK_COMBO(combo_oe, &mt LS(OELIG) OELIG, B2 B1, L_ACC)
+
 
 
 // Base letter combos
@@ -442,74 +451,74 @@ ZMK_TAP_DANCE(star_sharp, bindings = <&mt STAR S>, <&kp S_SRP>;  tapping-term-ms
 // ZMK_TAP_DANCE(td_E, bindings = <&lt L_NUM E>, <&tap2 D_ACU E>, <&tap2 D_GRV E>;  tapping-term-ms = <TAPDANCE_3_TERM>; )
 // ZMK_TAP_DANCE(td_A, bindings = <&lt L_FUN A>, <&tap2 D_GRV A>, <&tap2 D_GRV U>;  tapping-term-ms = <TAPDANCE_3_TERM>; )
 
-ZMK_COMBO(combo_b,  &mt AMPS  B, T4 T3      , L_LEFT)
-ZMK_COMBO(combo_c,  &mt C_CDL C,    T3 T2   , L_LEFT)
-ZMK_COMBO(combo_d,  &mt DLLR  D,       T2 T1, L_LEFT)
-ZMK_COMBO(combo_h,  &mt HASH  H,       B2 B1, L_LEFT)
-ZMK_COMBO(combo_u,  &mt UNDER U,    B3 B2   , L_LEFT)
-ZMK_COMBO(combo_g,  &mt GBP   G, B4 B3      , L_LEFT)
+ZMK_COMBO(combo_b,  &mt AMPS  B, T4 T3      , L_BASE)
+ZMK_COMBO(combo_c,  &mt C_CDL C,    T3 T2   , L_BASE)
+ZMK_COMBO(combo_d,  &mt DLLR  D,       T2 T1, L_BASE)
+ZMK_COMBO(combo_h,  &mt HASH  H,       B2 B1, L_BASE)
+ZMK_COMBO(combo_u,  &mt UNDER U,    B3 B2   , L_BASE)
+ZMK_COMBO(combo_g,  &mt GBP   G, B4 B3      , L_BASE)
 
-ZMK_COMBO(combo_k,  &mt AELIG K,    T3    T1, L_LEFT)
-ZMK_COMBO(combo_y,  &mt OELIG Y,    B3    B1, L_LEFT)
-ZMK_COMBO(combo_j,  &kp       J, T4    T2   , L_LEFT)
-ZMK_COMBO(combo_z,  &kp       Z, B4    B2   , L_LEFT)
+ZMK_COMBO(combo_k,  &kp       K,    T3    T1, L_BASE)
+ZMK_COMBO(combo_y,  &kp       Y,    B3    B1, L_BASE)
+ZMK_COMBO(combo_j,  &kp       J, T4    T2   , L_BASE)
+ZMK_COMBO(combo_z,  &kp       Z, B4    B2   , L_BASE)
 
-ZMK_COMBO(combo_v,  &mt D_DRS V, T4       T1, L_LEFT)
-ZMK_COMBO(combo_x,  &mt D_CRC X, B4       B1, L_LEFT)
+ZMK_COMBO(combo_v,  &mt D_DRS V, T4       T1, L_BASE)
+ZMK_COMBO(combo_x,  &mt D_CRC X, B4       B1, L_BASE)
 
-ZMK_COMBO(combo_p,  &mt PIPE  P, T4 T3    T1, L_LEFT)
-ZMK_COMBO(combo_q,  &mt PRCNT Q, B4 B3    B1, L_LEFT)
+ZMK_COMBO(combo_p,  &mt PIPE  P, T4 T3    T1, L_BASE)
+ZMK_COMBO(combo_q,  &mt PRCNT Q, B4 B3    B1, L_BASE)
 
-ZMK_COMBO(combo_l,  &mt PLUS  L,    T3 T2 T1, L_LEFT)
-ZMK_COMBO(combo_m,  &mt MINUS M,    B3 B2 B1, L_LEFT)
+ZMK_COMBO(combo_l,  &mt PLUS  L,    T3 T2 T1, L_BASE)
+ZMK_COMBO(combo_m,  &mt MINUS M,    B3 B2 B1, L_BASE)
 
-ZMK_COMBO(combo_f,  &kp       F, T4 T3 T2   , L_LEFT)
-ZMK_COMBO(combo_w,  &mt AT    W, B4 B3 B2   , L_LEFT)
+ZMK_COMBO(combo_f,  &lk L_FUN F, T4 T3 T2   , L_BASE)
+ZMK_COMBO(combo_w,  &mt AT    W, B4 B3 B2   , L_BASE)
 
 // Common bigrams, with letters on the same finger, or require combos
-ZMK_COMBO(combo_st,  &tap2 S T,       B3 T2   , L_LEFT)
-ZMK_COMBO(combo_ed,  &tap2 E D,       T2 T1 B1, L_LEFT)
-ZMK_COMBO(combo_nd,  &tap2 N D, B4    T2 T1   , L_LEFT)
-ZMK_COMBO(combo_he,  &tap2 H E,    B2 T1 B1   , L_LEFT)
-ZMK_COMBO(combo_tion, &tion   , B4 B3 T2      , L_LEFT)
+ZMK_COMBO(combo_st,  &tap2 S T,       B3 T2   , L_BASE)
+ZMK_COMBO(combo_ed,  &tap2 E D,       T2 T1 B1, L_BASE)
+ZMK_COMBO(combo_nd,  &tap2 N D, B4    T2 T1   , L_BASE)
+ZMK_COMBO(combo_he,  &tap2 H E,    B2 T1 B1   , L_BASE)
+ZMK_COMBO(combo_tion, &tion   , B4 B3 T2      , L_BASE)
 
-ZMK_COMBO(combo_th,  &the_th 0 0,     T2 B2 B1, L_LEFT)
-ZMK_COMBO(combo_ing, &ion_ing  0 0, B4 T3 B3   , L_LEFT)
+ZMK_COMBO(combo_th,  &the_th 0 0,     T2 B2 B1, L_BASE)
+ZMK_COMBO(combo_ing, &ion_ing  0 0, B4 T3 B3   , L_BASE)
 
-ZMK_COMBO(combo_sp, &mt ENTER SPACE, B4 B3 B2 B1, L_LEFT)
+ZMK_COMBO(combo_sp, &mt ENTER SPACE, B4 B3 B2 B1, L_BASE)
 
 
 // Base punctuation
-ZMK_COMBO(combo_slash, &mt D_ACU SLASH, B4       T1, L_LEFT)
-ZMK_COMBO(combo_backs, &mt D_GRV BSLH , T4       B1, L_LEFT)
-ZMK_COMBO(combo_colon, &mt DOT COMMA  ,       T2 B2, L_LEFT L_NUM)
-ZMK_COMBO(combo_comma, &mt COLON SEMI ,       T1 B1, L_LEFT)
-ZMK_COMBO(combo_quote, &mt DQT SQT    ,    B3 T3   , L_LEFT)
-ZMK_COMBO(combo_exclq, &mt QMARK EXCL , B4 T4      , L_LEFT)
+ZMK_COMBO(combo_slash, &mt D_ACU SLASH, B4       T1, L_BASE)
+ZMK_COMBO(combo_backs, &mt D_GRV BSLH , T4       B1, L_BASE)
+ZMK_COMBO(combo_colon, &mt DOT COMMA  ,       T2 B2, L_BASE L_NUM)
+ZMK_COMBO(combo_comma, &mt COLON SEMI ,       T1 B1, L_BASE)
+ZMK_COMBO(combo_quote, &mt DQT SQT    ,    B3 T3   , L_BASE)
+ZMK_COMBO(combo_exclq, &mt QMARK EXCL , B4 T4      , L_BASE)
 
 
 // GLOBAL Combos 
 
-ZMK_COMBO(combo_backspace, &mt LC(BSPC) BSPC,       T2 B1, L_LEFT L_MSE L_NUM)
-ZMK_COMBO(combo_delete,    &mt LC(DEL)  DEL ,       B2 T1, L_LEFT L_MSE L_NUM)
-ZMK_COMBO(combo_escape,    &kp ESC          , B4 T3      , L_LEFT L_MSE)
-ZMK_COMBO(combo_tab,       &mt LS(TAB)  TAB , B4 T3 T2   , L_LEFT L_MSE)
+ZMK_COMBO(combo_backspace, &mt LC(BSPC) BSPC,       T2 B1, L_BASE L_MSE L_NUM)
+ZMK_COMBO(combo_delete,    &mt LC(DEL)  DEL ,       B2 T1, L_BASE L_MSE L_NUM)
+ZMK_COMBO(combo_escape,    &kp ESC          , B4 T3      , L_BASE L_MSE)
+ZMK_COMBO(combo_tab,       &mt LS(TAB)  TAB , B4 T3 T2   , L_BASE L_MSE)
 
 
 
 
 // Hold for sticky RALT (one shot), tap to toggle LALT
-ZMK_COMBO(combo_alt,    &sk_tk RALT LALT,      T3 B2 B1, L_LEFT L_MSE)
+ZMK_COMBO(combo_alt,    &sk_tk RALT LALT,      T3 B2 B1, L_BASE L_MSE)
 // Hold for sticky LGUI (one shot), tap to toggle LCTRL
-ZMK_COMBO(combo_ctrl,   &sk_tk LGUI LCTRL,     T3 T2 B1, L_LEFT L_MSE)
+ZMK_COMBO(combo_ctrl,   &sk_tk LGUI LCTRL,     T3 T2 B1, L_BASE L_MSE)
 // Hold for CAPS, tap to toggle LSHFT
-ZMK_COMBO(combo_shift,  &kp_kt CAPS LSHFT,     T3    B1, L_LEFT L_MSE)
+ZMK_COMBO(combo_shift,  &kp_kt CAPS LSHFT,     T3    B1, L_BASE L_MSE)
 // Hold for NEXTLAYOUT (Alt+Shift), tap for sticky LSHFT (one-shot)
-ZMK_COMBO(combo_shift1, &nx_sk 0    LSHFT,     B3    T1, L_LEFT L_MSE)
+ZMK_COMBO(combo_shift1, &nx_sk 0    LSHFT,     B3    T1, L_BASE L_MSE)
 
 
 // FIXME: should this be enabled? Could be on Hold+ESC
-ZMK_COMBO(combo_unmod,    &unmod,     T4 T3 T2 T1, L_LEFT L_MSE L_BLE)
+ZMK_COMBO(combo_unmod,    &unmod,     T4 T3 T2 T1, L_BASE L_MSE L_BLE L_NUM L_FUN)
 
 
 // ZMK_COMBO(name, bindings, keypos, layers, timeout, prior_idle, extra)
@@ -517,8 +526,8 @@ ZMK_COMBO(combo_reset,   &sys_reset,  0 1 2 3 4 5 6 7)
 ZMK_COMBO(combo_reflash, &bootloader, B4 B3 B2 B1 T1)
 
 
-// TODO: see keymap for TODO and MAYBE
-//    HOLD: escape, unmod, T, F, J, Z, YEN
+// TODO: keymap for see keys marked TODO and MAYBE 
+//    HOLD: escape, unmod, T, J, K, Y, Z, YEN
 //    MEH key
 //    SPACE is most used, but often pinky errors
 // Most used keyboard shortcuts Alt+Tab
@@ -543,17 +552,19 @@ ZMK_COMBO(combo_reflash, &bootloader, B4 B3 B2 B1 T1)
 
 / { keymap { compatible = "zmk,keymap";
   left {
-    display-name = "LEFT";  // tap-dance doesn't work with layer-hold
+    display-name = "LEFT";  
+    // tap-dance doesn't work with layer-hold
+    // unless we use non-momentary layers?
     bindings = <
-      &lt L_ACC R   &lt L_EDT I   &kp       T   &lt L_FUN A
-      &lt L_NAV N   &lt L_PAR O   &star_sharp   &lt L_NUM E
+      &lt L_ACC R   &lt L_EDT I   &kp       T   &lk L_FUN A
+      &lt L_NAV N   &lt L_PAR O   &star_sharp   &lk L_NUM E
     >;
   };
   numbers {
     display-name = "L_NUM";
     bindings = <
-      &mt STAR  N3   &mt SUP2 N2    &mt DOT   N1   &kp BSPC
-      &mt SLASH N6   &mt STAR N5    &mt COMMA N4   &mo L_NUM 
+      &lay_off L_NUM  &mt STAR  N3   &mt SUP2 N2    &mt DOT   N1
+      &lt L_NAV   N0  &mt SLASH N6   &mt STAR N5    &mt COMMA N4
     >;
   };
   parentheses {
@@ -571,10 +582,12 @@ ZMK_COMBO(combo_reflash, &bootloader, B4 B3 B2 B1 T1)
       &mo L_NAV        &kp DOWN  &mt K_PREV K_VOL_DN  &mt K_NEXT K_VOL_UP 
     >;
   };
-  accented { // Frequency in French: é è à; after Z: ê ç ô â î û ù ï ü ë
-    display-name = "L_ACC"; // TODO
+  accented { 
+    // French freq: é è à; rarer than Z: ê ç ô â î û ù ï ü ë
+    // Also dead `´¨^ available on hold-/\VX if needed for other letters
+    display-name = "L_ACC";
     bindings = <
-      &mo L_ACC  &i_circ_dier 0 0    &u_grave_circ 0 0   &a_grave_circ 0 0
+      &mo L_ACC  &i_circ_dier   0 0  &u_grave_circ 0 0   &a_grave_circ 0 0
       &none      &o_circ_u_dier 0 0  &e_grave_dier 0 0   &e_acute_circ 0 0
     >;
   };
@@ -589,11 +602,11 @@ ZMK_COMBO(combo_reflash, &bootloader, B4 B3 B2 B1 T1)
   functionkeys {
     display-name = "L_FUN";
     bindings = <
-      &mt F2 F1    &mt F4  F3    &mt F6  F5    &mo L_FUN
-      &mt F8 F7    &mt F10 F9    &mt F12 F11   &none
+      &lay_off L_FUN  &mt F2 F1    &mt F4  F3    &mt F6  F5
+      TODO            &mt F8 F7    &mt F10 F9    &mt F12 F11
     >;
   };
-  mouse { 
+  mouse {
     display-name = "L_MOUSE";
     bindings = <
      &msc SCRL_UP    &mkp MB2       &mmv MOVE_UP   &mkp MB1
