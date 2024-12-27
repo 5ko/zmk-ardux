@@ -413,9 +413,9 @@ ZMK_COMBO(num_Y, &kp YEN      , B3    B1, L_NUM)
 
 
 // Combos NAV+Media layer
-ZMK_COMBO(nav_pgup,  &mt LC(HOME) PG_UP, T3 T2   , L_NAV)
-ZMK_COMBO(nav_pgdn,  &mt LC(END)  PG_DN, B3 B2   , L_NAV)
-ZMK_COMBO(mute_play, &mt K_PP K_MUTE   ,    B2 B1, L_NAV)
+ZMK_COMBO(nav_pgup,  &mt LC(HOME) PG_UP,    T2 T1, L_NAV)
+ZMK_COMBO(nav_pgdn,  &mt LC(END)  PG_DN,    B2 B1, L_NAV)
+ZMK_COMBO(mute_play, &mt K_PP K_MUTE   , T3 T2   , L_NAV)
 
 
 ZMK_TAP_DANCE(left_home, bindings = <&mt HOME LEFT>, <&kp LC(LEFT)>;  tapping-term-ms = <NAV_TAP_TERM>; )
@@ -585,8 +585,8 @@ ZMK_COMBO(combo_reflash, &bootloader, B4 B3 B2 B1 T1, ALL_LEFT)
   navmedia {
     display-name = "L_NAV";
     bindings = <                      
-      &kp PRINTSCREEN  &kp UP    &left_home           &right_end
-      &mo L_NAV        &kp DOWN  &mt K_PREV K_VOL_DN  &mt K_NEXT K_VOL_UP 
+      &kp PRINTSCREEN  &mt K_PREV K_VOL_DN  &mt K_NEXT K_VOL_UP   &kp UP   
+      &mo L_NAV         &left_home           &right_end           &kp DOWN 
     >;
   };
   accented { 
