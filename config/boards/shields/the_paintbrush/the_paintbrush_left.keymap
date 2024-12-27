@@ -257,6 +257,38 @@
     bindings = <&ion>, <&ing>;
   };
   
+  
+  e_acute_circ: behavior_e_acute_circ {
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    flavor = "hold-preferred";
+    tapping-term-ms = <HOLDTAP_TERM>;
+    bindings = <&tap2 D_CRC E>, <&&tap2 D_CRC E>;
+  };
+  e_grave_dier: behavior_e_grave_dier{
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    flavor = "hold-preferred";
+    tapping-term-ms = <HOLDTAP_TERM>;
+    bindings = <&tap2 D_DRS E>, <&&tap2 D_GRV E>;
+  };
+  
+  a_grave_circ: behavior_a_grave_circ {
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    flavor = "hold-preferred";
+    tapping-term-ms = <HOLDTAP_TERM>;
+    bindings = <&tap2 D_CRC A>, <&&tap2 D_GRV A>;
+  };
+  
+  u_grave_circ: behavior_u_grave_circ {
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    flavor = "hold-preferred";
+    tapping-term-ms = <HOLDTAP_TERM>;
+    bindings = <&tap2 D_CRC U>, <&&tap2 D_GRV U>;
+  };
+  
   tion: macro_tion {
     compatible = "zmk,behavior-macro";
     #binding-cells = <0>;
@@ -287,15 +319,13 @@
 
 
 // Combos NUM layer
-ZMK_COMBO(num_7, &mt DOLLAR N7,    T2 T1, L_NUM)
-ZMK_COMBO(num_8, &kp N8       , T3 T2   , L_NUM)
-ZMK_COMBO(num_0, &mt DEGREE N0, B3 B2   , L_NUM)
-ZMK_COMBO(num_9, &mt HASH   N9,    B2 B1, L_NUM)
-ZMK_COMBO(num_E, &mt GBP  EURO, T3    T1, L_NUM)
-ZMK_COMBO(num_Y, &kp YEN      , B3    B1, L_NUM)
-// ZMK_COMBO(num_D, &kp      , T3 T2 T1, L_NUM)
-// ZMK_COMBO(num_???, &kp ?, B3 B1, L_NUM)
-// ZMK_COMBO(num_???, &kp ?, B3 B2 B1, L_NUM)
+ZMK_COMBO(num_7, &mt DOLLAR N7,    T3 T2, L_NUM)
+ZMK_COMBO(num_8, &kp N8       , T4 T3   , L_NUM)
+ZMK_COMBO(num_0, &mt DEGREE N0, B4 B3   , L_NUM)
+ZMK_COMBO(num_9, &mt HASH   N9,    B3 B2, L_NUM)
+ZMK_COMBO(num_E, &mt GBP  EURO, T4    T2, L_NUM)
+ZMK_COMBO(num_Y, &kp YEN      , B4    B2, L_NUM)
+// can do combos x4-x3-x2 
 
 
 // Combos NAV+Media layer
@@ -322,7 +352,7 @@ ZMK_COMBO(combo_mb5,   &mkp MB5,       T2 T1, L_MSE)
 
 
 // Combos L_FUN layer
-ZMK_COMBO(combo_reib,  &reib, B4 B3 B2   , L_FUN)
+// ZMK_COMBO(combo_reib,  &reib, B4 B3 B2   , L_FUN)
 
 // Combos L_PAR layer
 ZMK_COMBO(combo_eq, &mt TILDE EQUAL, T2 T1, L_PAR)
@@ -443,7 +473,7 @@ ZMK_COMBO(combo_reflash, &bootloader, B4 B3 B2 B1 T1)
   numbers {
     display-name = "L_NUM";
     bindings = <
-      &mt STAR  N3   &mt SUP2 N2    &mt DOT   N1   MAYBE
+      &mt STAR  N3   &mt SUP2 N2    &mt DOT   N1   &kp BSPC
       &mt SLASH N6   &mt STAR N5    &mt COMMA N4   &mo L_NUM 
     >;
   };
@@ -465,8 +495,8 @@ ZMK_COMBO(combo_reflash, &bootloader, B4 B3 B2 B1 T1)
   media { // Frequency in French: é è à; after Z: ê ç ô â î û ù ï ü ë
     display-name = "L_ACC"; // TODO
     bindings = <
-      &mo L_ACC  TODO  &tap2 D_GRV U  &tap2 D_GRV A
-      &none      TODO  &tap2 D_GRV E  &tap2 D_ACU E
+      &mo L_ACC  TODO  &u_grave_circ &a_grave_circ
+      &none      TODO  &e_grave_dier &e_acute_circ
     >;
   };
   editing {
