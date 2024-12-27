@@ -449,7 +449,7 @@ ZMK_COMBO(combo_edier, &tap2 D_DRS E, B2 B1, L_ACC)
 // Base letter combos
 ZMK_TAP_DANCE(star_sharp, bindings = <&mt STAR S>, <&kp S_SRP>;  tapping-term-ms = <TAPDANCE_2_TERM>; )
 // ZMK_TAP_DANCE(td_E, bindings = <&lt L_NUM E>, <&tap2 D_ACU E>, <&tap2 D_GRV E>;  tapping-term-ms = <TAPDANCE_3_TERM>; )
-// ZMK_TAP_DANCE(td_A, bindings = <&lt L_FUN A>, <&tap2 D_GRV A>, <&tap2 D_GRV U>;  tapping-term-ms = <TAPDANCE_3_TERM>; )
+ZMK_TAP_DANCE(td_A, bindings = <&mt AT A>, <&tap2 D_GRV A>, <&tap2 D_GRV U>;  tapping-term-ms = <TAPDANCE_3_TERM>; )
 
 ZMK_COMBO(combo_b,  &mt AMPS  B, T4 T3      , L_BASE)
 
@@ -556,7 +556,7 @@ ZMK_COMBO(combo_reflash, &bootloader, B4 B3 B2 B1 T1, L_BASE)
     // tap-dance doesn't work with layer-hold
     // unless we use non-momentary layers?
     bindings = <
-      &lt L_ACC R   &lt L_EDT I   &lk L_NUM T   &mt AT    A
+      &lt L_ACC R   &lt L_EDT I   &lk L_NUM T   &td_A
       &lt L_NAV N   &lt L_PAR O   &star_sharp   &lk L_NUM E
     >;
   };
