@@ -33,6 +33,7 @@
 // dead tilde
 #define D_TLD RA(TILDE)
 
+#define NTILDE RA(N)
 #define DEGREE RA(COLON)
 #define C_CDL  RA(COMMA)
 #define S_SRP  RA(S)
@@ -442,16 +443,20 @@ ZMK_COMBO(combo_eq, &mt TILDE EQUAL, T2 T1, L_PAR)
 
 
 // Combos accented layer
-ZMK_COMBO(combo_edier, &tap2 D_DRS E, B2 B1, L_ACC)
+ZMK_COMBO(combo_e_dier, &tap2 D_DRS E, B2 B1, L_ACC)
 // ZMK_COMBO(combo_oe, &mt LS(OELIG) OELIG, B2 B1, L_ACC)
 
 
 
 // Base letter combos ê ç ô â î û ù ï ü ë
-ZMK_TAP_DANCE(star_sharp, bindings = <&mt STAR S>, <&kp S_SRP>;  tapping-term-ms = <TAPDANCE_3_TERM>; )
-ZMK_TAP_DANCE(td_E, bindings = <&lk L_NUM E>, <&tap2 D_ACU E>, <&tap2 D_GRV E>, <&tap2 D_CRC E>, <&tap2 D_DRS E>;  tapping-term-ms = <TAPDANCE_3_TERM>; )
+ZMK_TAP_DANCE(star_sharp, tapping-term-ms = <TAPDANCE_3_TERM>;  
+  bindings = <&mt STAR S>, <&kp S_SRP>;)
+ZMK_TAP_DANCE(td_E,  tapping-term-ms = <TAPDANCE_3_TERM>;
+  bindings = <&lk L_NUM E>, <&tap2 D_ACU E>, <&tap2 D_GRV E>, <&tap2 D_CRC E>, <&tap2 D_DRS E>;)
 ZMK_TAP_DANCE(td_A,  tapping-term-ms = <TAPDANCE_3_TERM>;
-  bindings = <&mt AT A>, <&tap2 D_GRV A>, <&tap2 D_CRC A>, <&tap2 D_CRC U>, <&tap2 D_GRV U>;  )
+  bindings = <&mt AT A>, <&tap2 D_GRV A>, <&tap2 D_CRC A>, <&tap2 D_CRC U>, <&tap2 D_GRV U>;)
+ZMK_TAP_DANCE(td_N,  tapping-term-ms = <TAPDANCE_3_TERM>;
+  bindings = <&lt L_NAV N>, <&kp NTILDE>;)
 
 ZMK_COMBO(combo_b,  &mt AMPS  B, T4 T3      , L_BASE)
 
