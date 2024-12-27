@@ -71,7 +71,7 @@
 #define L_NUM  1
 #define L_PAR  2
 #define L_NAV  3
-#define L_MED  4
+#define L_ACC  4
 #define L_EDT  5
 #define L_FUN  6
 #define L_MSE  7
@@ -81,8 +81,10 @@
 // Delay for combo
 #undef COMBO_TERM
 #define COMBO_TERM 175
+
 #define NAV_TAP_TERM 300
 #define TAPDANCE_2_TERM 300
+#define TAPDANCE_3_TERM 450
 #define HOLDTAP_TERM 250
 #define HOLDTAP_LAYER_TERM 400
 #define TIMEOUT_STICKY_LEADER_KEY  5000
@@ -222,12 +224,19 @@
     #binding-cells = <0>;
     bindings = <&kp H &kp T &kp T &kp P &kp S &kp COLON &kp SLASH &kp SLASH &kp W &kp W &kp W &kp DOT >;
   };
-  https_th: behavior_https_th {
+  tap_the: macro_tap_the {
+    compatible = "zmk,behavior-macro";
+    wait-ms = <40>;
+    tap-ms = <40>;
+    #binding-cells = <0>;
+    bindings = <&kp T &kp H &kp E> ;
+  };
+  the_th: behavior_the_th {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
     flavor = "hold-preferred";
     tapping-term-ms = <HOLDTAP_TERM>;
-    bindings = <&https>, <&tap_th>;
+    bindings = <&tap_the>, <&tap_th>;
   };
   
   ing: macro_ing {
@@ -320,7 +329,9 @@ ZMK_COMBO(combo_eq, &mt TILDE EQUAL, T2 T1, L_PAR)
 
 
 // Base letter combos
-ZMK_TAP_DANCE(star_sharp, bindings = <&mt STAR S>, <&kp S_SRP>;  tapping-term-ms = <TAPDANCE_2_TERM>; )
+ZMK_TAP_DANCE(td_S, bindings = <&mt STAR S>, <&kp S_SRP>;  tapping-term-ms = <TAPDANCE_2_TERM>; )
+ZMK_TAP_DANCE(td_E, bindings = <&lt L_NUM E>, <&tap2 D_ACU E>, <&tap2 D_GRV E>;  tapping-term-ms = <TAPDANCE_3_TERM>; )
+ZMK_TAP_DANCE(td_A, bindings = <&lt L_FUN A>, <&tap2 D_GRV A>, <&tap2 D_GRV U>;  tapping-term-ms = <TAPDANCE_3_TERM>; )
 
 ZMK_COMBO(combo_b,  &mt AMPS  B, T4 T3      , L_LEFT)
 ZMK_COMBO(combo_c,  &mt C_CDL C,    T3 T2   , L_LEFT)
@@ -347,13 +358,13 @@ ZMK_COMBO(combo_f,  &kp       F, T4 T3 T2   , L_LEFT)
 ZMK_COMBO(combo_w,  &mt AT    W, B4 B3 B2   , L_LEFT)
 
 // Common bigrams, with letters on the same finger, or require combos
-ZMK_COMBO(combo_st,   &tap2 S T,       B3 T2   , L_LEFT)
-ZMK_COMBO(combo_ed,   &tap2 E D,       T2 T1 B1, L_LEFT)
-ZMK_COMBO(combo_nd,   &tap2 N D, B4    T2 T1   , L_LEFT)
-ZMK_COMBO(combo_he,   &tap2 H E,    B2 T1 B1   , L_LEFT)
-ZMK_COMBO(combo_tion, &tion    , B4 B3 T2      , L_LEFT)
+ZMK_COMBO(combo_st,  &tap2 S T,       B3 T2   , L_LEFT)
+ZMK_COMBO(combo_ed,  &tap2 E D,       T2 T1 B1, L_LEFT)
+ZMK_COMBO(combo_nd,  &tap2 N D, B4    T2 T1   , L_LEFT)
+ZMK_COMBO(combo_he,  &tap2 H E,    B2 T1 B1   , L_LEFT)
+ZMK_COMBO(combo_tion, &tion   , B4 B3 T2      , L_LEFT)
 
-ZMK_COMBO(combo_th,  &https_th 0 0,    T2 B2 B1, L_LEFT)
+ZMK_COMBO(combo_th,  &the_th 0 0,     T2 B2 B1, L_LEFT)
 ZMK_COMBO(combo_ing, &ion_ing  0 0, B4 T3 B3   , L_LEFT)
 
 ZMK_COMBO(combo_sp, &mt ENTER SPACE, B4 B3 B2 B1, L_LEFT)
@@ -362,16 +373,16 @@ ZMK_COMBO(combo_sp, &mt ENTER SPACE, B4 B3 B2 B1, L_LEFT)
 // Base punctuation
 ZMK_COMBO(combo_slash, &mt D_ACU SLASH, B4       T1, L_LEFT)
 ZMK_COMBO(combo_backs, &mt D_GRV BSLH , T4       B1, L_LEFT)
-ZMK_COMBO(combo_comma, &mt DOT COMMA  ,       T1 B1, L_LEFT L_NUM)
-ZMK_COMBO(combo_colon, &mt COLON SEMI ,       T2 B2, L_LEFT L_NUM)
+ZMK_COMBO(combo_colon, &mt DOT COMMA  ,       T2 B2, L_LEFT L_NUM)
+ZMK_COMBO(combo_comma, &mt COLON SEMI ,       T1 B1, L_LEFT)
 ZMK_COMBO(combo_quote, &mt DQT SQT    ,    B3 T3   , L_LEFT)
 ZMK_COMBO(combo_exclq, &mt QMARK EXCL , B4 T4      , L_LEFT)
 
 
 // GLOBAL Combos 
 
-ZMK_COMBO(combo_backspace, &mt LC(BSPC) BSPC,       T2 B1, L_LEFT L_MSE)
-ZMK_COMBO(combo_delete,    &mt LC(DEL)  DEL ,       B2 T1, L_LEFT L_MSE)
+ZMK_COMBO(combo_backspace, &mt LC(BSPC) BSPC,       T2 B1, L_LEFT L_MSE L_NUM)
+ZMK_COMBO(combo_delete,    &mt LC(DEL)  DEL ,       B2 T1, L_LEFT L_MSE L_NUM)
 ZMK_COMBO(combo_escape,    &kp ESC          , B4 T3      , L_LEFT L_MSE)
 ZMK_COMBO(combo_tab,       &mt LS(TAB)  TAB , B4 T3 T2   , L_LEFT L_MSE)
 
@@ -400,6 +411,7 @@ ZMK_COMBO(combo_reflash, &bootloader, B4 B3 B2 B1 T1)
 // TODO: see keymap for TODO and MAYBE
 //    HOLD: escape, unmod, T, F, J, Z, YEN
 //    MEH key
+//    SPACE is most used, but often pinky errors
 // Most used keyboard shortcuts Alt+Tab
 // the most common letter pairs as " AN RE ER IN ON AT ES EN +OF TE OR TI +HI AS TO"
 // 
@@ -422,17 +434,17 @@ ZMK_COMBO(combo_reflash, &bootloader, B4 B3 B2 B1 T1)
 
 / { keymap { compatible = "zmk,keymap";
   left {
-    display-name = "LEFT";
+    display-name = "LEFT";  // tap-dance doesn't work with layer-hold
     bindings = <
-      &lt L_NUM R   &lt L_EDT I   &kp       T   &lt L_FUN A
-      &lt L_NAV N   &lt L_PAR O   &star_sharp   &lt L_MED E
+      &lt L_ACC R   &lt L_EDT I   &kp       T   &lt L_FUN A
+      &lt L_NAV N   &lt L_PAR O   &star_sharp   &lt L_NUM E
     >;
   };
   numbers {
     display-name = "L_NUM";
     bindings = <
-      &mo L_NUM    &mt STAR  N3   &mt SUP2 N2    &mt DOT   N1
-      &none        &mt SLASH N6   &mt STAR N5    &mt COMMA N4
+      &mt STAR  N3   &mt SUP2 N2    &mt DOT   N1   MAYBE
+      &mt SLASH N6   &mt STAR N5    &mt COMMA N4   &mo L_NUM 
     >;
   };
   parentheses {
@@ -450,11 +462,11 @@ ZMK_COMBO(combo_reflash, &bootloader, B4 B3 B2 B1 T1)
       &mo L_NAV        &kp DOWN  &mt K_PREV K_VOL_DN  &mt K_NEXT K_VOL_UP 
     >;
   };
-  media {
-    display-name = "L_MED"; // TODO
+  media { // Frequency in French: é è à; after Z: ê ç ô â î û ù ï ü ë
+    display-name = "L_ACC"; // TODO
     bindings = <
-      TODO  TODO  TODO  MAYBE 
-      TODO  TODO  TODO  &mo L_MED
+      &mo L_ACC  TODO  &tap2 D_GRV U  &tap2 D_GRV A
+      &none      TODO  &tap2 D_GRV E  &tap2 D_ACU E
     >;
   };
   editing {
