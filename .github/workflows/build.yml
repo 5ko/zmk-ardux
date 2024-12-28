@@ -12,9 +12,9 @@ jobs:
       matrix:
         include:
           #- board: nice_nano
-            #shield: corne_senorita3_left
+            #shield: corne_senorita4_left
           #- board: nice_nano
-            #shield: corne_senorita3_right
+            #shield: corne_senorita4_right
           #- board: nice_nano
             #shield: the_paintbrush_left
           #- board: nice_nano
@@ -40,33 +40,33 @@ jobs:
           #- board: nice_nano
             #shield: artboard_right
           #- board: nice_nano
-            #shield: corne_5_col_senorita3_left
+            #shield: corne_5_col_senorita4_left
           #- board: nice_nano
-            #shield: corne_5_col_senorita3_right
+            #shield: corne_5_col_senorita4_right
           #- board: nice_nano
-            #shield: corne_5_col_senorita3_left_big
+            #shield: corne_5_col_senorita4_left_big
           #- board: nice_nano
-            #shield: corne_5_col_senorita3_right_big
+            #shield: corne_5_col_senorita4_right_big
           #- board: nice_nano_v2
-            #shield: corne_5_col_senorita3_left_big
+            #shield: corne_5_col_senorita4_left_big
           #- board: nice_nano_v2
-            #shield: corne_5_col_senorita3_right_big
+            #shield: corne_5_col_senorita4_right_big
           #- board: bluemicro840_v1
             #shield: bluehand_left
           #- board: bluemicro840_v1
             #shield: bluehand_right
           #- board: nice_nano
-            #shield: tidbit_senorita3_left
+            #shield: tidbit_senorita4_left
           #- board: nice_nano
-            #shield: tidbit_senorita3_right
+            #shield: tidbit_senorita4_right
           #- board: nice_nano_v2
-            #shield: cradio_senorita3_left
+            #shield: cradio_senorita4_left
           #- board: nice_nano_v2
-            #shield: cradio_senorita3_thumb_left
+            #shield: cradio_senorita4_thumb_left
           #- board: nice_nano_v2
-            #shield: cradio_senorita3_right
+            #shield: cradio_senorita4_right
           #- board: nice_nano_v2
-            #shield: cradio_senorita3_thumb_right
+            #shield: cradio_senorita4_thumb_right
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -99,10 +99,10 @@ jobs:
         run: |
           if [ -n "${{ matrix.shield }}" ]; then
             SHIELD_ARG="-DSHIELD=${{ matrix.shield }}"
-            ARTIFACT_NAME="${{ matrix.shield }}-${{ matrix.board }}-zmk-senorita3"
+            ARTIFACT_NAME="${{ matrix.shield }}-${{ matrix.board }}-zmk-senorita4"
           else
             SHIELD_ARG=
-            ARTIFACT_NAME="${{ matrix.board }}-zmk-senorita3"
+            ARTIFACT_NAME="${{ matrix.board }}-zmk-senorita4"
           fi
 
           echo shield-arg=${SHIELD_ARG} >>$GITHUB_OUTPUT
@@ -111,26 +111,26 @@ jobs:
         run: west build -s zmk/app -b ${{ matrix.board }} -- ${{ steps.variables.outputs.shield-arg }} -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
       #- name: SENORITA implementation dtsi file
         #if: always()
-        #run: cat -n config/senorita3.dtsi
-      #- name: Prep artifact (senorita3.dtsi)
-        #run: cp config/senorita3.dtsi ./senorita3.dtsi
+        #run: cat -n config/senorita4.dtsi
+      #- name: Prep artifact (senorita4.dtsi)
+        #run: cp config/senorita4.dtsi ./senorita4.dtsi
       - name: Prep artifact (the_paintbrush_left.keymap.)
         run: cp config/boards/shields/the_paintbrush/the_paintbrush_left.keymap ./
-      #- name: Prep artifact (${{ matrix.shield }}-${{ matrix.board }}-zmk-senorita3.hex)
-        #run: cp build/zephyr/zmk.hex ${{ matrix.shield }}-${{ matrix.board }}-zmk-senorita3.hex
-      - name: Prep artifact (${{ matrix.shield }}-${{ matrix.board }}-zmk-senorita3.uf2)
-        run: cp build/zephyr/zmk.uf2 ${{ matrix.shield }}-${{ matrix.board }}-zmk-senorita3.uf2
+      #- name: Prep artifact (${{ matrix.shield }}-${{ matrix.board }}-zmk-senorita4.hex)
+        #run: cp build/zephyr/zmk.hex ${{ matrix.shield }}-${{ matrix.board }}-zmk-senorita4.hex
+      - name: Prep artifact (${{ matrix.shield }}-${{ matrix.board }}-zmk-senorita4.uf2)
+        run: cp build/zephyr/zmk.uf2 ${{ matrix.shield }}-${{ matrix.board }}-zmk-senorita4.uf2
       - name: Archive artifacts
         uses: actions/upload-artifact@v4
         with:
           name: '${{ steps.variables.outputs.artifact-name }}'
           path: |
-            ${{ matrix.shield }}-${{ matrix.board }}-zmk-senorita3.uf2
+            ${{ matrix.shield }}-${{ matrix.board }}-zmk-senorita4.uf2
             the_paintbrush_left.keymap
         continue-on-error: true
-            #senorita3.dtsi
+            #senorita4.dtsi
             #${{ matrix.shield }}-${{ matrix.board }}.dts.pre.tmp
-            #${{ matrix.shield }}-${{ matrix.board }}-zmk-senorita3.hex
+            #${{ matrix.shield }}-${{ matrix.board }}-zmk-senorita4.hex
   #release:
     #runs-on: ubuntu-latest
     #name: Create Release
