@@ -378,12 +378,12 @@
     bindings = <&u_dier>, <&o_circ>;
   };
   
-  hold_escape: behavior_hold_escape {
+  hold_esc: behavior_hold_escape {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
     flavor = "hold-preferred";
     tapping-term-ms = <HOLDTAP_TERM>;
-    bindings = <&unmod>, <&kp ESC>;
+    bindings = <&unmod>, <&kp>;
   };
   
 //   reib: macro_reib {
@@ -534,7 +534,7 @@ ZMK_COMBO(combo_exclq, &mt QMARK EXCL , B4 T4      , L_BASE L_NUM)
 
 ZMK_COMBO(combo_backspace, &mt LC(BSPC) BSPC,       T2 B1, L_BASE L_MSE L_NUM)
 ZMK_COMBO(combo_delete,    &mt LC(DEL)  DEL ,       B2 T1, L_BASE L_MSE L_NUM)
-ZMK_COMBO(combo_escape,    &hold_escape 0 0 , B4 T3      , ALL_LEFT)
+ZMK_COMBO(combo_escape,    &hold_esc  0 ESC , B4 T3      , ALL_LEFT)
 ZMK_COMBO(combo_tab,       &mt LS(TAB)  TAB , B4 T3 T2   , L_BASE L_MSE L_NUM)
 
 // Hold for sticky RALT (one shot), tap to toggle LALT
