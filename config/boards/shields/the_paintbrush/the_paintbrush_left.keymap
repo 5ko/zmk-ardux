@@ -19,6 +19,9 @@
 #define HOST_OS 1
 #include "zmk-helpers/helper.h"
 
+#include "keyabbrev.dtsi"
+
+
 // International characters and dead accents from the XKB layout
 // "English (US, intl., with AltGr dead keys)":
 #define SUP2 RA(N2)
@@ -428,12 +431,18 @@
 
 
 // Combos NUM layer
-ZMK_COMBO(num_7, &mt DOLLAR N7,    T2 T1, L_NUM)
-ZMK_COMBO(num_8, &kp N8       , T3 T2   , L_NUM)
-ZMK_COMBO(num_9, &mt HASH   N9,    B2 B1, L_NUM)
-ZMK_COMBO(num_0, &mt DEGREE N0, B3 B2   , L_NUM)
-ZMK_COMBO(num_E, &mt GBP  EURO, T3    T1, L_NUM)
-ZMK_COMBO(num_Y, &kp YEN      , B3    B1, L_NUM)
+// ZMK_COMBO(num_7, &mt DOLLAR N7,    T2 T1, L_NUM)
+// ZMK_COMBO(num_8, &kp N8       , T3 T2   , L_NUM)
+// ZMK_COMBO(num_9, &mt HASH   N9,    B2 B1, L_NUM)
+// ZMK_COMBO(num_0, &mt DEGREE N0, B3 B2   , L_NUM)
+// ZMK_COMBO(num_E, &mt GBP  EURO, T3    T1, L_NUM)
+// ZMK_COMBO(num_Y, &kp YEN      , B3    B1, L_NUM)
+ZMK_COMBO(num_7, &mt DOLLAR N7, __TT, L_NUM)
+ZMK_COMBO(num_8, &kp N8       , _TT_, L_NUM)
+ZMK_COMBO(num_9, &mt HASH   N9, __BB, L_NUM)
+ZMK_COMBO(num_0, &mt DEGREE N0, _BB_  , L_NUM)
+ZMK_COMBO(num_E, &mt GBP  EURO, _T_T, L_NUM)
+ZMK_COMBO(num_Y, &kp YEN      , _B_B, L_NUM)
 // can do combos x4-x3-x2 
 
 
