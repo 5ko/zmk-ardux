@@ -90,7 +90,7 @@
 #define NAV_TAP_TERM 300
 #define TAPDANCE_2_TERM 250
 #define TAPDANCE_3_TERM 350
-#define HOLDTAP_TERM 250
+#define HOLDTAP_TERM 150
 #define HOLDTAP_LAYER_TERM 250
 #define TIMEOUT_STICKY_LEADER_KEY  5000
 
@@ -108,7 +108,25 @@
   tapping-term-ms = <HOLDTAP_LAYER_TERM>;
 };
 
+
+
+
 / { behaviors {
+  
+//   Under the hood, the mod-tap is simply a hold-tap of the "hold-preferred" flavor with a tapping-term-ms of 200 that takes in two keypresses as its "hold" and "tap" parameters. This means that the mod-tap can be used to invoke any keycode, and is not limited to only activating modifier keys when it is held.
+
+
+  mtz: behavior_mod_tap_zero {
+    // 
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    flavor = "hold-preferred";
+    tapping-term-ms = <10>;
+//     quick-tap-ms = <200>;
+//     require-prior-idle-ms = <125>;
+    bindings = <&kp>, <&kp>;
+  };
+  
   sk_tk: behavior_sk_tk { 
     // sk LGUI, kt LCTRL
     // sk RALT, kt LALT
@@ -463,7 +481,7 @@ ZMK_TAP_DANCE(td_E,  tapping-term-ms = <TAPDANCE_3_TERM>;
   bindings = <&lk L_NUM E>, <&tap2 D_ACU E>, <&tap2 D_GRV E>, <&tap2 D_CRC E>, <&tap2 D_DRS E>;)
 
 ZMK_TAP_DANCE(td_A,  tapping-term-ms = <TAPDANCE_3_TERM>;
-  bindings = <&mt AT A>, <&tap2 D_GRV A>, <&tap2 D_CRC A>;)
+  bindings = <&mtz AT A>, <&tap2 D_GRV A>, <&tap2 D_CRC A>;)
 
 ZMK_TAP_DANCE(td_N,  tapping-term-ms = <TAPDANCE_3_TERM>;
   bindings = <&lt L_NAV N>, <&kp NTILDE>;)
@@ -478,7 +496,7 @@ ZMK_TAP_DANCE(td_T,  tapping-term-ms = <TAPDANCE_3_TERM>;
   bindings = <&lk L_NUM T>, <&tap2 D_GRV U>, <&tap2 D_CRC U>;)
 
 ZMK_TAP_DANCE(td_SP, tapping-term-ms = <TAPDANCE_3_TERM>;  
-  bindings = <&mt ENTER SPACE>, <&kp DOT>, <&kp COMMA>, <&kp EXCL>, <&kp QMARK>;)
+  bindings = <&mtz ENTER SPACE>, <&kp DOT>, <&kp COMMA>, <&kp EXCL>, <&kp QMARK>;)
 
 ZMK_COMBO(combo_b,  &mt AMPS  B, T4 T3      , L_BASE)
 
